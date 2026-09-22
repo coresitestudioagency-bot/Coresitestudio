@@ -169,11 +169,12 @@
         </div>
     </div>
 
+    <!-- Navigation Bar: Floating animation & responsive layout -->
     <nav class="w-full max-w-[1150px] mx-auto px-4 sm:px-6 py-4 sm:py-5 flex flex-col md:flex-row items-center justify-between sticky top-0 z-50 bg-[#FAFAF7]/95 backdrop-blur-sm gap-3 float-anim">
         <!-- Logo & Brand Name -->
         <div class="flex items-center justify-center md:justify-start w-full md:w-auto">
-            <a href="#" class="font-creative font-extrabold text-base sm:text-lg tracking-tight uppercase px-3.5 sm:px-4 py-2 sketch-window bg-white rotate-[-1deg] hover:rotate-0 transition-transform text-float text-black flex items-center gap-2.5 shadow-[2px_2px_0px_#111]">
-                <span class="w-7 h-7 sm:w-8 sm:h-8 bg-[#fdd663] border-2 border-black rounded-lg flex items-center justify-center shadow-[1px_1px_0px_#111] p-0.5 flex-shrink-0">
+            <a href="#" class="font-creative font-extrabold text-sm sm:text-lg tracking-tight uppercase px-3 sm:px-4 py-2 sketch-window bg-white rotate-[-1deg] hover:rotate-0 transition-transform text-float text-black flex items-center gap-2 sm:gap-2.5 shadow-[2px_2px_0px_#111]">
+                <span class="w-6 h-6 sm:w-8 sm:h-8 bg-[#fdd663] border-2 border-black rounded-lg flex items-center justify-center shadow-[1px_1px_0px_#111] p-0.5 flex-shrink-0">
                     <svg viewBox="0 0 200 200" class="w-full h-full">
                         <rect x="15" y="15" width="170" height="170" rx="28" fill="#fdd663" stroke="#111" stroke-width="6"/>
                         <circle cx="100" cy="90" r="48" fill="none" stroke="#111" stroke-width="5" stroke-dasharray="6 5"/>
@@ -183,7 +184,7 @@
                         <circle cx="100" cy="38" r="5" fill="#111"/>
                     </svg>
                 </span>
-                <span class="text-float">CoreSiteStudio</span>
+                <span class="text-float truncate text-xs sm:text-base">CoreSiteStudio</span>
             </a>
         </div>
 
@@ -201,7 +202,8 @@
         </div>
     </nav>
 
-    <main class="w-full max-w-[1000px] mx-auto px-4 sm:px-6 pt-32 sm:pt-48 flex flex-col items-center gap-20 my-auto relative">
+    <!-- Main Content Container with extra top spacing below navbar -->
+    <main class="w-full max-w-[1000px] mx-auto px-4 sm:px-6 pt-36 sm:pt-48 flex flex-col items-center gap-20 my-auto relative">
 
         <!-- Section 1: Portfolio Hero -->
         <section class="w-full flex flex-col items-center relative reveal-on-scroll">
@@ -314,7 +316,7 @@
                             <span class="font-mono text-sm sm:text-base text-zinc-500">04</span>
                         </div>
                         <div class="flex items-center justify-between hover:text-white transition-colors cursor-pointer group text-float" onclick="openModal('linksModal')">
-                            <span class="group-hover:translate-x-1 transition-transform">5. Business profile</span>
+                            <span class="group-hover:translate-x-1 transition-transform">5. Business Profile</span>
                             <span class="font-mono text-sm sm:text-base text-zinc-500">05</span>
                         </div>
                     </div>
@@ -344,6 +346,7 @@
 
     </main>
 
+    <!-- Footer: Floating animation, logo left of text across all devices -->
     <footer class="w-full bg-[#000000] text-white border-t-4 border-black mt-24 py-12 px-6 mb-0 reveal-on-scroll float-anim">
         <div class="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
             <div class="flex flex-col sm:flex-row items-center md:items-start gap-5">
@@ -402,6 +405,7 @@
         </div>
     </footer>
 
+    <!-- Directory Modal -->
     <div id="linksModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99999] hidden items-center justify-center p-4">
         <div class="sketch-window w-full max-w-md bg-white float-anim">
             <div class="sketch-window-header">
@@ -449,7 +453,7 @@
                     <p class="font-sketch text-lg sm:text-xl text-zinc-600 mt-1.5 text-float-delayed">Connect with our team via email or WhatsApp</p>
                 </div>
                 <div class="space-y-3.5 font-sketch text-lg sm:text-xl font-semibold">
-                    <a href="mailto:coresitestudio.agency@gmail.com" class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-between text-float">
+                    <a href="mailto:coresitestudio.agency@gmail.com?subject=Project%20Inquiry&body=Hi%20CoreSiteStudio,%20I%20would%20like%20to%20discuss%20a%20project." class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-between text-float">
                         <span>📧 Email Studio</span>
                         <span class="font-mono text-xs sm:text-sm text-zinc-500">coresitestudio...</span>
                     </a>
@@ -467,7 +471,7 @@
         </div>
     </div>
 
-    <!-- Newsletter Modal (Mailto integration) -->
+    <!-- Newsletter Modal (Direct Mailto with pre-filled subscription message) -->
     <div id="newsletterModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99999] hidden items-center justify-center p-4">
         <div class="sketch-window w-full max-w-md bg-white float-anim">
             <div class="sketch-window-header">
@@ -477,16 +481,12 @@
             <div class="p-6 sm:p-8 text-center">
                 <div class="text-4xl mb-3 text-float">💌</div>
                 <h3 class="font-creative font-bold text-2xl sm:text-3xl uppercase mb-2 text-float-delayed">Join Our Dispatch</h3>
-                <p class="font-sketch text-lg sm:text-xl text-zinc-600 mb-6 text-float">Get weekly updates on web development, digital products, and studio growth insights.</p>
+                <p class="font-sketch text-lg sm:text-xl text-zinc-600 mb-6 text-float">Receive weekly updates on advanced web development, exclusive digital products, and studio growth insights.</p>
                 
-                <form onsubmit="handleNewsletter(event)" class="space-y-4">
-                    <input type="email" id="newsletterEmailInput" required placeholder="Enter your email..." class="w-full px-5 py-3 bg-[#FAFAF7] border-2 border-black rounded-xl font-sketch text-lg sm:text-xl focus:outline-none focus:ring-2 focus:ring-black">
-                    <button type="submit" class="w-full py-3.5 bg-[#fdd663] hover:bg-yellow-400 text-black font-bold text-lg sm:text-xl border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] transition-all cursor-pointer text-float-delayed">
-                        Subscribe Now 🚀
-                    </button>
-                </form>
-                <div id="newsletterSuccess" class="hidden mt-4 p-3.5 bg-emerald-100 border-2 border-emerald-800 text-emerald-900 text-lg sm:text-xl font-bold rounded-xl">
-                    🎉 Opening email app to subscribe!
+                <div class="space-y-4">
+                    <a href="mailto:coresitestudio.agency@gmail.com?subject=Newsletter%20Subscription&body=Hi,%20I%20would%20like%20to%20receive%20new%20updates%20and%20digital%20studio%20newsletters." class="block w-full py-4 bg-[#fdd663] hover:bg-yellow-400 text-black font-bold text-lg sm:text-xl border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] transition-all cursor-pointer text-float-delayed text-center">
+                        Subscribe via Email 🚀
+                    </a>
                 </div>
             </div>
         </div>
@@ -638,29 +638,6 @@
             if (modal) {
                 modal.classList.remove('flex');
                 modal.classList.add('hidden');
-            }
-        }
-
-        function handleNewsletter(e) {
-            e.preventDefault();
-            const emailInput = document.getElementById('newsletterEmailInput');
-            const successDiv = document.getElementById('newsletterSuccess');
-            
-            if (emailInput && successDiv) {
-                const userEmail = emailInput.value;
-                successDiv.classList.remove('hidden');
-                
-                const mailtoLink = `mailto:coresitestudio.agency@gmail.com?subject=New%20Newsletter%20Subscription&body=Please%20subscribe%20my%20email%20address:%20${encodeURIComponent(userEmail)}`;
-                
-                setTimeout(() => {
-                    window.location.href = mailtoLink;
-                }, 600);
-
-                setTimeout(() => {
-                    successDiv.classList.add('hidden');
-                    emailInput.value = '';
-                    closeModal('newsletterModal');
-                }, 2500);
             }
         }
 
