@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoreSiteStudio</title>
+    <!-- Favicon matching the brand logo -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect x='15' y='15' width='170' height='170' rx='28' fill='%23fdd663' stroke='%23111' stroke-width='6'/><circle cx='100' cy='90' r='48' fill='none' stroke='%23111' stroke-width='5' stroke-dasharray='6 5'/><path d='M 72 70 L 52 90 L 72 110' fill='none' stroke='%23111' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><path d='M 128 70 L 148 90 L 128 110' fill='none' stroke='%23111' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><path d='M 108 62 L 92 118' fill='none' stroke='%23111' stroke-width='6' stroke-linecap='round'/><circle cx='100' cy='38' r='5' fill='%23111'/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +35,7 @@
             margin: 0;
             padding: 0;
             -webkit-tap-highlight-color: transparent;
-            font-size: 1.55rem;
+            font-size: 1.6rem;
         }
 
         @media (max-width: 640px) {
@@ -169,11 +170,11 @@
         </div>
     </div>
 
-    <nav class="w-full max-w-[1150px] mx-auto px-3 sm:px-6 py-3 sm:py-4 flex flex-col md:flex-row items-center justify-between sticky top-0 z-50 bg-[#FAFAF7]/95 backdrop-blur-sm gap-2 sm:gap-3 float-anim">
+    <nav class="w-full max-w-[1150px] mx-auto px-4 sm:px-6 py-4 sm:py-5 flex flex-col md:flex-row items-center justify-between sticky top-0 z-50 bg-[#FAFAF7]/95 backdrop-blur-sm gap-3 float-anim">
         <!-- Logo & Brand Name -->
-        <div class="flex items-center justify-center w-full md:w-auto">
-            <a href="#" class="font-creative font-extrabold text-base sm:text-lg tracking-tight uppercase px-3 sm:px-4 py-1.5 sketch-window bg-white rotate-[-1deg] hover:rotate-0 transition-transform text-float text-black flex items-center gap-2 sm:gap-2.5 shadow-[2px_2px_0px_#111]">
-                <span class="w-6 h-6 sm:w-7 sm:h-7 bg-[#fdd663] border-2 border-black rounded-lg flex items-center justify-center shadow-[1px_1px_0px_#111] p-0.5 flex-shrink-0">
+        <div class="flex items-center justify-center md:justify-start w-full md:w-auto">
+            <a href="#" class="font-creative font-extrabold text-base sm:text-lg tracking-tight uppercase px-3.5 sm:px-4 py-2 sketch-window bg-white rotate-[-1deg] hover:rotate-0 transition-transform text-float text-black flex items-center gap-2.5 shadow-[2px_2px_0px_#111]">
+                <span class="w-7 h-7 sm:w-8 sm:h-8 bg-[#fdd663] border-2 border-black rounded-lg flex items-center justify-center shadow-[1px_1px_0px_#111] p-0.5 flex-shrink-0">
                     <svg viewBox="0 0 200 200" class="w-full h-full">
                         <rect x="15" y="15" width="170" height="170" rx="28" fill="#fdd663" stroke="#111" stroke-width="6"/>
                         <circle cx="100" cy="90" r="48" fill="none" stroke="#111" stroke-width="5" stroke-dasharray="6 5"/>
@@ -187,21 +188,21 @@
             </a>
         </div>
 
-        <!-- Navigation Buttons: Mobile layout (side-by-side on 1 line below logo) vs Tablet/Desktop layout -->
+        <!-- Navigation Buttons: Mobile layout (side-by-side on same line) vs Tablet/Desktop horizontal layout -->
         <div class="flex items-center justify-center gap-2 sm:gap-3 w-full md:w-auto">
-            <button onclick="openModal('linksModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-1.5 sm:py-2 bg-white text-black font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-black hover:text-white transition-all cursor-pointer text-float text-center truncate">
+            <button onclick="openModal('linksModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-2 bg-white text-black font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-black hover:text-white transition-all cursor-pointer text-float text-center truncate">
                 Directory
             </button>
-            <button onclick="openModal('contactModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-1.5 sm:py-2 bg-black text-white font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-zinc-800 transition-all cursor-pointer text-float-delayed text-center truncate">
+            <button onclick="openModal('contactModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-2 bg-black text-white font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-zinc-800 transition-all cursor-pointer text-float-delayed text-center truncate">
                 Contact
             </button>
-            <button onclick="openModal('newsletterModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-1.5 sm:py-2 bg-[#fdd663] text-black font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-yellow-400 transition-all cursor-pointer text-float text-center truncate">
+            <button onclick="openModal('newsletterModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-2 bg-[#fdd663] text-black font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-yellow-400 transition-all cursor-pointer text-float text-center truncate">
                 Newsletter 💌
             </button>
         </div>
     </nav>
 
-    <main class="w-full max-w-[1000px] mx-auto px-4 sm:px-6 pt-14 sm:pt-20 flex flex-col items-center gap-16 my-auto relative">
+    <main class="w-full max-w-[1000px] mx-auto px-4 sm:px-6 pt-24 sm:pt-32 flex flex-col items-center gap-20 my-auto relative">
 
         <!-- Section 1: Portfolio Hero -->
         <section class="w-full flex flex-col items-center relative reveal-on-scroll">
@@ -344,10 +345,9 @@
 
     </main>
 
-    <footer class="w-full bg-[#000000] text-white border-t-4 border-black mt-20 py-12 px-6 mb-0 reveal-on-scroll float-anim">
+    <footer class="w-full bg-[#000000] text-white border-t-4 border-black mt-24 py-12 px-6 mb-0 reveal-on-scroll float-anim">
         <div class="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
             <div class="flex flex-col sm:flex-row items-center md:items-start gap-5">
-                <!-- Footer Logo on Left Side of Text -->
                 <div class="flex items-center gap-3.5">
                     <div class="w-11 h-11 sm:w-14 sm:h-14 bg-[#fdd663] border-2 border-white rounded-xl flex items-center justify-center p-2 float-anim shadow-[2px_2px_0px_rgba(255,255,255,0.3)] flex-shrink-0">
                         <svg viewBox="0 0 200 200" class="w-full h-full">
@@ -359,7 +359,7 @@
                             <circle cx="100" cy="38" r="5" fill="#111"/>
                         </svg>
                     </div>
-                    <span class="font-creative font-extrabold text-lg sm:text-2xl uppercase tracking-wider text-white text-float">
+                    <span class="font-creative font-extrabold text-base sm:text-2xl uppercase tracking-wider text-white text-float">
                         CoreSiteStudio
                     </span>
                 </div>
@@ -437,7 +437,7 @@
         </div>
     </div>
 
-    <!-- Contact Modal -->
+    <!-- Contact Modal with WhatsApp (7431944941) and Email (coresite.studio.agency@gmail.com) -->
     <div id="contactModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99999] hidden items-center justify-center p-4">
         <div class="sketch-window w-full max-w-md bg-white float-anim">
             <div class="sketch-window-header">
@@ -450,13 +450,13 @@
                     <p class="font-sketch text-lg sm:text-xl text-zinc-600 mt-1.5 text-float-delayed">Connect with our team via email or WhatsApp</p>
                 </div>
                 <div class="space-y-3.5 font-sketch text-lg sm:text-xl font-semibold">
-                    <a href="mailto:coresitestudio.agency@gmail.com" class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-between text-float">
+                    <a href="mailto:coresite.studio.agency@gmail.com" class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-between text-float">
                         <span>📧 Email Studio</span>
-                        <span class="font-mono text-xs sm:text-sm text-zinc-500">coresitestudio...</span>
+                        <span class="font-mono text-xs sm:text-sm text-zinc-500">coresite.studio...</span>
                     </a>
-                    <a href="https://wa.me/" target="_blank" class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-between text-float-delayed">
+                    <a href="https://wa.me/917431944941?text=Hello%20CoreSiteStudio,%20I'd%20like%20to%20discuss%20a%20project." target="_blank" class="block p-3.5 bg-[#25D366] text-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:bg-[#22bf5b] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-between text-float-delayed">
                         <span>💬 WhatsApp Chat</span>
-                        <span class="font-mono text-xs sm:text-sm text-zinc-500">Instant Message</span>
+                        <span class="font-mono text-xs sm:text-sm text-white/90">7431944941 ↗</span>
                     </a>
                 </div>
                 <div class="mt-8 text-center">
