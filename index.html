@@ -1,3 +1,6 @@
+<!-- ========================================== -->
+<!-- CORE SITE STUDIO - SINGLE FILE ARCHITECTURE -->
+<!-- ========================================== -->
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -11,6 +14,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,400..800;1,400..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     
+    <!-- ========================================== -->
+    <!-- STYLING CONFIGURATION SECTION -->
+    <!-- ========================================== -->
     <script>
         tailwind.config = {
             theme: {
@@ -146,6 +152,9 @@
 </head>
 <body class="bg-[#FAFAF7] text-[#111111] antialiased selection:bg-black selection:text-white doodle-bg relative min-h-screen flex flex-col justify-between m-0 p-0">
 
+    <!-- ========================================== -->
+    <!-- PRELOADER SECTION -->
+    <!-- ========================================== -->
     <div id="preloader">
         <div class="sketch-window p-6 sm:p-10 bg-white text-center shadow-[8px_8px_0px_#111] max-w-sm sm:max-w-md mx-4 float-anim">
             <div class="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 bg-[#fdd663] border-3 border-black rounded-2xl shadow-[4px_4px_0px_#111] flex items-center justify-center p-2 rotate-[-2deg] pulse-glow">
@@ -170,6 +179,9 @@
         </div>
     </div>
 
+    <!-- ========================================== -->
+    <!-- NAVIGATION BAR SECTION -->
+    <!-- ========================================== -->
     <nav class="w-full max-w-[1150px] mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-col md:flex-row items-center justify-between sticky top-0 z-50 bg-[#FAFAF7]/95 backdrop-blur-sm gap-3 float-anim">
         <div class="flex items-center justify-center md:justify-start w-full md:w-auto gap-3">
             <a href="#" class="font-creative font-extrabold text-xs sm:text-lg tracking-tight uppercase px-3 sm:px-4 py-2 sketch-window bg-white rotate-[-1deg] hover:rotate-0 transition-transform text-float text-black flex items-center gap-2 sm:gap-2.5 shadow-[2px_2px_0px_#111]">
@@ -200,6 +212,9 @@
         </div>
     </nav>
 
+    <!-- ========================================== -->
+    <!-- MAIN CONTENT CONTAINER -->
+    <!-- ========================================== -->
     <main class="w-full max-w-[1000px] mx-auto px-4 sm:px-6 pt-4 sm:pt-6 flex flex-col items-center gap-14 my-auto relative">
 
         <!-- SECTION: Hero Portfolio Banner -->
@@ -233,7 +248,7 @@
                 </div>
 
                 <div class="flex flex-wrap items-center justify-center gap-4 mt-2 w-full">
-                    <button onclick="scrollToContent()" class="px-6 py-3 bg-white text-black border-3 border-black rounded-xl font-bold text-lg sm:text-xl shadow-[3px_3px_0px_#111] hover:bg-black hover:text-white hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#111] transition-all cursor-pointer float-anim flex items-center gap-2">
+                    <button onclick="openModal('comingSoonModal')" class="px-6 py-3 bg-white text-black border-3 border-black rounded-xl font-bold text-lg sm:text-xl shadow-[3px_3px_0px_#111] hover:bg-black hover:text-white hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#111] transition-all cursor-pointer float-anim flex items-center gap-2">
                         <span>🔍 Explore</span>
                     </button>
                     <a href="https://payhip.com/Coresitestudioagency" target="_blank" class="px-6 py-3 bg-[#fdd663] text-black border-3 border-black rounded-xl font-bold text-lg sm:text-xl shadow-[3px_3px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#111] transition-all cursor-pointer float-anim-delayed flex items-center gap-2">
@@ -337,7 +352,7 @@
             </div>
         </section>
 
-        <!-- SECTION: About Me & Agency Overview -->
+        <!-- SECTION: About Me & Agency Overview (No Box Outline) -->
         <section id="content-section" class="w-full flex flex-col items-center relative reveal-on-scroll">
             <div class="mb-5 px-6 py-2.5 bg-white border-2 border-black rounded-xl shadow-[2px_2px_0px_#111] font-mono text-xl font-bold rotate-[-1deg] text-float">
                 ME // ABOUT.pkg
@@ -437,6 +452,9 @@
 
     </main>
 
+    <!-- ========================================== -->
+    <!-- FOOTER SECTION -->
+    <!-- ========================================== -->
     <footer class="w-full bg-[#000000] text-white border-t-4 border-black mt-28 py-12 px-6 mb-0 reveal-on-scroll float-anim">
         <div class="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
             <div class="flex flex-col sm:flex-row items-center md:items-start gap-5">
@@ -495,7 +513,30 @@
         </div>
     </footer>
 
-    
+    <!-- ========================================== -->
+    <!-- MODALS SECTION -->
+    <!-- ========================================== -->
+
+    <!-- MODAL: Coming Soon (Explore button trigger) -->
+    <div id="comingSoonModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99999] hidden items-center justify-center p-4">
+        <div class="sketch-window w-full max-w-md bg-white float-anim text-center">
+            <div class="sketch-window-header">
+                <span class="font-mono text-lg sm:text-xl font-bold text-float">- SYSTEM_NOTICE.sh</span>
+                <button onclick="closeModal('comingSoonModal')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+            </div>
+            <div class="p-8">
+                <div class="text-5xl mb-4 text-float">🚀</div>
+                <h3 class="font-creative font-bold text-3xl uppercase mb-2 text-float-delayed">Coming Soon!</h3>
+                <p class="font-sketch text-xl text-zinc-600 mb-6 text-float">
+                    Our interactive creative systems explore module is currently compiling. Stay tuned for deployment!
+                </p>
+                <button onclick="closeModal('comingSoonModal')" class="px-6 py-3 bg-[#fdd663] text-black font-bold text-xl border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer text-float-delayed">
+                    Got it! 👍
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL: Directory Links -->
     <div id="linksModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99999] hidden items-center justify-center p-4">
         <div class="sketch-window w-full max-w-md bg-white float-anim">
@@ -765,6 +806,9 @@
         </div>
     </div>
 
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT LOGIC SECTION -->
+    <!-- ========================================== -->
     <script>
         window.addEventListener('load', () => {
             const wordCore = document.getElementById('wordCore');
@@ -846,7 +890,7 @@
         }
 
         window.addEventListener('click', (e) => {
-            ['linksModal', 'contactModal', 'newsletterModal', 'blogModal1', 'blogModal2', 'blogModal3', 'blogModal4', 'blogModal5', 'privacyModal', 'termsModal', 'securityModal'].forEach(id => {
+            ['comingSoonModal', 'linksModal', 'contactModal', 'newsletterModal', 'blogModal1', 'blogModal2', 'blogModal3', 'blogModal4', 'blogModal5', 'privacyModal', 'termsModal', 'securityModal'].forEach(id => {
                 const modal = document.getElementById(id);
                 if (e.target === modal) {
                     closeModal(id);
