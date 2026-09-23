@@ -169,11 +169,9 @@
         </div>
     </div>
 
-    <!-- Navigation Bar: Floating animation & responsive layout -->
     <nav class="w-full max-w-[1150px] mx-auto px-4 sm:px-6 py-4 sm:py-5 flex flex-col md:flex-row items-center justify-between sticky top-0 z-50 bg-[#FAFAF7]/95 backdrop-blur-sm gap-3 float-anim">
-        <!-- Logo & Brand Name -->
         <div class="flex items-center justify-center md:justify-start w-full md:w-auto">
-            <a href="#" class="font-creative font-extrabold text-sm sm:text-lg tracking-tight uppercase px-3 sm:px-4 py-2 sketch-window bg-white rotate-[-1deg] hover:rotate-0 transition-transform text-float text-black flex items-center gap-2 sm:gap-2.5 shadow-[2px_2px_0px_#111]">
+            <a href="#" class="font-creative font-extrabold text-xs sm:text-lg tracking-tight uppercase px-3 sm:px-4 py-2 sketch-window bg-white rotate-[-1deg] hover:rotate-0 transition-transform text-float text-black flex items-center gap-2 sm:gap-2.5 shadow-[2px_2px_0px_#111]">
                 <span class="w-6 h-6 sm:w-8 sm:h-8 bg-[#fdd663] border-2 border-black rounded-lg flex items-center justify-center shadow-[1px_1px_0px_#111] p-0.5 flex-shrink-0">
                     <svg viewBox="0 0 200 200" class="w-full h-full">
                         <rect x="15" y="15" width="170" height="170" rx="28" fill="#fdd663" stroke="#111" stroke-width="6"/>
@@ -188,7 +186,6 @@
             </a>
         </div>
 
-        <!-- Navigation Buttons: Mobile layout (side-by-side on same line) vs Tablet/Desktop horizontal layout -->
         <div class="flex items-center justify-center gap-2 sm:gap-3 w-full md:w-auto">
             <button onclick="openModal('linksModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-2 bg-white text-black font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-black hover:text-white transition-all cursor-pointer text-float text-center truncate">
                 Directory
@@ -202,10 +199,9 @@
         </div>
     </nav>
 
-    <!-- Main Content Container with extra top spacing below navbar -->
-    <main class="w-full max-w-[1000px] mx-auto px-4 sm:px-6 pt-36 sm:pt-48 flex flex-col items-center gap-20 my-auto relative">
+    <main class="w-full max-w-[1000px] mx-auto px-4 sm:px-6 pt-44 sm:pt-60 flex flex-col items-center gap-20 my-auto relative">
 
-        <!-- Section 1: Portfolio Hero -->
+        <!-- Portfolio Hero Section -->
         <section class="w-full flex flex-col items-center relative reveal-on-scroll">
             <div class="sketch-window w-full max-w-4xl float-anim">
                 <div class="sketch-window-header">
@@ -246,13 +242,12 @@
             </div>
         </section>
 
-        <!-- Section 2: About Me -->
         <section id="content-section" class="w-full flex flex-col items-center relative reveal-on-scroll">
             <div class="mb-4 px-6 py-2.5 bg-white border-2 border-black rounded-xl shadow-[2px_2px_0px_#111] font-mono text-xl font-bold rotate-[-1deg] text-float">
                 ME // ABOUT.pkg
             </div>
 
-            <div class="sketch-window w-full max-w-3xl p-6 sm:p-12 flex flex-col sm:flex-row gap-8 items-center float-anim-delayed">
+            <div class="w-full max-w-3xl p-6 sm:p-12 flex flex-col sm:flex-row gap-8 items-center float-anim-delayed">
                 <div class="flex-shrink-0 flex flex-col items-center">
                     <div class="w-28 h-28 sm:w-32 sm:h-32 bg-white border-3 border-black rounded-2xl shadow-[3px_3px_0px_#111] flex items-center justify-center p-3 rotate-[-2deg] pulse-glow">
                         <svg viewBox="0 0 200 200" class="w-full h-full">
@@ -281,7 +276,7 @@
             </div>
         </section>
 
-        <!-- Section 3: Content List -->
+        <!-- Content Directory Section -->
         <section class="w-full flex flex-col items-center relative reveal-on-scroll">
             <div class="mb-4 px-6 py-2.5 bg-white border-2 border-black rounded-xl shadow-[2px_2px_0px_#111] font-mono text-xl font-bold rotate-[1deg] text-float">
                 Content
@@ -330,7 +325,7 @@
             </div>
         </section>
 
-        <!-- Section 4: Brand Study -->
+        <!-- Brand Study Section -->
         <section class="w-full flex flex-col items-center reveal-on-scroll">
             <div class="sketch-window w-full max-w-3xl p-6 sm:p-12 text-center bg-white float-anim-delayed">
                 <span class="font-mono text-base sm:text-lg font-bold text-zinc-500 uppercase tracking-widest text-float">- brand_study.pkg</span>
@@ -346,7 +341,6 @@
 
     </main>
 
-    <!-- Footer: Floating animation, logo left of text across all devices -->
     <footer class="w-full bg-[#000000] text-white border-t-4 border-black mt-24 py-12 px-6 mb-0 reveal-on-scroll float-anim">
         <div class="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
             <div class="flex flex-col sm:flex-row items-center md:items-start gap-5">
@@ -361,7 +355,7 @@
                             <circle cx="100" cy="38" r="5" fill="#111"/>
                         </svg>
                     </div>
-                    <span class="font-creative font-extrabold text-sm sm:text-xl uppercase tracking-wider text-white text-float">
+                    <span class="font-creative font-extrabold text-xs sm:text-xl uppercase tracking-wider text-white text-float">
                         CoreSiteStudio
                     </span>
                 </div>
@@ -471,7 +465,7 @@
         </div>
     </div>
 
-    <!-- Newsletter Modal (Direct Mailto with pre-filled subscription message) -->
+    <!-- Newsletter Modal with Direct Mailto (coresitestudio.agency@gmail.com) -->
     <div id="newsletterModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99999] hidden items-center justify-center p-4">
         <div class="sketch-window w-full max-w-md bg-white float-anim">
             <div class="sketch-window-header">
