@@ -170,7 +170,7 @@
         </div>
     </div>
 
-    <nav class="w-full max-w-[1150px] mx-auto px-4 sm:px-6 py-4 sm:py-5 flex flex-col md:flex-row items-center justify-between sticky top-0 z-50 bg-[#FAFAF7]/95 backdrop-blur-sm gap-3 float-anim">
+    <nav class="w-full max-w-[1150px] mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-col md:flex-row items-center justify-between sticky top-0 z-50 bg-[#FAFAF7]/95 backdrop-blur-sm gap-3 float-anim">
         <div class="flex items-center justify-center md:justify-start w-full md:w-auto gap-3">
             <a href="#" class="font-creative font-extrabold text-xs sm:text-lg tracking-tight uppercase px-3 sm:px-4 py-2 sketch-window bg-white rotate-[-1deg] hover:rotate-0 transition-transform text-float text-black flex items-center gap-2 sm:gap-2.5 shadow-[2px_2px_0px_#111]">
                 <span class="w-6 h-6 sm:w-8 sm:h-8 bg-[#fdd663] border-2 border-black rounded-lg flex items-center justify-center shadow-[1px_1px_0px_#111] p-0.5 flex-shrink-0">
@@ -194,13 +194,13 @@
             <button onclick="openModal('contactModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-2 bg-black text-white font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-zinc-800 transition-all cursor-pointer text-float-delayed text-center truncate">
                 Contact
             </button>
-            <button onclick="openModal('newsletterModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-2 bg-[#fdd663] text-black font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-yellow-400 transition-all cursor-pointer text-float text-center truncate">
+            <button onclick="openModal('newsletterModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-2 bg-yellow-100 text-black font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-yellow-200 transition-all cursor-pointer text-float text-center truncate">
                 Newsletter 💌
             </button>
         </div>
     </nav>
 
-    <main class="w-full max-w-[1000px] mx-auto px-4 sm:px-6 pt-12 sm:pt-20 flex flex-col items-center gap-20 my-auto relative">
+    <main class="w-full max-w-[1000px] mx-auto px-4 sm:px-6 pt-6 sm:pt-10 flex flex-col items-center gap-16 my-auto relative">
 
         <!-- Portfolio Hero Section -->
         <section class="w-full flex flex-col items-center relative reveal-on-scroll">
@@ -236,13 +236,14 @@
                     <button onclick="scrollToContent()" class="px-6 py-3 bg-white text-black border-3 border-black rounded-xl font-bold text-lg sm:text-xl shadow-[3px_3px_0px_#111] hover:bg-black hover:text-white hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#111] transition-all cursor-pointer float-anim flex items-center gap-2">
                         <span>🔍 Explore</span>
                     </button>
-                    <button onclick="scrollToContent()" class="px-6 py-3 bg-[#fdd663] text-black border-3 border-black rounded-xl font-bold text-lg sm:text-xl shadow-[3px_3px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#111] transition-all cursor-pointer float-anim-delayed flex items-center gap-2">
-                        <span>🛍️ Digital Store</span>
-                    </button>
+                    <a href="https://coresitestudio.vercel.app" target="_blank" class="px-6 py-3 bg-[#fdd663] text-black border-3 border-black rounded-xl font-bold text-lg sm:text-xl shadow-[3px_3px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#111] transition-all cursor-pointer float-anim-delayed flex items-center gap-2">
+                        <span>🛍️ Digital Store ↗</span>
+                    </a>
                 </div>
             </div>
         </section>
 
+        <!-- Journal / Blog Section -->
         <section class="w-full flex flex-col items-center relative reveal-on-scroll">
             <div class="mb-5 px-6 py-2.5 bg-white border-2 border-black rounded-xl shadow-[2px_2px_0px_#111] font-mono text-xl font-bold rotate-[1deg] text-float">
                 JOURNAL // BLOG.pkg
@@ -336,6 +337,7 @@
             </div>
         </section>
 
+        <!-- About Section -->
         <section id="content-section" class="w-full flex flex-col items-center relative reveal-on-scroll">
             <div class="mb-5 px-6 py-2.5 bg-white border-2 border-black rounded-xl shadow-[2px_2px_0px_#111] font-mono text-xl font-bold rotate-[-1deg] text-float">
                 ME // ABOUT.pkg
@@ -370,6 +372,7 @@
             </div>
         </section>
 
+        <!-- Content Directory Section -->
         <section class="w-full flex flex-col items-center relative reveal-on-scroll">
             <div class="mb-5 px-6 py-2.5 bg-white border-2 border-black rounded-xl shadow-[2px_2px_0px_#111] font-mono text-xl font-bold rotate-[1deg] text-float">
                 Content
@@ -418,6 +421,7 @@
             </div>
         </section>
 
+        <!-- Brand Study Section -->
         <section class="w-full flex flex-col items-center reveal-on-scroll">
             <div class="sketch-window w-full max-w-3xl p-6 sm:p-12 text-center bg-white float-anim-delayed">
                 <span class="font-mono text-base sm:text-lg font-bold text-zinc-500 uppercase tracking-widest text-float">- brand_study.pkg</span>
@@ -433,6 +437,7 @@
 
     </main>
 
+    <!-- Footer -->
     <footer class="w-full bg-[#000000] text-white border-t-4 border-black mt-28 py-12 px-6 mb-0 reveal-on-scroll float-anim">
         <div class="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
             <div class="flex flex-col sm:flex-row items-center md:items-start gap-5">
@@ -465,7 +470,7 @@
                 </div>
                 <div class="flex flex-col gap-2.5">
                     <span class="font-bold text-white uppercase tracking-wider text-sm sm:text-base text-float-delayed">Resources</span>
-                    <button onclick="scrollToContent()" class="hover:text-white transition-colors text-left text-float">Digital Store</button>
+                    <a href="https://coresitestudio.vercel.app" target="_blank" class="hover:text-white transition-colors text-left text-float">Digital Store ↗</a>
                     <button onclick="openModal('newsletterModal')" class="hover:text-white transition-colors text-left text-float-delayed">Newsletter 💌</button>
                     <button onclick="openModal('contactModal')" class="hover:text-white transition-colors text-left text-float">Pitch Deck</button>
                 </div>
@@ -504,6 +509,9 @@
                     <p class="font-sketch text-lg sm:text-xl text-zinc-600 mt-1.5 text-float-delayed">Explore our platforms</p>
                 </div>
                 <div class="space-y-3.5 font-sketch text-lg sm:text-xl font-semibold max-h-[50vh] overflow-y-auto pr-1">
+                    <a href="https://coresitestudio.vercel.app" target="_blank" class="block p-3.5 bg-yellow-100 border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float font-bold">
+                        <span>🛍️ Digital Store</span><span>↗</span>
+                    </a>
                     <a href="https://www.instagram.com/coresitestudio/" target="_blank" class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float">
                         <span>📸 Instagram (@coresitestudio)</span><span>↗</span>
                     </a>
@@ -513,8 +521,8 @@
                     <a href="https://in.pinterest.com/coresitestudio/?actingBusinessId=1111615257933550604" target="_blank" class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float">
                         <span>📌 Pinterest</span><span>↗</span>
                     </a>
-                    <a href="https://github.com" target="_blank" class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float-delayed">
-                        <span>🐙 GitHub Repository</span><span>↗</span>
+                    <a href="https://www.youtube.com/@coresitestudio" target="_blank" class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float-delayed">
+                        <span>▶️ YouTube Channel</span><span>↗</span>
                     </a>
                 </div>
                 <div class="mt-8 text-center">
