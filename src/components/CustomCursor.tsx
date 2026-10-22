@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
@@ -11,7 +12,11 @@ export default function CustomCursor() {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
+    // Only show cursor on desktop
+    if (window.innerWidth < 768) return;
+
     const moveCursor = (e: MouseEvent) => {
+      if (!isVisible) setIsVisible(true);
       cursorX.set(e.clientX - 10);
       cursorY.set(e.clientY - 10);
     };
@@ -33,16 +38,33 @@ export default function CustomCursor() {
       setIsHovering(false);
     };
 
+    const handleMouseLeave = () => {
+      setIsVisible(false);
+    };
+
+    const handleMouseEnter = () => {
+      setIsVisible(true);
+    };
+
     window.addEventListener('mousemove', moveCursor);
     document.addEventListener('mouseover', handleMouseOver);
     document.addEventListener('mouseout', handleMouseOut);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mouseenter', handleMouseEnter);
 
     return () => {
       window.removeEventListener('mousemove', moveCursor);
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseout', handleMouseOut);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, [cursorX, cursorY]);
+  }, [cursorX, cursorY, isVisible]);
+
+  // Don't render on mobile
+  if (typeof window !== 'undefined' && window.innerWidth < 768) {
+    return null;
+  }
 
   return (
     <motion.div
@@ -50,6 +72,7 @@ export default function CustomCursor() {
       style={{
         translateX: cursorXSpring,
         translateY: cursorYSpring,
+        opacity: isVisible ? 1 : 0,
       }}
       animate={{
         scale: isHovering ? 2.5 : 1,

@@ -16,7 +16,6 @@ function Leaf2({ className = '' }: { className?: string }) {
     <svg className={className} viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M40 0C40 0 0 30 0 65C0 95 18 120 40 120C62 120 80 95 80 65C80 30 40 0 40 0Z" fill="currentColor" />
       <path d="M40 15V105" stroke="currentColor" strokeWidth="0.8" opacity="0.3" />
-      <path d="M20 40L40 55L60 40" stroke="currentColor" strokeWidth="0.5" opacity="0.2" />
     </svg>
   );
 }
@@ -26,14 +25,6 @@ function Leaf3({ className = '' }: { className?: string }) {
     <svg className={className} viewBox="0 0 60 90" fill="none" xmlns="http://www.w3.org/2000/svg">
       <ellipse cx="30" cy="45" rx="28" ry="43" fill="currentColor" />
       <path d="M30 5V85" stroke="currentColor" strokeWidth="0.8" opacity="0.3" />
-    </svg>
-  );
-}
-
-function Petal({ className = '' }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M25 0C25 0 0 20 0 40C0 55 11 70 25 70C39 70 50 55 50 40C50 20 25 0 25 0Z" fill="currentColor" />
     </svg>
   );
 }
@@ -52,11 +43,8 @@ const leaves: LeafConfig[] = [
   { Component: Leaf1, top: '10%', left: '5%', size: '120px', speed: 0.3, rotate: 25, color: '#2d5a2d' },
   { Component: Leaf2, top: '25%', left: '85%', size: '90px', speed: 0.5, rotate: -15, color: '#3d6b3d' },
   { Component: Leaf3, top: '45%', left: '10%', size: '70px', speed: 0.7, rotate: 45, color: '#4a7a4a' },
-  { Component: Petal, top: '60%', left: '90%', size: '60px', speed: 0.4, rotate: -30, color: '#c4738a' },
   { Component: Leaf1, top: '75%', left: '8%', size: '100px', speed: 0.6, rotate: 60, color: '#2d5a2d' },
-  { Component: Petal, top: '35%', left: '92%', size: '50px', speed: 0.8, rotate: 15, color: '#e8b4c8' },
   { Component: Leaf2, top: '85%', left: '88%', size: '80px', speed: 0.35, rotate: -45, color: '#3d6b3d' },
-  { Component: Leaf3, top: '15%', left: '95%', size: '55px', speed: 0.55, rotate: 70, color: '#4a7a4a' },
 ];
 
 export default function ParallaxBackground() {

@@ -45,6 +45,7 @@ export default function StickyStorySection() {
               muted
               loop
               playsInline
+              preload="metadata"
               className="w-full h-full object-cover"
             >
               <source src="https://cdn.mp4tourl.com/video/free/59ef6170-d888-4968-b0c1-a78364f8a59d.webm" type="video/webm" />
@@ -99,6 +100,7 @@ export default function StickyStorySection() {
               muted
               loop
               playsInline
+              preload="metadata"
               className="w-full h-full object-cover"
             >
               <source src="https://cdn.mp4tourl.com/video/free/59ef6170-d888-4968-b0c1-a78364f8a59d.webm" type="video/webm" />

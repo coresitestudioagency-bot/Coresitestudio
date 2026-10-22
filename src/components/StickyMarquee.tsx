@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
+import { memo } from 'react';
 
-export default function StickyMarquee() {
+const StickyMarquee = memo(() => {
   const items = [
     '✿ FRESH BLOOMS',
     '✿ DELIVERED DAILY',
@@ -33,4 +34,8 @@ export default function StickyMarquee() {
       </div>
     </motion.div>
   );
-}
+});
+
+StickyMarquee.displayName = 'StickyMarquee';
+
+export default StickyMarquee;

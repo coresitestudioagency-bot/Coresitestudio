@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import AnimatedButton from './AnimatedButton';
@@ -24,7 +24,7 @@ export default function VideoShowcaseCard() {
     return () => video.removeEventListener('timeupdate', handleTimeUpdate);
   }, []);
 
-  const togglePlay = () => {
+  const togglePlay = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
     
@@ -35,15 +35,15 @@ export default function VideoShowcaseCard() {
       video.pause();
       setIsPlaying(false);
     }
-  };
+  }, []);
 
-  const toggleMute = () => {
+  const toggleMute = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
     
     video.muted = !video.muted;
     setIsMuted(video.muted);
-  };
+  }, []);
 
   return (
     <motion.div
@@ -60,6 +60,7 @@ export default function VideoShowcaseCard() {
         muted
         loop
         playsInline
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
       >
         <source src="https://cdn.mp4tourl.com/video/free/eaf960b3-7ce2-4e54-9163-29a6c872471b.webm" type="video/webm" />

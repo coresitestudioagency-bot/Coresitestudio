@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
 
 interface AnimatedButtonProps {
   children: ReactNode;
@@ -9,13 +9,13 @@ interface AnimatedButtonProps {
   onClick?: () => void;
 }
 
-export default function AnimatedButton({
+const AnimatedButton = memo(({
   children,
   hoverText,
   className = '',
   variant = 'primary',
   onClick,
-}: AnimatedButtonProps) {
+}: AnimatedButtonProps) => {
   const variants = {
     primary: 'bg-[#1A2F1A] text-[#F9F6F0] hover:bg-[#2d4a2d]',
     secondary: 'bg-[#F9F6F0] text-[#1A2F1A] border border-[#1A2F1A]/20 hover:bg-[#1A2F1A] hover:text-[#F9F6F0]',
@@ -35,4 +35,8 @@ export default function AnimatedButton({
       )}
     </motion.button>
   );
-}
+});
+
+AnimatedButton.displayName = 'AnimatedButton';
+
+export default AnimatedButton;
