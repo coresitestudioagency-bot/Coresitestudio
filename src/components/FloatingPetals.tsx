@@ -15,20 +15,22 @@ export default function FloatingPetals() {
 
   useEffect(() => {
     const emojis = ['🌸', '🩷', '✿', '❀', '🌺'];
-    const newPetals: Petal[] = Array.from({ length: 12 }, (_, i) => ({
+    // Fewer petals on mobile for performance
+    const count = window.innerWidth < 768 ? 6 : 10;
+    const newPetals: Petal[] = Array.from({ length: count }, (_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
-      size: Math.random() * 16 + 10,
-      duration: Math.random() * 10 + 15,
-      delay: Math.random() * 20,
-      opacity: Math.random() * 0.4 + 0.1,
+      size: Math.random() * 14 + 8,
+      duration: Math.random() * 12 + 18,
+      delay: Math.random() * 25,
+      opacity: Math.random() * 0.3 + 0.08,
       emoji: emojis[Math.floor(Math.random() * emojis.length)],
     }));
     setPetals(newPetals);
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
       {petals.map((petal) => (
         <span
           key={petal.id}
