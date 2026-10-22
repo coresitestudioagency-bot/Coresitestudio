@@ -22,7 +22,7 @@ export default function App() {
       <LiquidGlassNav />
 
       {/* ===== FULLSCREEN VIDEO HERO SECTION ===== */}
-      <section className="relative h-[100dvh] sm:h-screen w-full overflow-hidden -mt-[72px] sm:-mt-[80px]">
+      <section className="relative h-[110dvh] sm:h-screen w-full overflow-hidden -mt-[72px] sm:-mt-[80px]">
         {/* Video Background */}
         <motion.video
           autoPlay
