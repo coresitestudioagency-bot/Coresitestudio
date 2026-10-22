@@ -7,6 +7,7 @@ import AnimatedButton from './components/AnimatedButton';
 import LiquidGlassNav from './components/LiquidGlassNav';
 import StickyStorySection from './components/StickyStorySection';
 import StickyMarquee from './components/StickyMarquee';
+import VideoShowcaseCard from './components/VideoShowcaseCard';
 
 export default function App() {
   return (
@@ -146,33 +147,9 @@ export default function App() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 auto-rows-[minmax(180px,auto)]">
-          {/* Hero Card */}
+          {/* Video Showcase Card */}
           <ScrollReveal className="lg:col-span-2 lg:row-span-3" delay={0.1}>
-            <motion.div
-              className="h-full min-h-[400px] lg:min-h-[600px] bg-gradient-to-br from-[#e8d5c4] to-[#f5e6d3] rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden"
-              whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.4 }}
-            >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#1A2F1A]/5 rounded-full blur-3xl"></div>
-              <div className="relative z-10">
-                <span className="inline-block bg-[#F9F6F0]/60 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-[#1A2F1A] mb-4">
-                  ✨ Fresh Arrivals
-                </span>
-                <h2 className="font-serif italic text-3xl sm:text-4xl lg:text-5xl text-[#1A2F1A] tracking-tight leading-tight">
-                  Spring Garden<br />
-                  <span className="text-[#1A2F1A]/60">Collection</span>
-                </h2>
-                <p className="mt-4 text-[#1A2F1A]/70 text-lg max-w-md">
-                  Vibrant sunflowers, dahlias, and wildflowers that capture the essence of the season.
-                </p>
-              </div>
-              <div className="relative z-10 flex items-center gap-4">
-                <AnimatedButton variant="primary" hoverText="Shop Now →">
-                  Explore
-                </AnimatedButton>
-                <span className="font-serif italic text-lg text-[#1A2F1A]/60">From $45</span>
-              </div>
-            </motion.div>
+            <VideoShowcaseCard />
           </ScrollReveal>
 
           {/* Featured Image */}
@@ -213,33 +190,69 @@ export default function App() {
             </motion.div>
           </ScrollReveal>
 
-          {/* Seasonal Card */}
+          {/* Seasonal Video Card */}
           <ScrollReveal className="lg:col-span-2 lg:row-span-2" delay={0.2}>
             <motion.div
-              className="card-mask h-full min-h-[350px] rounded-3xl overflow-hidden relative cursor-hover"
+              className="h-full min-h-[350px] rounded-3xl overflow-hidden relative cursor-hover group"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.4 }}
             >
-              <motion.img
-                src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=800&h=600&fit=crop"
-                alt="Summer Bloom"
-                className="absolute inset-0 w-full h-full object-cover"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.6 }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#F9F6F0]/90 via-[#F9F6F0]/40 to-transparent" />
-              <div className="card-mask-content" style={{ transform: 'translateY(0)', background: 'transparent' }}>
-                <span className="inline-block bg-[#1A2F1A] text-[#F9F6F0] px-3 py-1 rounded-full text-xs font-medium mb-3">
-                  Seasonal Special
-                </span>
-                <h2 className="font-serif italic text-3xl text-[#1A2F1A] tracking-tight">Summer Bloom</h2>
-                <p className="text-[#1A2F1A]/70 mt-2 max-w-sm">
-                  Limited edition arrangements inspired by Mediterranean gardens.
-                </p>
-                <AnimatedButton variant="primary" hoverText="Shop Summer →" className="mt-4">
-                  Shop Summer
-                </AnimatedButton>
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+              >
+                <source src="https://cdn.mp4tourl.com/video/free/eaf960b3-7ce2-4e54-9163-29a6c872471b.webm" type="video/webm" />
+              </video>
+              
+              {/* Dark Overlay */}
+              <div className="absolute inset-0 bg-[#1A2F1A]/40 group-hover:bg-[#1A2F1A]/30 transition-colors duration-500" />
+              
+              {/* Content */}
+              <div className="relative z-10 h-full flex flex-col justify-between p-5 sm:p-8">
+                <div>
+                  <motion.span
+                    className="inline-flex items-center gap-2 bg-[#F9F6F0]/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] sm:text-xs font-medium text-[#1A2F1A]"
+                    animate={{ opacity: [0.7, 1, 0.7] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <span className="w-1.5 h-1.5 bg-[#c4738a] rounded-full animate-pulse"></span>
+                    Seasonal Special
+                  </motion.span>
+                </div>
+                
+                <div>
+                  <h2 className="font-serif italic text-2xl sm:text-3xl lg:text-4xl text-[#F9F6F0] tracking-tight">
+                    Summer Bloom
+                  </h2>
+                  <p className="text-[#F9F6F0]/80 mt-2 max-w-sm text-sm sm:text-base">
+                    Limited edition arrangements inspired by Mediterranean gardens.
+                  </p>
+                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <AnimatedButton variant="secondary" hoverText="Shop Summer →">
+                      Shop Summer
+                    </AnimatedButton>
+                  </div>
+                </div>
               </div>
+
+              {/* Animated border glow */}
+              <motion.div
+                className="absolute inset-0 rounded-3xl pointer-events-none"
+                style={{
+                  boxShadow: 'inset 0 0 0 1px rgba(249, 246, 240, 0.1)',
+                }}
+                animate={{
+                  boxShadow: [
+                    'inset 0 0 0 1px rgba(249, 246, 240, 0.1)',
+                    'inset 0 0 0 2px rgba(249, 246, 240, 0.3)',
+                    'inset 0 0 0 1px rgba(249, 246, 240, 0.1)',
+                  ],
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
             </motion.div>
           </ScrollReveal>
 
