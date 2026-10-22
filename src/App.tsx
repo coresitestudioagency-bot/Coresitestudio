@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { ShoppingBag, Heart, ArrowRight, Play, Star, MapPin, Clock, Sparkles, Instagram, Truck, Gift } from 'lucide-react';
-import CustomCursor from './components/CustomCursor';
 import ParallaxBackground from './components/ParallaxBackground';
 import ScrollReveal from './components/ScrollReveal';
 import AnimatedButton from './components/AnimatedButton';
@@ -12,9 +11,6 @@ import VideoShowcaseCard from './components/VideoShowcaseCard';
 export default function App() {
   return (
     <div className="min-h-screen bg-[#F9F6F0] text-[#1A2F1A] relative">
-      {/* Custom Cursor */}
-      <CustomCursor />
-
       {/* Parallax Background Leaves */}
       <ParallaxBackground />
 
