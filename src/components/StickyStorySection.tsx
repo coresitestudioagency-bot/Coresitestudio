@@ -34,17 +34,21 @@ export default function StickyStorySection() {
   return (
     <section ref={containerRef} className="relative" id="about">
       <div className="grid md:grid-cols-2 min-h-screen">
-        {/* Sticky Image Side */}
+        {/* Sticky Video Side */}
         <div className="hidden md:block relative h-screen sticky top-0 overflow-hidden">
           <motion.div
             className="absolute inset-0"
             style={{ scale: imageScale, y: imageY }}
           >
-            <img
-              src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=800&h=1200&fit=crop"
-              alt="Floral arrangement"
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
               className="w-full h-full object-cover"
-            />
+            >
+              <source src="https://cdn.mp4tourl.com/video/free/59ef6170-d888-4968-b0c1-a78364f8a59d.webm" type="video/webm" />
+            </video>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#F9F6F0]/20" />
           </motion.div>
           
@@ -88,13 +92,17 @@ export default function StickyStorySection() {
             ))}
           </div>
 
-          {/* Mobile image */}
+          {/* Mobile video */}
           <div className="md:hidden mt-16 rounded-3xl overflow-hidden aspect-[4/5]">
-            <img
-              src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=600&h=750&fit=crop"
-              alt="Floral arrangement"
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
               className="w-full h-full object-cover"
-            />
+            >
+              <source src="https://cdn.mp4tourl.com/video/free/59ef6170-d888-4968-b0c1-a78364f8a59d.webm" type="video/webm" />
+            </video>
           </div>
         </div>
       </div>
