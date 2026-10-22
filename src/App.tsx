@@ -22,7 +22,7 @@ export default function App() {
       <LiquidGlassNav />
 
       {/* ===== FULLSCREEN VIDEO HERO SECTION ===== */}
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative h-[85vh] sm:h-screen w-full overflow-hidden">
         {/* Video Background */}
         <motion.video
           autoPlay
@@ -43,27 +43,27 @@ export default function App() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#1A2F1A]/30 via-transparent to-[#1A2F1A]/30" />
 
         {/* Hero Content */}
-        <div className="relative z-10 h-full flex flex-col items-center justify-center px-5 sm:px-6 md:px-12 lg:px-16">
+        <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16">
           <div className="text-center max-w-5xl">
             {/* Animated Badge */}
             <motion.div
-              className="inline-flex items-center gap-2 liquid-glass rounded-full px-4 py-2 mb-6 sm:mb-8"
+              className="inline-flex items-center gap-2 liquid-glass rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-6 md:mb-8"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ scale: 1.05 }}
             >
               <motion.div
-                className="w-2 h-2 bg-[#c4738a] rounded-full"
+                className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#c4738a] rounded-full"
                 animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              <span className="text-[#F9F6F0]/90 text-xs sm:text-sm font-medium">Fresh blooms, delivered daily</span>
+              <span className="text-[#F9F6F0]/90 text-[10px] sm:text-xs md:text-sm font-medium">Fresh blooms, delivered daily</span>
             </motion.div>
 
             {/* Main Heading */}
             <motion.h1
-              className="font-serif italic text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#F9F6F0] tracking-tight leading-[0.95]"
+              className="font-serif italic text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#F9F6F0] tracking-tight leading-[0.95]"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -90,7 +90,7 @@ export default function App() {
 
             {/* Subheading */}
             <motion.p
-              className="text-[#F9F6F0]/80 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto mt-6 sm:mt-8 leading-relaxed"
+              className="text-[#F9F6F0]/80 text-xs sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto mt-4 sm:mt-6 md:mt-8 leading-relaxed px-2"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -101,25 +101,25 @@ export default function App() {
 
             {/* CTA Buttons */}
             <motion.div
-              className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8 sm:mt-10"
+              className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 mt-6 sm:mt-8 md:mt-10"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-[#F9F6F0] text-[#1A2F1A] text-sm font-semibold rounded-full hover:bg-[#F9F6F0]/90 shadow-xl flex items-center gap-2"
+                className="px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#F9F6F0] text-[#1A2F1A] text-xs sm:text-sm font-semibold rounded-full hover:bg-[#F9F6F0]/90 shadow-xl flex items-center gap-1.5 sm:gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <ShoppingBag className="w-4 h-4" />
+                <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 Shop Collection
               </motion.button>
               <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 liquid-glass rounded-full text-[#F9F6F0] text-sm font-semibold hover:bg-white/10 flex items-center gap-2"
+                className="px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 liquid-glass rounded-full text-[#F9F6F0] text-xs sm:text-sm font-semibold hover:bg-white/10 flex items-center gap-1.5 sm:gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Play className="w-4 h-4" />
+                <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 Watch our story
               </motion.button>
             </motion.div>
@@ -148,20 +148,20 @@ export default function App() {
       </section>
 
       {/* ===== SCROLLABLE IMAGE GALLERY ===== */}
-      <section className="py-20 sm:py-28 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 mb-12">
+      <section className="py-12 sm:py-20 md:py-28 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-6 sm:mb-12">
           <ScrollReveal>
-            <span className="font-serif italic text-lg text-[#1A2F1A]/50 tracking-tight">Fresh Picks</span>
+            <span className="font-serif italic text-base sm:text-lg text-[#1A2F1A]/50 tracking-tight">Fresh Picks</span>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className="font-serif italic text-3xl sm:text-4xl md:text-5xl text-[#1A2F1A] tracking-tight mt-2">
+            <h2 className="font-serif italic text-2xl sm:text-4xl md:text-5xl text-[#1A2F1A] tracking-tight mt-2">
               Trending this week
             </h2>
           </ScrollReveal>
         </div>
 
         {/* Horizontal Scroll Gallery */}
-        <div className="flex gap-4 sm:gap-6 px-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+        <div className="flex gap-3 sm:gap-4 md:gap-6 px-4 sm:px-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
           {[
             { title: 'Garden Roses', price: '$45', img: 'https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=400&h=500&fit=crop', tag: 'Best Seller' },
             { title: 'Peony Dream', price: '$65', img: 'https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?w=400&h=500&fit=crop', tag: 'New' },
@@ -171,13 +171,13 @@ export default function App() {
             { title: 'Lavender Fields', price: '$42', img: 'https://images.unsplash.com/photo-1468327768560-75b778cbb551?w=400&h=500&fit=crop', tag: 'Aromatic' },
             { title: 'White Orchids', price: '$78', img: 'https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=400&h=500&fit=crop', tag: 'Premium' },
           ].map((item, i) => (
-            <ScrollReveal key={i} delay={i * 0.1} className="flex-shrink-0 w-[280px] sm:w-[320px] snap-start">
+            <ScrollReveal key={i} delay={i * 0.1} className="flex-shrink-0 w-[180px] sm:w-[280px] md:w-[320px] snap-start">
               <motion.div
                 className="card-mask group cursor-hover"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
+                <div className="relative aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden">
                   <motion.img
                     src={item.img}
                     alt={item.title}
@@ -214,28 +214,28 @@ export default function App() {
       </section>
 
       {/* ===== BENTO GRID ===== */}
-      <section className="max-w-7xl mx-auto px-6 py-20 sm:py-28 relative z-10">
-        <div className="text-center mb-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 md:py-28 relative z-10 mobile-compact-section">
+        <div className="text-center mb-8 sm:mb-16">
           <ScrollReveal>
-            <span className="font-serif italic text-lg text-[#1A2F1A]/50 tracking-tight">Our Collection</span>
+            <span className="font-serif italic text-base sm:text-lg text-[#1A2F1A]/50 tracking-tight">Our Collection</span>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className="font-serif italic text-4xl sm:text-5xl md:text-6xl text-[#1A2F1A] tracking-tight mt-2">
+            <h2 className="font-serif italic text-3xl sm:text-5xl md:text-6xl text-[#1A2F1A] tracking-tight mt-2">
               Curated with care
             </h2>
           </ScrollReveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 auto-rows-[minmax(180px,auto)]">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6 auto-rows-[minmax(140px,auto)] md:auto-rows-[minmax(180px,auto)]">
           {/* Video Showcase Card */}
-          <ScrollReveal className="lg:col-span-2 lg:row-span-3" delay={0.1}>
+          <ScrollReveal className="col-span-2 lg:col-span-2 lg:row-span-3" delay={0.1}>
             <VideoShowcaseCard />
           </ScrollReveal>
 
           {/* Featured Image */}
-          <ScrollReveal className="lg:col-span-1 lg:row-span-2" delay={0.2}>
+          <ScrollReveal className="col-span-1 lg:col-span-1 lg:row-span-2" delay={0.2}>
             <motion.div
-              className="card-mask h-full min-h-[350px] rounded-3xl overflow-hidden relative cursor-hover"
+              className="card-mask h-full min-h-[200px] md:min-h-[350px] rounded-2xl md:rounded-3xl overflow-hidden relative cursor-hover"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.4 }}
             >
@@ -258,22 +258,22 @@ export default function App() {
           {/* Stats Card */}
           <ScrollReveal delay={0.3}>
             <motion.div
-              className="h-full bg-[#1A2F1A] rounded-3xl p-6 flex flex-col justify-between"
+              className="h-full bg-[#1A2F1A] rounded-2xl md:rounded-3xl p-3 md:p-6 flex flex-col justify-between"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <span className="text-3xl">🌿</span>
+              <span className="text-2xl md:text-3xl">🌿</span>
               <div>
-                <p className="text-3xl font-bold text-[#F9F6F0]">12K+</p>
-                <p className="text-[#F9F6F0]/60 text-sm mt-1">Happy customers</p>
+                <p className="text-2xl md:text-3xl font-bold text-[#F9F6F0]">12K+</p>
+                <p className="text-[#F9F6F0]/60 text-xs md:text-sm mt-1">Happy customers</p>
               </div>
             </motion.div>
           </ScrollReveal>
 
           {/* Seasonal Video Card */}
-          <ScrollReveal className="lg:col-span-2 lg:row-span-2" delay={0.2}>
+          <ScrollReveal className="col-span-2 lg:col-span-2 lg:row-span-2" delay={0.2}>
             <motion.div
-              className="h-full min-h-[350px] rounded-3xl overflow-hidden relative cursor-hover group"
+              className="h-full min-h-[200px] md:min-h-[350px] rounded-2xl md:rounded-3xl overflow-hidden relative cursor-hover group"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.4 }}
             >
@@ -338,14 +338,14 @@ export default function App() {
           </ScrollReveal>
 
           {/* Services Card */}
-          <ScrollReveal className="lg:col-span-1 lg:row-span-2" delay={0.4}>
+          <ScrollReveal className="col-span-2 lg:col-span-1 lg:row-span-2" delay={0.4}>
             <motion.div
-              className="h-full bg-gradient-to-b from-[#e8f5e9] to-[#c8e6c9] rounded-3xl p-6 flex flex-col"
+              className="h-full bg-gradient-to-b from-[#e8f5e9] to-[#c8e6c9] rounded-2xl md:rounded-3xl p-3 md:p-6 flex flex-col"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <span className="text-3xl mb-4">🎀</span>
-              <h3 className="font-serif italic text-xl text-[#1A2F1A] tracking-tight">Our Services</h3>
+              <span className="text-2xl md:text-3xl mb-2 md:mb-4">🎀</span>
+              <h3 className="font-serif italic text-base md:text-xl text-[#1A2F1A] tracking-tight">Our Services</h3>
               <ul className="mt-4 space-y-3 flex-1">
                 {['Wedding Florals', 'Event Design', 'Subscriptions', 'Sympathy', 'Corporate'].map((service, i) => (
                   <li key={i} className="flex items-center gap-2 text-sm text-[#1A2F1A]/70">
@@ -363,23 +363,23 @@ export default function App() {
           {/* Testimonial */}
           <ScrollReveal delay={0.3}>
             <motion.div
-              className="h-full bg-[#fff3e0] rounded-3xl p-6 flex flex-col justify-between"
+              className="h-full bg-[#fff3e0] rounded-2xl md:rounded-3xl p-3 md:p-6 flex flex-col justify-between"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
               <div>
-                <div className="flex gap-0.5 text-amber-400 mb-3">
-                  {'★★★★★'.split('').map((s, i) => <span key={i}>{s}</span>)}
+                <div className="flex gap-0.5 text-amber-400 mb-2 md:mb-3">
+                  {'★★★★★'.split('').map((s, i) => <span key={i} className="text-xs md:text-sm">{s}</span>)}
                 </div>
-                <p className="text-[#1A2F1A]/70 text-sm italic leading-relaxed">
+                <p className="text-[#1A2F1A]/70 text-xs md:text-sm italic leading-relaxed">
                   "The most beautiful bouquet I've ever received!"
                 </p>
               </div>
-              <div className="flex items-center gap-2 mt-4">
-                <div className="w-8 h-8 rounded-full bg-[#1A2F1A]/10 flex items-center justify-center text-sm">S</div>
+              <div className="flex items-center gap-2 mt-3 md:mt-4">
+                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#1A2F1A]/10 flex items-center justify-center text-xs md:text-sm">S</div>
                 <div>
-                  <p className="text-xs font-medium text-[#1A2F1A]">Sarah M.</p>
-                  <p className="text-xs text-[#1A2F1A]/60">Verified buyer</p>
+                  <p className="text-[10px] md:text-xs font-medium text-[#1A2F1A]">Sarah M.</p>
+                  <p className="text-[10px] md:text-xs text-[#1A2F1A]/60">Verified buyer</p>
                 </div>
               </div>
             </motion.div>
@@ -388,16 +388,16 @@ export default function App() {
           {/* Quick Order */}
           <ScrollReveal delay={0.5}>
             <motion.div
-              className="h-full bg-[#fce4ec] rounded-3xl p-6 flex flex-col justify-between group cursor-hover"
+              className="h-full bg-[#fce4ec] rounded-2xl md:rounded-3xl p-3 md:p-6 flex flex-col justify-between group cursor-hover"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <Gift className="w-8 h-8 text-[#1A2F1A] group-hover:animate-bounce" />
+              <Gift className="w-6 h-6 md:w-8 md:h-8 text-[#1A2F1A] group-hover:animate-bounce" />
               <div>
-                <h3 className="font-serif italic text-lg text-[#1A2F1A] tracking-tight">Send Love</h3>
-                <p className="text-[#1A2F1A]/70 text-sm mt-1">Same-day delivery</p>
+                <h3 className="font-serif italic text-sm md:text-lg text-[#1A2F1A] tracking-tight">Send Love</h3>
+                <p className="text-[#1A2F1A]/70 text-xs md:text-sm mt-1">Same-day delivery</p>
               </div>
-              <AnimatedButton variant="secondary" hoverText="Order →" className="w-fit">
+              <AnimatedButton variant="secondary" hoverText="Order →" className="w-fit text-xs md:text-sm py-2 md:py-3 px-3 md:px-6">
                 Order Now
               </AnimatedButton>
             </motion.div>
@@ -406,22 +406,22 @@ export default function App() {
           {/* Price Card */}
           <ScrollReveal delay={0.4}>
             <motion.div
-              className="h-full bg-[#F9F6F0] border border-[#1A2F1A]/10 rounded-3xl p-6 flex flex-col justify-between group cursor-hover"
+              className="h-full bg-[#F9F6F0] border border-[#1A2F1A]/10 rounded-2xl md:rounded-3xl p-3 md:p-6 flex flex-col justify-between group cursor-hover"
               whileHover={{ scale: 1.02, borderColor: 'rgba(26, 47, 26, 0.3)' }}
               transition={{ duration: 0.3 }}
             >
               <div className="flex items-center justify-between">
-                <span className="text-2xl group-hover:animate-bounce">🌹</span>
-                <span className="text-xs bg-[#1A2F1A]/10 text-[#1A2F1A] px-2 py-0.5 rounded-full">Popular</span>
+                <span className="text-xl md:text-2xl group-hover:animate-bounce">🌹</span>
+                <span className="text-[10px] md:text-xs bg-[#1A2F1A]/10 text-[#1A2F1A] px-2 py-0.5 rounded-full">Popular</span>
               </div>
               <div>
-                <h3 className="font-serif italic text-lg text-[#1A2F1A] tracking-tight">Rose Bouquet</h3>
-                <p className="text-[#1A2F1A]/60 text-xs mt-1">12 premium roses</p>
+                <h3 className="font-serif italic text-sm md:text-lg text-[#1A2F1A] tracking-tight">Rose Bouquet</h3>
+                <p className="text-[#1A2F1A]/60 text-[10px] md:text-xs mt-1">12 premium roses</p>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xl font-bold text-[#1A2F1A]">$55</span>
+                <span className="text-base md:text-xl font-bold text-[#1A2F1A]">$55</span>
                 <motion.button
-                  className="w-8 h-8 rounded-full bg-[#1A2F1A] text-[#F9F6F0] flex items-center justify-center text-lg"
+                  className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#1A2F1A] text-[#F9F6F0] flex items-center justify-center text-sm md:text-lg"
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -434,14 +434,14 @@ export default function App() {
           {/* Delivery */}
           <ScrollReveal delay={0.5}>
             <motion.div
-              className="h-full bg-gradient-to-br from-[#e3f2fd] to-[#bbdefb] rounded-3xl p-6 flex flex-col justify-between"
+              className="h-full bg-gradient-to-br from-[#e3f2fd] to-[#bbdefb] rounded-2xl md:rounded-3xl p-3 md:p-6 flex flex-col justify-between"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <Truck className="w-8 h-8 text-[#1976d2]" />
+              <Truck className="w-6 h-6 md:w-8 md:h-8 text-[#1976d2]" />
               <div>
-                <h3 className="font-serif italic text-lg text-[#1A2F1A] tracking-tight">Free Delivery</h3>
-                <p className="text-[#1A2F1A]/70 text-sm mt-1">On orders over $75</p>
+                <h3 className="font-serif italic text-sm md:text-lg text-[#1A2F1A] tracking-tight">Free Delivery</h3>
+                <p className="text-[#1A2F1A]/70 text-xs md:text-sm mt-1">On orders over $75</p>
               </div>
               <div className="flex items-center gap-2">
                 <div className="h-1.5 flex-1 bg-[#1976d2]/20 rounded-full overflow-hidden">
@@ -459,20 +459,20 @@ export default function App() {
           </ScrollReveal>
 
           {/* Instagram */}
-          <ScrollReveal className="lg:col-span-2" delay={0.3}>
+          <ScrollReveal className="col-span-2 lg:col-span-2" delay={0.3}>
             <motion.div
-              className="h-full bg-gradient-to-r from-[#f3e5f5] via-[#fce4ec] to-[#fff3e0] rounded-3xl p-6 flex items-center justify-between"
+              className="h-full bg-gradient-to-r from-[#f3e5f5] via-[#fce4ec] to-[#fff3e0] rounded-2xl md:rounded-3xl p-3 md:p-6 flex items-center justify-between"
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
             >
               <div>
-                <h3 className="font-serif italic text-xl text-[#1A2F1A] tracking-tight">Follow our journey</h3>
-                <p className="text-[#1A2F1A]/70 text-sm mt-1">@bloomandpetal • 24K</p>
+                <h3 className="font-serif italic text-sm md:text-xl text-[#1A2F1A] tracking-tight">Follow our journey</h3>
+                <p className="text-[#1A2F1A]/70 text-xs md:text-sm mt-1">@bloomandpetal • 24K</p>
               </div>
-              <AnimatedButton variant="primary" hoverText="Follow →">
-                <span className="flex items-center gap-2">
-                  <Instagram className="w-4 h-4" />
-                  Follow
+              <AnimatedButton variant="primary" hoverText="Follow →" className="text-xs md:text-sm py-2 md:py-3 px-3 md:px-6">
+                <span className="flex items-center gap-1 md:gap-2">
+                  <Instagram className="w-3 h-3 md:w-4 md:h-4" />
+                  <span className="hidden sm:inline">Follow</span>
                 </span>
               </AnimatedButton>
             </motion.div>
@@ -481,21 +481,21 @@ export default function App() {
           {/* Workshop */}
           <ScrollReveal delay={0.6}>
             <motion.div
-              className="h-full bg-[#f1f8e9] rounded-3xl p-6 flex flex-col justify-between group cursor-hover"
+              className="h-full bg-[#f1f8e9] rounded-2xl md:rounded-3xl p-3 md:p-6 flex flex-col justify-between group cursor-hover"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
               <div className="flex items-center justify-between">
-                <Sparkles className="w-6 h-6 text-[#689f38]" />
-                <span className="text-xs bg-[#689f38]/10 text-[#689f38] px-2 py-0.5 rounded-full">New</span>
+                <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-[#689f38]" />
+                <span className="text-[10px] md:text-xs bg-[#689f38]/10 text-[#689f38] px-2 py-0.5 rounded-full">New</span>
               </div>
               <div>
-                <h3 className="font-serif italic text-lg text-[#1A2F1A] tracking-tight">Workshop</h3>
-                <p className="text-[#1A2F1A]/70 text-xs mt-1">Learn arrangement</p>
+                <h3 className="font-serif italic text-sm md:text-lg text-[#1A2F1A] tracking-tight">Workshop</h3>
+                <p className="text-[#1A2F1A]/70 text-[10px] md:text-xs mt-1">Learn arrangement</p>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-[#1A2F1A]">Sat, 10am</span>
-                <button className="text-[#689f38] text-sm font-medium animated-underline">Book</button>
+                <span className="text-xs md:text-sm font-medium text-[#1A2F1A]">Sat, 10am</span>
+                <button className="text-[#689f38] text-xs md:text-sm font-medium animated-underline">Book</button>
               </div>
             </motion.div>
           </ScrollReveal>
@@ -503,21 +503,21 @@ export default function App() {
           {/* Hours */}
           <ScrollReveal delay={0.7}>
             <motion.div
-              className="h-full bg-[#1A2F1A] rounded-3xl p-6 flex flex-col justify-between text-[#F9F6F0] group cursor-hover"
+              className="h-full bg-[#1A2F1A] rounded-2xl md:rounded-3xl p-3 md:p-6 flex flex-col justify-between text-[#F9F6F0] group cursor-hover"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <Clock className="w-6 h-6" />
+              <Clock className="w-5 h-5 md:w-6 md:h-6" />
               <div>
-                <h3 className="font-serif italic text-lg tracking-tight">Visit Us</h3>
-                <div className="mt-2 space-y-1">
-                  <p className="text-[#F9F6F0]/70 text-xs">Mon-Fri: 8am-7pm</p>
-                  <p className="text-[#F9F6F0]/70 text-xs">Sat: 9am-6pm</p>
-                  <p className="text-[#F9F6F0]/70 text-xs">Sun: 10am-4pm</p>
+                <h3 className="font-serif italic text-sm md:text-lg tracking-tight">Visit Us</h3>
+                <div className="mt-1 md:mt-2 space-y-0.5 md:space-y-1">
+                  <p className="text-[#F9F6F0]/70 text-[10px] md:text-xs">Mon-Fri: 8am-7pm</p>
+                  <p className="text-[#F9F6F0]/70 text-[10px] md:text-xs">Sat: 9am-6pm</p>
+                  <p className="text-[#F9F6F0]/70 text-[10px] md:text-xs">Sun: 10am-4pm</p>
                 </div>
               </div>
-              <p className="text-[#c4738a] text-xs font-medium flex items-center gap-1">
-                <MapPin className="w-3 h-3" /> 123 Garden St
+              <p className="text-[#c4738a] text-[10px] md:text-xs font-medium flex items-center gap-1">
+                <MapPin className="w-2.5 h-2.5 md:w-3 md:h-3" /> 123 Garden St
               </p>
             </motion.div>
           </ScrollReveal>
@@ -528,19 +528,19 @@ export default function App() {
       <StickyStorySection />
 
       {/* ===== TESTIMONIALS ===== */}
-      <section className="max-w-7xl mx-auto px-6 py-20 sm:py-28 relative z-10">
-        <div className="text-center mb-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 md:py-28 relative z-10">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <ScrollReveal>
-            <span className="font-serif italic text-lg text-[#1A2F1A]/50 tracking-tight">Kind Words</span>
+            <span className="font-serif italic text-base sm:text-lg text-[#1A2F1A]/50 tracking-tight">Kind Words</span>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className="font-serif italic text-4xl sm:text-5xl md:text-6xl text-[#1A2F1A] tracking-tight mt-2">
+            <h2 className="font-serif italic text-2xl sm:text-5xl md:text-6xl text-[#1A2F1A] tracking-tight mt-2">
               What our customers say
             </h2>
           </ScrollReveal>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {[
             { text: "Absolutely stunning arrangements! My wife was thrilled with the anniversary bouquet.", name: "James R.", role: "Loyal Customer" },
             { text: "The wedding florals were beyond our dreams. Every guest commented on how beautiful they were.", name: "Emily & Tom", role: "Wedding 2024" },
@@ -548,21 +548,21 @@ export default function App() {
           ].map((testimonial, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
               <motion.div
-                className="h-full bg-[#F9F6F0] border border-[#1A2F1A]/10 rounded-3xl p-8 flex flex-col justify-between cursor-hover"
+                className="h-full bg-[#F9F6F0] border border-[#1A2F1A]/10 rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 flex flex-col justify-between cursor-hover"
                 whileHover={{ scale: 1.02, boxShadow: '0 20px 60px rgba(26, 47, 26, 0.1)' }}
                 transition={{ duration: 0.3 }}
               >
                 <div>
-                  <div className="flex gap-0.5 text-amber-400 mb-4">
-                    {'★★★★★'.split('').map((s, j) => <span key={j}>{s}</span>)}
+                  <div className="flex gap-0.5 text-amber-400 mb-3 md:mb-4">
+                    {'★★★★★'.split('').map((s, j) => <span key={j} className="text-xs md:text-sm">{s}</span>)}
                   </div>
-                  <p className="text-[#1A2F1A]/70 font-serif italic text-xl leading-relaxed">
+                  <p className="text-[#1A2F1A]/70 font-serif italic text-base sm:text-xl leading-relaxed">
                     "{testimonial.text}"
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-[#1A2F1A]/10">
-                  <p className="text-sm font-medium text-[#1A2F1A]">{testimonial.name}</p>
-                  <p className="text-xs text-[#1A2F1A]/60">{testimonial.role}</p>
+                <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-[#1A2F1A]/10">
+                  <p className="text-xs sm:text-sm font-medium text-[#1A2F1A]">{testimonial.name}</p>
+                  <p className="text-[10px] sm:text-xs text-[#1A2F1A]/60">{testimonial.role}</p>
                 </div>
               </motion.div>
             </ScrollReveal>
@@ -571,29 +571,29 @@ export default function App() {
       </section>
 
       {/* ===== CTA SECTION ===== */}
-      <section className="max-w-7xl mx-auto px-6 pb-20 sm:pb-28 relative z-10">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-12 sm:pb-20 md:pb-28 relative z-10">
         <ScrollReveal>
           <motion.div
-            className="relative bg-gradient-to-br from-[#1A2F1A] to-[#2d4a2d] rounded-3xl p-12 sm:p-16 md:p-20 text-center overflow-hidden"
+            className="relative bg-gradient-to-br from-[#1A2F1A] to-[#2d4a2d] rounded-2xl md:rounded-3xl p-6 sm:p-12 md:p-16 lg:p-20 text-center overflow-hidden"
             whileHover={{ scale: 1.01 }}
             transition={{ duration: 0.4 }}
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#F9F6F0]/5 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#F9F6F0]/5 rounded-full blur-2xl"></div>
+            <div className="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-[#F9F6F0]/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-36 sm:w-48 h-36 sm:h-48 bg-[#F9F6F0]/5 rounded-full blur-2xl"></div>
             
-            <span className="font-serif italic text-2xl text-[#F9F6F0]/80">Ready to bloom?</span>
-            <h2 className="font-serif italic text-4xl sm:text-5xl md:text-6xl text-[#F9F6F0] tracking-tight mt-4">
+            <span className="font-serif italic text-lg sm:text-2xl text-[#F9F6F0]/80">Ready to bloom?</span>
+            <h2 className="font-serif italic text-2xl sm:text-5xl md:text-6xl text-[#F9F6F0] tracking-tight mt-2 sm:mt-4">
               Send flowers that<br />
               <span className="text-[#F9F6F0]/60">say it all</span>
             </h2>
-            <p className="mt-4 text-[#F9F6F0]/70 max-w-lg mx-auto text-lg">
+            <p className="mt-3 sm:mt-4 text-[#F9F6F0]/70 max-w-lg mx-auto text-sm sm:text-lg px-2">
               Order before 2pm for same-day delivery. Free shipping on orders over $75.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <AnimatedButton variant="secondary" hoverText="Shop All →">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <AnimatedButton variant="secondary" hoverText="Shop All →" className="w-full sm:w-auto text-xs sm:text-sm py-2.5 sm:py-3 md:py-4 px-5 sm:px-6 md:px-8">
                 Shop All Flowers
               </AnimatedButton>
-              <AnimatedButton variant="outline" hoverText="Subscribe →">
+              <AnimatedButton variant="outline" hoverText="Subscribe →" className="w-full sm:w-auto text-xs sm:text-sm py-2.5 sm:py-3 md:py-4 px-5 sm:px-6 md:px-8">
                 Subscribe & Save
               </AnimatedButton>
             </div>
@@ -602,24 +602,24 @@ export default function App() {
       </section>
 
       {/* ===== FOOTER ===== */}
-      <footer className="bg-[#1A2F1A] text-[#F9F6F0] py-16 pb-24 relative z-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
+      <footer className="bg-[#1A2F1A] text-[#F9F6F0] py-10 sm:py-16 pb-20 sm:pb-24 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
             <div className="col-span-2 md:col-span-2">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl">🌸</span>
-                <span className="font-serif italic text-xl tracking-tight font-semibold">Bloom & Petal</span>
+              <div className="flex items-center gap-2 mb-3 md:mb-4">
+                <span className="text-xl md:text-2xl">🌸</span>
+                <span className="font-serif italic text-lg md:text-xl tracking-tight font-semibold">Bloom & Petal</span>
               </div>
-              <p className="text-[#F9F6F0]/60 max-w-sm leading-relaxed">
+              <p className="text-[#F9F6F0]/60 max-w-sm leading-relaxed text-xs sm:text-sm md:text-base">
                 Bringing the beauty of nature into your home since 2009. 
                 Every arrangement is a work of art.
               </p>
-              <div className="flex items-center gap-3 mt-6">
+              <div className="flex items-center gap-2 sm:gap-3 mt-4 sm:mt-6">
                 {['𝕏', '📷', '📌', '🎵'].map((icon, i) => (
                   <motion.a
                     key={i}
                     href="#"
-                    className="w-10 h-10 rounded-full bg-[#F9F6F0]/10 flex items-center justify-center text-sm cursor-hover"
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#F9F6F0]/10 flex items-center justify-center text-xs sm:text-sm cursor-hover"
                     whileHover={{ scale: 1.1, backgroundColor: 'rgba(249, 246, 240, 0.2)' }}
                     transition={{ duration: 0.2 }}
                   >
@@ -629,29 +629,29 @@ export default function App() {
               </div>
             </div>
             <div>
-              <h4 className="text-xs font-medium uppercase tracking-wider mb-4 text-[#F9F6F0]/40">Shop</h4>
-              <ul className="space-y-2">
+              <h4 className="text-[10px] sm:text-xs font-medium uppercase tracking-wider mb-3 sm:mb-4 text-[#F9F6F0]/40">Shop</h4>
+              <ul className="space-y-1.5 sm:space-y-2">
                 {['All Flowers', 'Seasonal', 'Subscriptions', 'Gift Cards'].map((item) => (
                   <li key={item}>
-                    <a href="#" className="text-[#F9F6F0]/60 hover:text-[#F9F6F0] transition-colors text-sm cursor-hover">{item}</a>
+                    <a href="#" className="text-[#F9F6F0]/60 hover:text-[#F9F6F0] transition-colors text-xs sm:text-sm cursor-hover">{item}</a>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h4 className="text-xs font-medium uppercase tracking-wider mb-4 text-[#F9F6F0]/40">Info</h4>
-              <ul className="space-y-2">
+              <h4 className="text-[10px] sm:text-xs font-medium uppercase tracking-wider mb-3 sm:mb-4 text-[#F9F6F0]/40">Info</h4>
+              <ul className="space-y-1.5 sm:space-y-2">
                 {['About Us', 'Delivery', 'Care Guide', 'Contact'].map((item) => (
                   <li key={item}>
-                    <a href="#" className="text-[#F9F6F0]/60 hover:text-[#F9F6F0] transition-colors text-sm cursor-hover">{item}</a>
+                    <a href="#" className="text-[#F9F6F0]/60 hover:text-[#F9F6F0] transition-colors text-xs sm:text-sm cursor-hover">{item}</a>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-          <div className="mt-12 pt-8 border-t border-[#F9F6F0]/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p className="text-[#F9F6F0]/40 text-sm">© 2024 Bloom & Petal. Made with 🤍 and fresh flowers.</p>
-            <p className="text-[#F9F6F0]/40 text-sm">Privacy • Terms</p>
+          <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#F9F6F0]/10 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3">
+            <p className="text-[#F9F6F0]/40 text-[10px] sm:text-sm text-center sm:text-left">© 2024 Bloom & Petal. Made with 🤍 and fresh flowers.</p>
+            <p className="text-[#F9F6F0]/40 text-[10px] sm:text-sm">Privacy • Terms</p>
           </div>
         </div>
       </footer>

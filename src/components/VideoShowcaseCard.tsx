@@ -47,7 +47,7 @@ export default function VideoShowcaseCard() {
 
   return (
     <motion.div
-      className="h-full min-h-[400px] lg:min-h-[600px] rounded-3xl overflow-hidden relative cursor-hover group"
+      className="h-full min-h-[280px] md:min-h-[400px] lg:min-h-[600px] rounded-2xl md:rounded-3xl overflow-hidden relative cursor-hover group"
       whileHover={{ scale: 1.01 }}
       transition={{ duration: 0.4 }}
       onMouseEnter={() => setIsHovered(true)}
@@ -145,30 +145,30 @@ export default function VideoShowcaseCard() {
       </AnimatePresence>
 
       {/* Content Overlay */}
-      <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8 z-20">
+      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-8 z-20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-serif italic text-2xl sm:text-3xl lg:text-5xl text-[#F9F6F0] tracking-tight leading-tight">
+          <h2 className="font-serif italic text-xl sm:text-2xl md:text-3xl lg:text-5xl text-[#F9F6F0] tracking-tight leading-tight">
             Spring Garden<br />
             <span className="text-[#F9F6F0]/60">Collection</span>
           </h2>
-          <p className="mt-2 sm:mt-3 text-[#F9F6F0]/80 text-sm sm:text-base lg:text-lg max-w-md">
+          <p className="mt-1 sm:mt-2 md:mt-3 text-[#F9F6F0]/80 text-xs sm:text-sm md:text-base lg:text-lg max-w-md">
             Watch our artisans craft vibrant sunflowers, dahlias, and wildflowers that capture the essence of the season.
           </p>
         </motion.div>
 
         {/* Hover CTA */}
         <motion.div
-          className="mt-4 sm:mt-6 flex items-center gap-3 sm:gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          className="mt-3 sm:mt-4 md:mt-6 flex items-center gap-2 sm:gap-3 md:gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         >
-          <AnimatedButton variant="secondary" hoverText="Shop Now →">
+          <AnimatedButton variant="secondary" hoverText="Shop Now →" className="text-xs sm:text-sm py-2 sm:py-3 md:py-4 px-4 sm:px-6 md:px-8">
             Explore Collection
           </AnimatedButton>
-          <span className="hidden sm:block font-serif italic text-lg text-[#F9F6F0]/80">From $45</span>
+          <span className="hidden md:block font-serif italic text-base md:text-lg text-[#F9F6F0]/80">From $45</span>
         </motion.div>
       </div>
 

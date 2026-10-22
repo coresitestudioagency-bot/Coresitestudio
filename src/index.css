@@ -175,4 +175,71 @@ img {
   .custom-cursor {
     display: none;
   }
+
+  /* Compact mobile bento grid - 2 columns side by side */
+  .mobile-bento-compact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .mobile-span-2 {
+    grid-column: span 2;
+  }
+
+  .mobile-span-full {
+    grid-column: 1 / -1;
+  }
+
+  /* Mobile horizontal scroll sections */
+  .mobile-scroll-section {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .mobile-scroll-section::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-scroll-section > * {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  /* Compact section padding on mobile */
+  .mobile-compact-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Smaller text on mobile */
+  .mobile-text-sm {
+    font-size: 0.875rem;
+  }
+
+  /* Compact cards */
+  .mobile-card-compact {
+    min-height: 160px;
+    padding: 1rem;
+  }
+}
+
+/* ===== SCROLL SNAP UTILITIES ===== */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-snap-start {
+  scroll-snap-align: start;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
 }
