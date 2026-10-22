@@ -21,50 +21,128 @@ export default function App() {
       {/* Liquid Glass Navigation */}
       <LiquidGlassNav />
 
-      {/* ===== HERO SECTION ===== */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-20">
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <ScrollReveal delay={0.2}>
+      {/* ===== FULLSCREEN VIDEO HERO SECTION ===== */}
+      <section className="relative h-screen w-full overflow-hidden">
+        {/* Video Background */}
+        <motion.video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <source src="https://cdn.mp4tourl.com/video/free/eaf960b3-7ce2-4e54-9163-29a6c872471b.webm" type="video/webm" />
+        </motion.video>
+
+        {/* Gradient Overlays for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A2F1A]/40 via-[#1A2F1A]/20 to-[#1A2F1A]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1A2F1A]/30 via-transparent to-[#1A2F1A]/30" />
+
+        {/* Hero Content */}
+        <div className="relative z-10 h-full flex flex-col items-center justify-center px-5 sm:px-6 md:px-12 lg:px-16">
+          <div className="text-center max-w-5xl">
+            {/* Animated Badge */}
             <motion.div
-              className="inline-flex items-center gap-2 liquid-glass rounded-full px-4 py-2 mb-8"
+              className="inline-flex items-center gap-2 liquid-glass rounded-full px-4 py-2 mb-6 sm:mb-8"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ scale: 1.05 }}
             >
-              <Sparkles className="w-4 h-4 text-[#1A2F1A]/60" />
-              <span className="text-[#1A2F1A]/70 text-xs sm:text-sm font-medium">Fresh blooms, delivered daily</span>
+              <motion.div
+                className="w-2 h-2 bg-[#c4738a] rounded-full"
+                animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <span className="text-[#F9F6F0]/90 text-xs sm:text-sm font-medium">Fresh blooms, delivered daily</span>
             </motion.div>
-          </ScrollReveal>
 
-          <ScrollReveal delay={0.4}>
-            <h1 className="font-serif italic text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-[#1A2F1A] tracking-tight leading-[0.9]">
+            {/* Main Heading */}
+            <motion.h1
+              className="font-serif italic text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#F9F6F0] tracking-tight leading-[0.95]"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            >
               Flowers that<br />
-              <span className="text-[#1A2F1A]/50">speak from the</span><br />
-              heart
-            </h1>
-          </ScrollReveal>
+              <motion.span
+                className="text-[#F9F6F0]/60"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8, duration: 0.8 }}
+              >
+                speak from the
+              </motion.span>
+              <br />
+              <motion.span
+                className="inline-block"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              >
+                heart
+              </motion.span>
+            </motion.h1>
 
-          <ScrollReveal delay={0.6}>
-            <p className="text-[#1A2F1A]/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mt-8 leading-relaxed">
+            {/* Subheading */}
+            <motion.p
+              className="text-[#F9F6F0]/80 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto mt-6 sm:mt-8 leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
               Artisan bouquets, seasonal arrangements, and bespoke floral designs — 
               handcrafted with love and delivered fresh to your door.
-            </p>
-          </ScrollReveal>
+            </motion.p>
 
-          <ScrollReveal delay={0.8}>
-            <div className="flex flex-wrap items-center justify-center gap-4 mt-10">
-              <AnimatedButton variant="primary" hoverText="Explore Now →">
-                <span className="flex items-center gap-2">
-                  <ShoppingBag className="w-4 h-4" />
-                  Shop Collection
-                </span>
-              </AnimatedButton>
-              <AnimatedButton variant="outline" hoverText="Watch Video">
-                <span className="flex items-center gap-2">
-                  <Play className="w-4 h-4" />
-                  Watch our story
-                </span>
-              </AnimatedButton>
-            </div>
-          </ScrollReveal>
+            {/* CTA Buttons */}
+            <motion.div
+              className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8 sm:mt-10"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <motion.button
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-[#F9F6F0] text-[#1A2F1A] text-sm font-semibold rounded-full hover:bg-[#F9F6F0]/90 shadow-xl flex items-center gap-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ShoppingBag className="w-4 h-4" />
+                Shop Collection
+              </motion.button>
+              <motion.button
+                className="px-6 sm:px-8 py-3 sm:py-4 liquid-glass rounded-full text-[#F9F6F0] text-sm font-semibold hover:bg-white/10 flex items-center gap-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Play className="w-4 h-4" />
+                Watch our story
+              </motion.button>
+            </motion.div>
+          </div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2, duration: 1 }}
+          >
+            <motion.div
+              className="w-6 h-10 rounded-full border-2 border-[#F9F6F0]/30 flex items-start justify-center p-1.5"
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <motion.div
+                className="w-1.5 h-3 rounded-full bg-[#F9F6F0]/60"
+                animate={{ y: [0, 8, 0], opacity: [1, 0.5, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
