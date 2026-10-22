@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ShoppingBag, Heart, ArrowRight, Play, Star, MapPin, Clock, Sparkles, Instagram, Truck, Gift } from 'lucide-react';
 import ParallaxBackground from './components/ParallaxBackground';
+import FlowerRain from './components/FlowerRain';
 import ScrollReveal from './components/ScrollReveal';
 import AnimatedButton from './components/AnimatedButton';
 import LiquidGlassNav from './components/LiquidGlassNav';
@@ -13,6 +14,9 @@ export default function App() {
     <div className="min-h-screen bg-[#F9F6F0] text-[#1A2F1A] relative">
       {/* Parallax Background Leaves */}
       <ParallaxBackground />
+      
+      {/* Falling Flowers */}
+      <FlowerRain />
 
       {/* Liquid Glass Navigation */}
       <LiquidGlassNav />
