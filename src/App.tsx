@@ -22,7 +22,7 @@ export default function App() {
       <LiquidGlassNav />
 
       {/* ===== FULLSCREEN VIDEO HERO SECTION ===== */}
-      <section className="relative h-[110dvh] sm:h-screen w-full overflow-hidden -mt-[72px] sm:-mt-[80px]">
+      <section className="relative w-full h-[100dvh] overflow-hidden">
         {/* Video Background */}
         <motion.video
           autoPlay
@@ -31,6 +31,7 @@ export default function App() {
           playsInline
           preload="metadata"
           className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: 'center center' }}
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
@@ -43,7 +44,7 @@ export default function App() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#1A2F1A]/30 via-transparent to-[#1A2F1A]/30" />
 
         {/* Hero Content */}
-        <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 pt-[72px] sm:pt-[80px]">
+        <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16">
           <div className="text-center max-w-5xl">
             {/* Animated Badge */}
             <motion.div
