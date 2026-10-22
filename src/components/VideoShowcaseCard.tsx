@@ -63,7 +63,7 @@ export default function VideoShowcaseCard() {
         preload="metadata"
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
       >
-        <source src="https://cdn.mp4tourl.com/video/free/eaf960b3-7ce2-4e54-9163-29a6c872471b.webm" type="video/webm" />
+        <source src="https://cdn.mp4tourl.com/video/free/1077be85-0baf-4b2f-a414-cf6c6268dd7d.webm" type="video/webm" />
       </video>
 
       {/* Gradient Overlay */}
