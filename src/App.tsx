@@ -14,25 +14,17 @@ export default function App() {
   return (
     <motion.div 
       className="min-h-screen bg-[#F9F6F0] text-[#1A2F1A] relative"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.5, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1.2, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Grand entrance overlay that fades out */}
-      <motion.div
-        className="fixed inset-0 bg-[#1A2F1A] z-[9998] pointer-events-none"
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 0 }}
-        transition={{ duration: 1.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-      />
-      
       <ParallaxBackground />
       <FlowerRain />
       
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1, delay: 2, ease: [0.16, 1, 0.3, 1] }}
       >
         <LiquidGlassNav />
       </motion.div>
@@ -49,7 +41,7 @@ export default function App() {
           style={{ objectPosition: 'center center' }}
           initial={{ scale: 1.2, opacity: 0, filter: 'blur(10px)' }}
           animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 2.5, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 2, delay: 2.5, ease: [0.16, 1, 0.3, 1] }}
         >
           <source src="https://cdn.mp4tourl.com/video/free/eaf960b3-7ce2-4e54-9163-29a6c872471b.webm" type="video/webm" />
         </motion.video>
@@ -63,7 +55,7 @@ export default function App() {
               className="inline-flex items-center gap-2 liquid-glass rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-6 md:mb-8"
               initial={{ opacity: 0, y: -30, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 1.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ delay: 3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ scale: 1.05 }}
             >
               <motion.div
@@ -78,7 +70,7 @@ export default function App() {
               className="font-serif italic text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#F9F6F0] tracking-tight leading-[0.95]"
               initial={{ opacity: 0, y: 80, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 1.8, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ delay: 3.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
               Flowers that<br />
               <motion.span
@@ -104,7 +96,7 @@ export default function App() {
               className="text-[#F9F6F0]/80 text-xs sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto mt-4 sm:mt-6 md:mt-8 leading-relaxed px-2"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ delay: 3.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               Artisan bouquets, seasonal arrangements, and bespoke floral designs — 
               handcrafted with love and delivered fresh to your door.
@@ -114,7 +106,7 @@ export default function App() {
               className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 mt-6 sm:mt-8 md:mt-10"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ delay: 3.9, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <motion.button
                 className="px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#F9F6F0] text-[#1A2F1A] text-xs sm:text-sm font-semibold rounded-full hover:bg-[#F9F6F0]/90 shadow-xl flex items-center gap-1.5 sm:gap-2"

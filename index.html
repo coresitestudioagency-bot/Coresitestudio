@@ -45,15 +45,55 @@
         align-items: center;
         justify-content: center;
         background: #1A2F1A;
-        transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-                    visibility 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-                    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                    visibility 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .preloader-hidden {
         opacity: 0;
         visibility: hidden;
-        transform: scale(1.1);
+        transform: scale(1.05);
+      }
+
+      /* Website Curtain Reveal */
+      #root {
+        opacity: 0;
+        transition: opacity 0.6s ease-out 0.3s;
+      }
+
+      .website-reveal #root {
+        opacity: 1;
+      }
+
+      /* Curtain Reveal Animation */
+      .curtain-left,
+      .curtain-right {
+        position: fixed;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background: #1A2F1A;
+        z-index: 9997;
+        transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+      }
+
+      .curtain-left {
+        left: 0;
+        transform: translateX(0);
+      }
+
+      .curtain-right {
+        right: 0;
+        transform: translateX(0);
+      }
+
+      .website-reveal .curtain-left {
+        transform: translateX(-100%);
+      }
+
+      .website-reveal .curtain-right {
+        transform: translateX(100%);
       }
 
       .preloader-video {
@@ -252,10 +292,14 @@
       </div>
     </div>
 
+    <!-- Curtain Reveal Elements -->
+    <div class="curtain-left"></div>
+    <div class="curtain-right"></div>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      // Hide preloader after video ends or after 5 seconds
+      // Hide preloader after 3 seconds (shorter duration)
       window.addEventListener('load', function() {
         const preloader = document.getElementById('preloader');
         const video = document.getElementById('preloader-video');
@@ -264,21 +308,24 @@
         if (video) {
           video.addEventListener('ended', function() {
             preloader.classList.add('preloader-hidden');
+            // Trigger website reveal
+            document.body.classList.add('website-reveal');
             setTimeout(() => {
               preloader.style.display = 'none';
-            }, 1000);
+            }, 800);
           });
         }
         
-        // Fallback: hide after 5 seconds
+        // Fallback: hide after 3 seconds (reduced from 5s)
         setTimeout(function() {
           if (preloader && !preloader.classList.contains('preloader-hidden')) {
             preloader.classList.add('preloader-hidden');
+            document.body.classList.add('website-reveal');
             setTimeout(() => {
               preloader.style.display = 'none';
-            }, 1000);
+            }, 800);
           }
-        }, 5000);
+        }, 3000);
       });
     </script>
   </body>
