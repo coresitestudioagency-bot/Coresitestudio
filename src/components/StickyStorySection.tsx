@@ -1,5 +1,5 @@
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
 import ScrollReveal from './ScrollReveal';
 
 const storyBlocks = [

@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ShoppingBag, Heart, ArrowRight, Play, MapPin, Clock, Sparkles, Instagram, Truck, Gift } from 'lucide-react';
 import ParallaxBackground from './components/ParallaxBackground';
