@@ -12,12 +12,7 @@ import VideoShowcaseCard from './components/VideoShowcaseCard';
 
 export default function App() {
   return (
-    <motion.div 
-      className="min-h-screen bg-[#F9F6F0] text-[#1A2F1A] relative"
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1.2, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
-    >
+    <div className="min-h-screen bg-[#F9F6F0] text-[#1A2F1A] relative">
       <ParallaxBackground />
       <FlowerRain />
       
@@ -638,6 +633,6 @@ export default function App() {
       </footer>
 
       <StickyMarquee />
-    </motion.div>
+    </div>
   );
 }
