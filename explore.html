@@ -164,6 +164,27 @@
         </div>
     </div>
 
+    <!-- Prompt modal (motion typewriter reveal) -->
+    <div id="promptModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[99999] hidden items-center justify-center p-3 sm:p-6">
+        <div class="sketch-window w-full max-w-4xl h-[80vh] sm:h-[82vh] flex flex-col bg-white">
+            <div class="sketch-window-header justify-between shrink-0">
+                <span class="flex items-center gap-2 min-w-0">
+                    <span class="dot bg-red-400"></span>
+                    <span class="dot bg-yellow-400"></span>
+                    <span class="dot bg-green-400"></span>
+                    <span id="promptTitle" class="ml-2 truncate">build prompt</span>
+                </span>
+                <span class="flex items-center gap-2 shrink-0">
+                    <button id="copyPromptBtn" onclick="copyPrompt()" class="font-mono text-[10px] sm:text-xs bg-[#fdd663] text-black px-2 py-1 rounded border border-black hover:bg-yellow-400 transition-colors cursor-pointer">Copy</button>
+                    <button onclick="closePrompt()" class="w-7 h-7 rounded-full border-2 border-white text-white font-bold flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer leading-none">×</button>
+                </span>
+            </div>
+            <div class="flex-1 bg-[#0d0d0d] overflow-y-auto p-4 sm:p-6">
+                <pre id="promptText" class="whitespace-pre-wrap break-words font-mono text-[11px] sm:text-xs leading-relaxed text-green-400 m-0"></pre><span id="promptCursor" class="inline-block w-2.5 h-4 bg-green-400 animate-pulse align-middle"></span>
+            </div>
+        </div>
+    </div>
+
     <script>
         /* =====================================================
            ADD YOUR TEMPLATES HERE
@@ -179,6 +200,53 @@
             // { name: 'Blog Layout',   desc: 'Journal / article template.', file: 'templates/blog.html' },
         ];
         /* ===================================================== */
+
+        /* ---- Build prompts (shown when user taps "✦ View Prompt") ---- */
+        const BLOOM_PETAL_PROMPT = `Create a premium, award-winning, cinematic website for "Bloom & Petal" — an artisan flower shop — using React, TypeScript, Tailwind CSS, Framer Motion, and Lucide React icons. The website should deliver a luxurious, editorial floral experience with sophisticated motion design and premium micro-interactions.
+
+🎨 DESIGN SYSTEM
+COLORS: Background warm cream #F9F6F0 (no pure white), primary text deep forest green #1A2F1A (no pure black), accent rose pink #c4738a, secondary soft pastels (peach, sage, lavender).
+TYPOGRAPHY: Headings 'Cormorant Garamond' italic, tight tracking, serif. Body 'Inter'. All headings italic with tracking-tight.
+
+🎬 PRELOADER & ENTRANCE ANIMATION
+PRELOADER (3 seconds): Fullscreen video background (https://cdn.mp4tourl.com/video/free/a03c92d3-0886-47b7-addf-a2b56109370e.webm) at full opacity, dark gradient overlay, animated brand elements — 🌸 floating icon, "Bloom & Petal" in Cormorant Garamond italic 4rem white, "Premium Artisan Florals" uppercase letter-spaced tagline. Auto-dismiss after 3s or when video ends.
+CURTAIN REVEAL: Two dark green curtains split apart from center (left slides -100%, right slides +100%) over 1.2s with cubic-bezier(0.77, 0, 0.175, 1). Website container fades in with scale 0.95 → 1.0. Theatrical premium reveal.
+
+🧩 COMPONENTS & FEATURES
+1. PARALLAX BACKGROUND — 5 SVG leaves, useScroll + useTransform, different speeds + rotation, opacity 0.15, GPU-accelerated.
+2. FALLING FLOWERS — 20 petals continuously falling (🌸🌺🌷🌹💮🏵️✿❀), random sizes 10-24px, swaying rotation, accumulate at bottom in two rows (27 flowers), gradient fade, fixed position, pointer-events none.
+3. LIQUID GLASS NAVIGATION — Floating pill navbar top-4, backdrop-blur-md, bg-white/15 gradient border, logo 🌸 + "Bloom & Petal" italic serif, desktop nav Shop/Services/About/Journal with scale+fade dropdowns, mobile animated hamburger↔X, "Order Now" forest-green CTA, slides in from top.
+4. STICKY BOTTOM MARQUEE — Fixed bottom, forest green bg, infinite scroll: "✿ FRESH BLOOMS • ✿ DELIVERED DAILY • ✿ HANDCRAFTED WITH LOVE • ✿ SAME-DAY SHIPPING • ✿ SUSTAINABLY SOURCED • ✿ FREE OVER $75", italic serif cream text, 30s loop.
+5. SCROLL REVEAL SYSTEM — ScrollReveal wrapper, initial opacity 0 y 40, whileInView once true margin -100px, easing [0.16, 1, 0.3, 1], staggered delays, directions up/down/left/right.
+6. ANIMATED BUTTONS — Text-roll hover (original slides up, duplicate slides in from bottom), variants primary forest green / secondary cream / outline, whileHover scale 1.02, whileTap 0.98, rounded-full pills.
+
+📐 SECTIONS
+SECTION 1: FULLSCREEN VIDEO HERO — h-[100dvh], autoplay muted loop video (https://cdn.mp4tourl.com/video/free/eaf960b3-7ce2-4e54-9163-29a6c872471b.webm), starts blurred 10px scaled 1.2x transparent, comes into focus over 2.5s. Gradient overlays. Animated badge "Fresh blooms, delivered daily" with pulsing dot scaling in at 3s. Heading "Flowers that speak from the heart" staggered at 3.3s. Subheading 3.6s, CTAs "Shop Collection" + "Watch our story" 3.9s. Bouncing scroll indicator.
+SECTION 2: SCROLLABLE IMAGE GALLERY — "Fresh Picks — Trending this week", horizontal snap gallery, 7 product cards 4:5: Garden Roses $45 (Best Seller), Peony Dream $65 (New), Wild Meadow $38 (Seasonal), Sunset Dahlia $55 (Limited), Blush Tulips $35 (Popular), Lavender Fields $42 (Aromatic), White Orchids $78 (Premium). Hover image scale 1.05 + mask reveal, "Quick Add" slides up, heart icon on hover, lazy loading. Card width 180px mobile / 280px tablet / 320px desktop.
+SECTION 3: BENTO GRID COLLECTION — "Our Collection — Curated with care", 4-col grid with varied sizes: Video Showcase card (2 cols × 3 rows, Spring Garden Collection, video https://cdn.mp4tourl.com/video/free/1077be85-0baf-4b2f-a414-cf6c6268dd7d.webm with play/pause + mute on hover, progress bar, "Live Showcase" pulsing badge, breathing corner accent); Featured image card Romantic Roses (1×2, mask reveal, Best Seller badge); Stats card "12K+ Happy customers" dark green with floating 🌿; Seasonal video card Summer Bloom (2×2, https://cdn.mp4tourl.com/video/free/eaf960b3-7ce2-4e54-9163-29a6c872471b.webm, pulsing "Seasonal Special" badge, animated border glow); Services card (Wedding Florals, Event Design, Subscriptions, Sympathy, Corporate + animated underline); Testimonial card orange bg 5 stars "The most beautiful bouquet I've ever received!" Sarah M.; Quick Order "Send Love" pink bg gift icon bounce; Price card Rose Bouquet $55 with "+" rotating 90°; Delivery card blue gradient free over $75 with progress bar animating 0→75% on scroll; Instagram card pink-orange gradient Follow button; Workshop card Sat 10am Sparkles "New" badge; Hours card dark green Clock + MapPin 123 Garden St.
+SECTION 4: STICKY SCROLLYTELLING "Our Story" — Split screen. LEFT sticky video (top 0, h-screen, https://cdn.mp4tourl.com/video/free/59ef6170-d888-4968-b0c1-a78364f8a59d.webm) with parallax scale 1→1.1→1.05, floating glass badge "Est. 2009". RIGHT 4 scrolling story blocks: 01 Rooted in Nature (Founded 2009), 02 Sourced with Purpose (Ethical sourcing), 03 Crafted by Hand (Artisan florists), 04 Delivered with Love (Peak condition). Each with number, italic serif title, description, scroll reveal. Mobile: video inline below text aspect 4:5.
+SECTION 5: TESTIMONIALS — "Kind Words — What our customers say", 3 cards: James R. Loyal Customer, Emily & Tom Wedding 2024, Sarah K. Corporate Client. Hover scale 1.02 + soft shadow, 5 stars, italic quote, border-top separator.
+SECTION 6: CTA — Dark forest green gradient (#1A2F1A → #2d4a2d), "Ready to bloom? Send flowers that say it all", buttons "Shop All Flowers" + "Subscribe & Save", animated blur circle accents, full-width buttons on mobile.
+SECTION 7: FOOTER — Dark forest green, logo + description, social icons 𝕏 📷 📌 🎵 with hover scale, columns Shop (All Flowers, Seasonal, Subscriptions, Gift Cards) + Info (About Us, Delivery, Care Guide, Contact), "© 2024 Bloom & Petal. Made with 🤍 and fresh flowers.", Privacy • Terms.
+
+📱 RESPONSIVE
+Desktop lg+: 4-col bento, full nav with dropdowns, side-by-side story, 3-col testimonials. Tablet md: 2-col bento, 2-col testimonials. Mobile <768px: compact 2-col bento, 100dvh hero, inline story video, single-col testimonials, p-3 padding, rounded-2xl, snap-scroll galleries, hamburger menu, full-width CTA buttons.
+
+⚡ PERFORMANCE
+preload="metadata" on videos, loading="lazy" images, React.memo on AnimatedButton/LiquidGlassNav/StickyMarquee, useCallback handlers, will-change on animated elements, backdrop-blur 12px, prefers-reduced-motion support, GPU transforms translateZ(0), preconnect + dns-prefetch for fonts/videos/images, no pure black or white.
+
+✨ PREMIUM INTERACTIONS
+Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-roll, icon rotation/scale/bounce, dropdown scale+fade, progress bars animate in view, pulsing badges, breathing corner accents, box-shadow cycling borders, staggered scroll reveals, video blur-to-clear 10px→0px, curtain split reveal, floating petals, parallax leaves.
+
+🎯 BRAND VOICE
+"Bloom & Petal is an artisan flower shop founded in 2009, crafting bespoke floral arrangements with ethically sourced blooms. Every petal placed with intention and care." Premium editorial experience — cinematic, refined, emotionally resonant. Aesop meets Diptyque meets a high-end florist.`;
+
+        const PROMPTS = {
+            'Bloom & Petal': BLOOM_PETAL_PROMPT,
+        };
+        function getPrompt(t) {
+            return PROMPTS[t.name] || ('No prompt recorded for "' + t.name + '" yet. Tap "▶ Run Preview" to see this template live.');
+        }
 
         const select = document.getElementById('templateSelect');
         const grid = document.getElementById('templateGrid');
@@ -212,6 +280,9 @@
                         <p class="font-sketch text-sm text-zinc-600 flex-1">${t.desc}</p>
                         <button onclick="openPreview(${i})" class="w-full py-2 bg-black text-white font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">
                             ▶ Run Preview
+                        </button>
+                        <button onclick="openPrompt(${i})" class="w-full py-2 bg-[#fdd663] text-black font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">
+                            ✦ View Prompt
                         </button>
                     </div>
                 </div>
@@ -295,11 +366,73 @@
             openPreview(parseInt(val, 10));
         }
 
+        // ---- Prompt modal with motion typewriter reveal ----
+        let promptText = '';
+        let typeTimer = null;
+
+        function openPrompt(index) {
+            const t = TEMPLATES[index];
+            if (!t) return;
+            promptText = getPrompt(t);
+            const modal = document.getElementById('promptModal');
+            const pre = document.getElementById('promptText');
+            const cursor = document.getElementById('promptCursor');
+
+            document.getElementById('promptTitle').textContent = 'prompt > ' + t.name.toLowerCase().replace(/\s+/g, '-') + '.md';
+            pre.textContent = '';
+            cursor.classList.remove('hidden');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+
+            // Typewriter motion — chunks of chars per frame for smooth fast reveal
+            if (typeTimer) clearInterval(typeTimer);
+            let i = 0;
+            const chunk = Math.max(4, Math.ceil(promptText.length / 320)); // ~3-4 seconds total
+            const panel = pre.parentElement;
+            typeTimer = setInterval(() => {
+                i += chunk;
+                pre.textContent = promptText.slice(0, i);
+                panel.scrollTop = panel.scrollHeight;
+                if (i >= promptText.length) {
+                    clearInterval(typeTimer);
+                    typeTimer = null;
+                }
+            }, 12);
+        }
+
+        function copyPrompt() {
+            const btn = document.getElementById('copyPromptBtn');
+            const done = () => { btn.textContent = 'Copied ✓'; setTimeout(() => { btn.textContent = 'Copy'; }, 1500); };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(promptText).then(done).catch(done);
+            } else {
+                const ta = document.createElement('textarea');
+                ta.value = promptText;
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand('copy'); } catch (e) {}
+                document.body.removeChild(ta);
+                done();
+            }
+        }
+
+        function closePrompt() {
+            if (typeTimer) { clearInterval(typeTimer); typeTimer = null; }
+            const modal = document.getElementById('promptModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            if (document.getElementById('previewModal').classList.contains('hidden')) {
+                document.body.style.overflow = '';
+            }
+        }
+
         window.addEventListener('click', (e) => {
             if (e.target === document.getElementById('previewModal')) closePreview();
+            if (e.target === document.getElementById('promptModal')) closePrompt();
         });
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closePreview();
+            if (e.key === 'Escape') { closePrompt(); closePreview(); }
         });
 
         renderTemplates();
