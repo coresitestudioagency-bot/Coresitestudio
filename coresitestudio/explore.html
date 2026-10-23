@@ -1,0 +1,307 @@
+<!-- ========================================== -->
+<!-- CORE SITE STUDIO - EXPLORE / TEMPLATE VAULT -->
+<!-- Minimal layout: drop your templates in and preview them like a prompt -->
+<!-- ========================================== -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore — Template Vault | CoreSiteStudio</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect x='15' y='15' width='170' height='170' rx='28' fill='%23fdd663' stroke='%23111' stroke-width='6'/><circle cx='100' cy='90' r='48' fill='none' stroke='%23111' stroke-width='5' stroke-dasharray='6 5'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,400..800;1,400..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sketch': ['"Shantell Sans"', 'cursive', 'sans-serif'],
+                        'creative': ['"Syne"', 'sans-serif'],
+                        'mono': ['"Space Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #FAFAF7;
+            color: #111111;
+            font-family: 'Shantell Sans', cursive, sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .sketch-window {
+            background: #FFFFFF;
+            border: 3px solid #111111;
+            box-shadow: 5px 5px 0px #111111;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sketch-window-header {
+            background: #111111;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+        }
+        .dot { width: 10px; height: 10px; border-radius: 9999px; }
+        ::selection { background: #fdd663; color: #111; }
+        input:focus { outline: none; }
+        .card-hover:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0px #111111; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- TOP BAR -->
+    <header class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 flex items-center justify-between gap-3">
+        <a href="index.html" class="font-creative font-extrabold text-lg sm:text-xl uppercase tracking-tight px-3 py-1.5 sketch-window bg-white rotate-[-1deg] hover:rotate-0 transition-transform flex items-center gap-2 shadow-[2px_2px_0px_#111] no-underline text-black">
+            ← Home
+        </a>
+        <div class="font-mono text-xs sm:text-sm bg-black text-white px-3 py-1.5 rounded-lg border-2 border-black">
+            explore.exe // template vault
+        </div>
+    </header>
+
+    <!-- MAIN (minimal canvas — add your website template below) -->
+    <main id="page-content" class="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 pb-16">
+
+        <!-- ============================================ -->
+        <!-- ▼▼▼ YOUR WEBSITE TEMPLATE GOES HERE ▼▼▼ -->
+        <!-- ============================================ -->
+
+        <section class="text-center mt-6 mb-10">
+            <h1 class="font-creative font-extrabold text-3xl sm:text-5xl uppercase tracking-tight mb-3">Template Vault 🔍</h1>
+            <p class="font-sketch text-base sm:text-lg text-zinc-600 max-w-xl mx-auto">
+                Pick a template, hit preview, and watch it boot up like a prompt.
+            </p>
+        </section>
+
+        <!-- PROMPT BAR -->
+        <div class="sketch-window max-w-2xl mx-auto mb-12 rotate-[0.5deg]">
+            <div class="sketch-window-header justify-between">
+                <span class="flex items-center gap-2">
+                    <span class="dot bg-red-400"></span>
+                    <span class="dot bg-yellow-400"></span>
+                    <span class="dot bg-green-400"></span>
+                    <span class="ml-2">prompt &gt;</span>
+                </span>
+                <span>preview.sh</span>
+            </div>
+            <div class="p-4 sm:p-5 flex flex-col sm:flex-row gap-3 bg-white">
+                <select id="templateSelect" class="flex-1 font-mono text-sm sm:text-base border-2 border-black rounded-lg px-3 py-2.5 bg-[#FAFAF7] cursor-pointer">
+                    <option value="">— select a template —</option>
+                </select>
+                <button onclick="runPreview()" class="px-5 py-2.5 bg-[#fdd663] text-black font-bold text-sm sm:text-base border-2 border-black rounded-lg shadow-[3px_3px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#111] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer whitespace-nowrap">
+                    ▶ Preview
+                </button>
+            </div>
+        </div>
+
+        <!-- TEMPLATE GRID -->
+        <div class="mb-4 flex items-center justify-between">
+            <h2 class="font-creative font-bold text-xl sm:text-2xl uppercase">All Templates</h2>
+            <span class="font-mono text-xs sm:text-sm text-zinc-500"><span id="tplCount">0</span> loaded</span>
+        </div>
+        <div id="templateGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+        <!-- Empty state shown when no templates are registered yet -->
+        <div id="emptyState" class="hidden sketch-window p-8 text-center max-w-md mx-auto mt-4">
+            <div class="text-4xl mb-3">📂</div>
+            <p class="font-creative font-bold text-lg mb-1">Vault is empty</p>
+            <p class="font-sketch text-sm text-zinc-600">Add entries to the <code class="font-mono bg-zinc-100 px-1.5 py-0.5 rounded border border-black text-xs">TEMPLATES</code> array inside this file's script tag.</p>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- ▲▲▲ END OF YOUR WEBSITE TEMPLATE ▲▲▲ -->
+        <!-- ============================================ -->
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-8 border-t-2 border-black/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <span class="font-mono text-xs text-zinc-500">© CoreSiteStudio — explore module v1.0</span>
+        <a href="index.html" class="font-bold text-sm underline decoration-2 underline-offset-4 hover:text-zinc-500 transition-colors no-underline-black text-black">Back to main site</a>
+    </footer>
+
+    <!-- PREVIEW MODAL (terminal-style boot → iframe) -->
+    <div id="previewModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[99999] hidden items-center justify-center p-3 sm:p-6">
+        <div class="sketch-window w-full max-w-4xl h-[80vh] sm:h-[82vh] flex flex-col bg-white">
+            <div class="sketch-window-header justify-between shrink-0">
+                <span class="flex items-center gap-2 min-w-0">
+                    <span class="dot bg-red-400"></span>
+                    <span class="dot bg-yellow-400"></span>
+                    <span class="dot bg-green-400"></span>
+                    <span id="previewTitle" class="ml-2 truncate">preview</span>
+                </span>
+                <span class="flex items-center gap-2 shrink-0">
+                    <a id="openNewTab" href="#" target="_blank" class="hidden font-mono text-[10px] sm:text-xs bg-[#fdd663] text-black px-2 py-1 rounded border border-black hover:bg-yellow-400 transition-colors no-underline text-black">Open ↗</a>
+                    <button onclick="closePreview()" class="w-7 h-7 rounded-full border-2 border-white text-white font-bold flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer leading-none">×</button>
+                </span>
+            </div>
+
+            <!-- Boot sequence (prompt motion) -->
+            <div id="bootScreen" class="flex-1 bg-[#0d0d0d] text-green-400 font-mono text-xs sm:text-sm p-4 sm:p-6 overflow-hidden">
+                <div id="bootLines" class="space-y-1.5"></div>
+                <span id="bootCursor" class="inline-block w-2.5 h-4 bg-green-400 animate-pulse align-middle mt-2"></span>
+            </div>
+
+            <!-- Iframe stage -->
+            <div id="frameStage" class="hidden flex-1 bg-[#FAFAF7] relative">
+                <iframe id="previewFrame" title="Template Preview" class="w-full h-full border-0 block"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* =====================================================
+           ADD YOUR TEMPLATES HERE
+           Each entry: { name, desc, file }
+           - "file" can be a local file ("templates/portfolio.html")
+             or a full URL ("https://example.com").
+           ===================================================== */
+        const TEMPLATES = [
+            { name: 'Demo Starter', desc: 'Placeholder starter — replace with your own template file.', file: 'templates/demo-starter.html' },
+            // { name: 'Portfolio One', desc: 'Minimal dark portfolio starter.', file: 'templates/portfolio-one.html' },
+            // { name: 'Landing Page',  desc: 'Yellow sketch-style product landing.', file: 'templates/landing.html' },
+            // { name: 'Blog Layout',   desc: 'Journal / article template.', file: 'templates/blog.html' },
+        ];
+        /* ===================================================== */
+
+        const select = document.getElementById('templateSelect');
+        const grid = document.getElementById('templateGrid');
+        const emptyState = document.getElementById('emptyState');
+        const countEl = document.getElementById('tplCount');
+
+        function resolveUrl(file) {
+            return /^https?:\/\//.test(file) ? file : encodeURI(file);
+        }
+
+        function renderTemplates() {
+            countEl.textContent = TEMPLATES.length;
+            if (!TEMPLATES.length) {
+                emptyState.classList.remove('hidden');
+                grid.innerHTML = '';
+                select.innerHTML = '<option value="">— no templates yet —</option>';
+                return;
+            }
+            emptyState.classList.add('hidden');
+            select.innerHTML = '<option value="">— select a template —</option>' +
+                TEMPLATES.map((t, i) => `<option value="${i}">${t.name}</option>`).join('');
+            grid.innerHTML = TEMPLATES.map((t, i) => `
+                <div class="sketch-window card-hover flex flex-col">
+                    <div class="sketch-window-header justify-between">
+                        <span class="truncate">${t.name.toLowerCase().replace(/\s+/g, '-')}.html</span>
+                        <span>tpl_${String(i + 1).padStart(2, '0')}</span>
+                    </div>
+                    <div class="p-4 sm:p-5 flex flex-col flex-1 gap-3 bg-white">
+                        <div class="h-24 rounded-lg border-2 border-black bg-[repeating-linear-gradient(45deg,#FAFAF7,#FAFAF7_10px,#f0ede2_10px,#f0ede2_20px)] flex items-center justify-center text-2xl">🖥️</div>
+                        <h3 class="font-creative font-bold text-lg leading-tight">${t.name}</h3>
+                        <p class="font-sketch text-sm text-zinc-600 flex-1">${t.desc}</p>
+                        <button onclick="openPreview(${i})" class="w-full py-2 bg-black text-white font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">
+                            ▶ Run Preview
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ---- Prompt-style boot sequence (like a terminal prompt motion) ----
+        let bootTimers = [];
+        function clearBootTimers() { bootTimers.forEach(clearTimeout); bootTimers = []; }
+
+        function openPreview(index) {
+            const t = TEMPLATES[index];
+            if (!t) return;
+            const modal = document.getElementById('previewModal');
+            const bootScreen = document.getElementById('bootScreen');
+            const bootLines = document.getElementById('bootLines');
+            const frameStage = document.getElementById('frameStage');
+            const frame = document.getElementById('previewFrame');
+            const url = resolveUrl(t.file);
+
+            document.getElementById('previewTitle').textContent = 'preview > ' + t.name;
+            const newTabLink = document.getElementById('openNewTab');
+            newTabLink.href = url;
+            newTabLink.classList.add('hidden');
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+
+            bootScreen.classList.remove('hidden');
+            frameStage.classList.add('hidden');
+            frame.src = 'about:blank';
+            bootLines.innerHTML = '';
+            clearBootTimers();
+
+            const lines = [
+                '$ core-studio init preview --tpl "' + t.name + '"',
+                '> mounting template files ......... ok',
+                '> loading assets & styles ......... ok',
+                '> rendering viewport .............. ok',
+                '> deploy complete ✓ launching now_'
+            ];
+
+            lines.forEach((line, i) => {
+                bootTimers.push(setTimeout(() => {
+                    const div = document.createElement('div');
+                    div.textContent = line;
+                    div.className = 'opacity-0 translate-y-1 transition-all duration-200';
+                    bootLines.appendChild(div);
+                    requestAnimationFrame(() => {
+                        div.classList.remove('opacity-0', 'translate-y-1');
+                    });
+                }, 250 + i * 420));
+            });
+
+            bootTimers.push(setTimeout(() => {
+                frame.src = url;
+                bootScreen.classList.add('hidden');
+                frameStage.classList.remove('hidden');
+                newTabLink.classList.remove('hidden');
+            }, 250 + lines.length * 420 + 500));
+        }
+
+        function closePreview() {
+            clearBootTimers();
+            const modal = document.getElementById('previewModal');
+            const frame = document.getElementById('previewFrame');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            frame.src = 'about:blank';
+            document.body.style.overflow = '';
+        }
+
+        function runPreview() {
+            const val = select.value;
+            if (val === '') {
+                select.classList.add('ring-4', 'ring-red-400');
+                setTimeout(() => select.classList.remove('ring-4', 'ring-red-400'), 600);
+                return;
+            }
+            openPreview(parseInt(val, 10));
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('previewModal')) closePreview();
+        });
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closePreview();
+        });
+
+        renderTemplates();
+    </script>
+</body>
+</html>
