@@ -50,7 +50,7 @@ export default function App() {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: 'center center' }}
         />
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-transparent to-black/10" />
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-transparent to-transparent" />
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16">
           <div className="text-center max-w-5xl">
@@ -151,7 +151,7 @@ export default function App() {
         </div>
       </section>
 
-      <div className="relative z-[5] w-full min-h-screen bg-[#F9F6F0] overflow-hidden">
+      <div className="relative z-[5] w-full min-h-screen bg-[#F9F6F0] overflow-hidden -mt-px">
       <section className="py-12 sm:py-20 md:py-28 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-6 sm:mb-12">
           <ScrollReveal>
