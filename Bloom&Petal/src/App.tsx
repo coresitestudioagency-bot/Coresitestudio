@@ -42,9 +42,15 @@ export default function App() {
 
       <LiquidGlassNav />
 
-      <section className="relative w-full h-[100dvh] overflow-hidden bg-transparent">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1A2F1A]/40 via-[#1A2F1A]/20 to-[#1A2F1A]/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1A2F1A]/30 via-transparent to-[#1A2F1A]/30" />
+      <section className="relative w-full h-[100dvh] overflow-hidden bg-[#1A2F1A]">
+        <FastVideo
+          eager
+          src="https://cdn.mp4tourl.com/video/free/eaf960b3-7ce2-4e54-9163-29a6c872471b.webm"
+          type="video/webm"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: 'center center' }}
+        />
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-transparent to-black/10" />
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16">
           <div className="text-center max-w-5xl">
@@ -64,7 +70,7 @@ export default function App() {
             </motion.div>
 
             <motion.h1
-              className="font-serif italic text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#F9F6F0] tracking-tight leading-[0.95]"
+              className="font-serif italic text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#F9F6F0] tracking-tight leading-[0.95] drop-shadow-[0_2px_16px_rgba(0,0,0,0.35)]"
               initial={{ opacity: 0, y: 36, scale: 0.97 }}
               animate={opened ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 36, scale: 0.97 }}
               transition={{ delay: 0.22, duration: 0.85, ease: easeOut }}
@@ -145,7 +151,7 @@ export default function App() {
         </div>
       </section>
 
-      <div className="relative z-10 bg-[#F9F6F0]">
+      <div className="relative z-[5] w-full min-h-screen bg-[#F9F6F0] overflow-hidden">
       <section className="py-12 sm:py-20 md:py-28 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-6 sm:mb-12">
           <ScrollReveal>
