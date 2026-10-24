@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
 
 function Leaf1({ className = '' }: { className?: string }) {
   return (
@@ -28,48 +27,21 @@ function Leaf3({ className = '' }: { className?: string }) {
   );
 }
 
-interface LeafConfig {
-  Component: React.FC<{ className?: string }>;
-  top: string;
-  left: string;
-  size: string;
-  speed: number;
-  rotate: number;
-  color: string;
-}
-
-const leaves: LeafConfig[] = [
-  { Component: Leaf1, top: '10%', left: '5%', size: '120px', speed: 0.3, rotate: 25, color: '#2d5a2d' },
-  { Component: Leaf2, top: '25%', left: '85%', size: '90px', speed: 0.5, rotate: -15, color: '#3d6b3d' },
-  { Component: Leaf3, top: '45%', left: '10%', size: '70px', speed: 0.7, rotate: 45, color: '#4a7a4a' },
-  { Component: Leaf1, top: '75%', left: '8%', size: '100px', speed: 0.6, rotate: 60, color: '#2d5a2d' },
-  { Component: Leaf2, top: '85%', left: '88%', size: '80px', speed: 0.35, rotate: -45, color: '#3d6b3d' },
+const leaves = [
+  { Component: Leaf1, top: '10%', left: '5%', size: '120px', rotate: 25, color: '#2d5a2d' },
+  { Component: Leaf2, top: '25%', left: '85%', size: '90px', rotate: -15, color: '#3d6b3d' },
+  { Component: Leaf3, top: '45%', left: '10%', size: '70px', rotate: 45, color: '#4a7a4a' },
+  { Component: Leaf1, top: '75%', left: '8%', size: '100px', rotate: 60, color: '#2d5a2d' },
+  { Component: Leaf2, top: '85%', left: '88%', size: '80px', rotate: -45, color: '#3d6b3d' },
 ];
 
 export default function ParallaxBackground() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
-
   return (
-    <div ref={containerRef} className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
       {leaves.map((leaf, i) => {
         const LeafComponent = leaf.Component;
-        const y = useTransform(
-          scrollYProgress,
-          [0, 1],
-          [0, leaf.speed * -500]
-        );
-        const rotate = useTransform(
-          scrollYProgress,
-          [0, 1],
-          [leaf.rotate, leaf.rotate + leaf.speed * 60]
-        );
-
         return (
-          <motion.div
+          <div
             key={i}
             className="parallax-leaf"
             style={{
@@ -77,13 +49,12 @@ export default function ParallaxBackground() {
               left: leaf.left,
               width: leaf.size,
               height: leaf.size,
-              y,
-              rotate,
+              transform: `rotate(${leaf.rotate}deg)`,
               color: leaf.color,
             }}
           >
             <LeafComponent className="w-full h-full" />
-          </motion.div>
+          </div>
         );
       })}
     </div>

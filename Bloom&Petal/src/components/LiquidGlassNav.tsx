@@ -15,9 +15,9 @@ const LiquidGlassNav = memo(() => {
 
   return (
     <motion.nav
-      initial={{ y: -100, opacity: 0 }}
+      initial={{ y: -28, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-4 left-4 right-4 sm:left-6 sm:right-6 z-50"
     >
       <div className="max-w-6xl mx-auto liquid-glass rounded-full px-5 sm:px-8 py-3 sm:py-4 flex items-center justify-between">

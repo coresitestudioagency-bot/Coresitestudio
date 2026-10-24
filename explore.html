@@ -159,7 +159,7 @@
 
             <!-- Iframe stage -->
             <div id="frameStage" class="hidden flex-1 bg-[#FAFAF7] relative">
-                <iframe id="previewFrame" title="Template Preview" class="w-full h-full border-0 block"></iframe>
+                <iframe id="previewFrame" title="Template Preview" class="w-full h-full border-0 block" allow="autoplay; fullscreen; encrypted-media" referrerpolicy="no-referrer"></iframe>
             </div>
         </div>
     </div>
@@ -193,7 +193,7 @@
              or a full URL ("https://example.com").
            ===================================================== */
         const TEMPLATES = [
-            { name: 'Bloom & Petal', desc: 'Premium artisan florals — elegant flower shop website with animations, video showcase & sticky sections. Tap to visit the site.', file: 'Bloom&Petal/index.html' },
+            { name: 'Bloom & Petal', desc: 'Premium artisan florals — elegant flower shop website with animations, video showcase & sticky sections. Tap to visit the site.', file: 'bloom-petal/index.html' },
             { name: 'Demo Starter', desc: 'Placeholder starter — replace with your own template file.', file: 'demo-starter.html' },
             // { name: 'Portfolio One', desc: 'Minimal dark portfolio starter.', file: 'templates/portfolio-one.html' },
             // { name: 'Landing Page',  desc: 'Yellow sketch-style product landing.', file: 'templates/landing.html' },
@@ -254,7 +254,8 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
         const countEl = document.getElementById('tplCount');
 
         function resolveUrl(file) {
-            return /^https?:\/\//.test(file) ? file : encodeURI(file);
+            if (/^https?:\/\//.test(file)) return file;
+            return file.split('/').map(encodeURIComponent).join('/');
         }
 
         function renderTemplates() {

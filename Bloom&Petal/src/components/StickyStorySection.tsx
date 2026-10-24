@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
+import FastVideo from './FastVideo';
 
 const storyBlocks = [
   {
@@ -21,6 +22,8 @@ const storyBlocks = [
   },
 ];
 
+const STORY_VIDEO = 'https://cdn.mp4tourl.com/video/free/59ef6170-d888-4968-b0c1-a78364f8a59d.webm';
+
 export default function StickyStorySection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -28,8 +31,9 @@ export default function StickyStorySection() {
     offset: ['start start', 'end end'],
   });
 
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.1, 1.05]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.08, 1.04]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const badgeY = useTransform(scrollYProgress, [0, 1], [0, -20]);
 
   return (
     <section ref={containerRef} className="relative" id="about">
@@ -39,22 +43,17 @@ export default function StickyStorySection() {
             className="absolute inset-0"
             style={{ scale: imageScale, y: imageY }}
           >
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
+            <FastVideo
+              src={STORY_VIDEO}
+              type="video/webm"
               className="w-full h-full object-cover"
-            >
-              <source src="https://cdn.mp4tourl.com/video/free/59ef6170-d888-4968-b0c1-a78364f8a59d.webm" type="video/webm" />
-            </video>
+            />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#F9F6F0]/20" />
           </motion.div>
-          
+
           <motion.div
             className="absolute bottom-8 left-8 liquid-glass rounded-2xl p-5"
-            style={{ y: useTransform(scrollYProgress, [0, 1], [0, -30]) }}
+            style={{ y: badgeY }}
           >
             <p className="font-serif italic text-xl text-[#1A2F1A] tracking-tight">Est. 2009</p>
             <p className="text-xs text-[#1A2F1A]/60 mt-1">Crafting joy daily</p>
@@ -65,8 +64,8 @@ export default function StickyStorySection() {
           <ScrollReveal>
             <span className="font-serif italic text-lg text-[#1A2F1A]/50 tracking-tight">Our Story</span>
           </ScrollReveal>
-          
-          <ScrollReveal delay={0.1}>
+
+          <ScrollReveal delay={0.05}>
             <h2 className="font-serif italic text-4xl sm:text-5xl lg:text-6xl text-[#1A2F1A] tracking-tight mt-4 leading-[1.1]">
               Where every petal tells a story
             </h2>
@@ -74,7 +73,7 @@ export default function StickyStorySection() {
 
           <div className="mt-16 space-y-24">
             {storyBlocks.map((block, i) => (
-              <ScrollReveal key={i} delay={i * 0.1}>
+              <ScrollReveal key={i} delay={i * 0.05}>
                 <div className="max-w-md">
                   <span className="font-serif italic text-sm text-[#1A2F1A]/40 tracking-tight">
                     0{i + 1}
@@ -91,16 +90,11 @@ export default function StickyStorySection() {
           </div>
 
           <div className="md:hidden mt-16 rounded-3xl overflow-hidden aspect-[4/5]">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
+            <FastVideo
+              src={STORY_VIDEO}
+              type="video/webm"
               className="w-full h-full object-cover"
-            >
-              <source src="https://cdn.mp4tourl.com/video/free/59ef6170-d888-4968-b0c1-a78364f8a59d.webm" type="video/webm" />
-            </video>
+            />
           </div>
         </div>
       </div>

@@ -4,10 +4,17 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: "./",
+  build: {
+    outDir: "/workspace/bloom-petal",
+    emptyOutDir: true,
+    assetsDir: "assets",
+  },
   server: {
     host: "0.0.0.0",
     port: 3000,
     strictPort: true,
+    allowedHosts: [".monkeycode-ai.live"],
     hmr: {
       port: 3000,
     },

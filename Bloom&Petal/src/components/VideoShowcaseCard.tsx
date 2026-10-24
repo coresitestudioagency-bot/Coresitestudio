@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import AnimatedButton from './AnimatedButton';
+import FastVideo from './FastVideo';
 
 export default function VideoShowcaseCard() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -27,7 +28,7 @@ export default function VideoShowcaseCard() {
   const togglePlay = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
-    
+
     if (video.paused) {
       video.play();
       setIsPlaying(true);
@@ -40,7 +41,7 @@ export default function VideoShowcaseCard() {
   const toggleMute = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
-    
+
     video.muted = !video.muted;
     setIsMuted(video.muted);
   }, []);
@@ -53,26 +54,21 @@ export default function VideoShowcaseCard() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <video
+      <FastVideo
         ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
+        src="https://cdn.mp4tourl.com/video/free/1077be85-0baf-4b2f-a414-cf6c6268dd7d.webm"
+        type="video/webm"
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
-      >
-        <source src="https://cdn.mp4tourl.com/video/free/1077be85-0baf-4b2f-a414-cf6c6268dd7d.webm" type="video/webm" />
-      </video>
+      />
 
       <div className="absolute inset-0 bg-gradient-to-t from-[#1A2F1A]/90 via-[#1A2F1A]/30 to-transparent pointer-events-none" />
-      
+
       <motion.div
         className="absolute top-4 sm:top-6 left-4 sm:left-6 z-20"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.3, duration: 0.6 }}
+        transition={{ delay: 0.15, duration: 0.4 }}
       >
         <span className="inline-flex items-center gap-2 bg-[#F9F6F0]/90 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium text-[#1A2F1A]">
           <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#c4738a] rounded-full animate-pulse"></span>
@@ -87,7 +83,7 @@ export default function VideoShowcaseCard() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
           >
             <motion.button
               onClick={toggleMute}
@@ -144,7 +140,7 @@ export default function VideoShowcaseCard() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: 0.15, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="font-serif italic text-xl sm:text-2xl md:text-3xl lg:text-5xl text-[#F9F6F0] tracking-tight leading-tight">
             Spring Garden<br />
@@ -166,25 +162,11 @@ export default function VideoShowcaseCard() {
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#F9F6F0]/10 z-30">
-        <motion.div
+        <div
           className="h-full bg-[#F9F6F0]/60"
           style={{ width: `${progress}%` }}
-          transition={{ duration: 0.1 }}
         />
       </div>
-
-      <motion.div
-        className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#c4738a]/30 to-transparent rounded-full blur-2xl pointer-events-none"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
     </motion.div>
   );
 }

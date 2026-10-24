@@ -13,9 +13,9 @@ const StickyMarquee = memo(() => {
 
   return (
     <motion.div
-      initial={{ y: 100 }}
+      initial={{ y: 40 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.8, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
       className="fixed bottom-0 left-0 right-0 z-40 bg-[#1A2F1A] py-3 overflow-hidden"
     >
       <div className="animate-marquee whitespace-nowrap flex">
