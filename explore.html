@@ -307,7 +307,7 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
             document.getElementById('previewTitle').textContent = 'preview > ' + t.name;
             const newTabLink = document.getElementById('openNewTab');
             newTabLink.href = url;
-            newTabLink.classList.add('hidden');
+            newTabLink.classList.remove('hidden');
 
             modal.classList.remove('hidden');
             modal.classList.add('flex');
