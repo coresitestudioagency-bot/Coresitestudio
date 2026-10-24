@@ -198,6 +198,51 @@
             box-shadow: 0 0 0 2px rgba(255,255,255,0.14);
         }
 
+        .text-wordmark {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            color: currentColor;
+            font-family: 'Syne', sans-serif;
+            font-weight: 900;
+            line-height: 0.82;
+            letter-spacing: -0.07em;
+            text-transform: lowercase;
+        }
+
+        .text-wordmark-main {
+            display: block;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+        }
+
+        .text-wordmark-sub {
+            display: block;
+            margin-top: 0.35rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+            transform: translateX(0.15rem);
+        }
+
+        .footer-wordmark .text-wordmark-main {
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
+        }
+
+        .footer-wordmark .text-wordmark-sub {
+            font-size: 0.7rem;
+        }
+
+        .about-wordmark .text-wordmark-main {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+        }
+
+        #preloader .text-wordmark-main {
+            font-size: clamp(1.6rem, 6vw, 2.8rem);
+        }
+
+        #preloader .text-wordmark-sub {
+            font-size: 0.7rem;
+        }
+
         @keyframes brandPulse {
             0%, 100% { transform: translateY(0) scale(1); }
             50% { transform: translateY(-2px) scale(1.02); }
@@ -216,17 +261,6 @@
         }
         .text-float { animation: textWaveLoop 4.5s ease-in-out infinite; display: inline-block; }
         .text-float-delayed { animation: textWaveLoop 5.5s ease-in-out infinite 1.5s; display: inline-block; }
-
-        .preloader-word {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(25px) scale(0.9);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .preloader-word.show {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
 
         @keyframes pulseGlow {
             0%, 100% { transform: scale(1); opacity: 1; }
@@ -262,17 +296,6 @@
             opacity: 0;
             transform: translateY(-20px);
             visibility: hidden;
-        }
-
-        .preloader-word {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(25px) scale(0.9);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .preloader-word.show {
-            opacity: 1;
-            transform: translateY(0) scale(1);
         }
 
         .logo-anim {
@@ -321,17 +344,9 @@
     <!-- ========================================== -->
     <div id="preloader">
         <div class="sketch-window p-6 sm:p-10 bg-white text-center shadow-[8px_8px_0px_#111] max-w-sm sm:max-w-md mx-4 float-anim">
-            <div class="w-24 h-24 sm:w-28 sm:h-28 mx-auto mb-4 bg-[#fdd663] border-3 border-black rounded-2xl shadow-[4px_4px_0px_#111] flex items-center justify-center overflow-hidden rotate-[-2deg] pulse-glow">
-                <span class="logo-anim" role="img" aria-label="CoreSiteStudio">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:0;--l:2.35%;--r:14.12%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:1;--l:14.12%;--r:33.24%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:2;--l:33.24%;--r:42.94%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:3;--l:42.94%;--r:57.35%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:4;--l:57.35%;--r:69.41%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:5;--l:69.41%;--r:75.88%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:6;--l:75.88%;--r:87.35%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:7;--l:87.35%;--r:97.65%">
-                </span>
+            <div class="text-wordmark mb-4" role="img" aria-label="CoreSiteStudio">
+                <span class="text-wordmark-main">coresite</span>
+                <span class="text-wordmark-sub">studio</span>
             </div>
             <div class="w-36 sm:w-52 h-2.5 bg-zinc-100 border-2 border-black rounded-full mx-auto overflow-hidden p-0.5 shadow-[2px_2px_0px_#111] mt-6">
                 <div id="loaderBar" class="h-full bg-[#fdd663] rounded-full w-0 transition-all duration-1200 ease-out"></div>
@@ -343,26 +358,8 @@
     <!-- ========================================== -->
     <!-- NAVIGATION BAR SECTION -->
     <!-- ========================================== -->
-    <nav class="w-full max-w-[1150px] mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-col md:flex-row items-center justify-between sticky top-0 z-50 bg-[#FAFAF7]/95 backdrop-blur-sm gap-3 float-anim">
-        <div class="flex items-center justify-center md:justify-start w-full md:w-auto gap-3">
-            <a href="#" class="font-creative font-extrabold text-xs sm:text-lg tracking-tight uppercase px-3 sm:px-4 py-2 sketch-window bg-white rotate-[-1deg] hover:rotate-0 transition-transform text-float text-black flex items-center gap-2 sm:gap-2.5 shadow-[2px_2px_0px_#111]">
-                <span class="w-16 h-7 sm:w-20 sm:h-9 bg-[#fdd663] border-2 border-black rounded-lg flex items-center justify-center shadow-[1px_1px_0px_#111] overflow-hidden flex-shrink-0">
-                    <span class="logo-anim" role="img" aria-label="CoreSiteStudio">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:0;--l:2.35%;--r:14.12%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:1;--l:14.12%;--r:33.24%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:2;--l:33.24%;--r:42.94%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:3;--l:42.94%;--r:57.35%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:4;--l:57.35%;--r:69.41%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:5;--l:69.41%;--r:75.88%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:6;--l:75.88%;--r:87.35%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:7;--l:87.35%;--r:97.65%">
-                </span>
-                </span>
-                <span class="text-float truncate text-xs sm:text-base">CoreSiteStudio</span>
-            </a>
-        </div>
-
-        <div class="flex items-center justify-center gap-2 sm:gap-3 w-full md:w-auto">
+    <nav class="w-full max-w-[1150px] mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-center sticky top-0 z-50 bg-[#FAFAF7]/95 backdrop-blur-sm gap-3 float-anim">
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 w-full">
             <button onclick="openModal('linksModal')" class="flex-1 md:flex-initial px-3 sm:px-4 py-2 bg-yellow-50 text-black font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-yellow-100 transition-all cursor-pointer text-float text-center truncate">
                 📁 Directory Links
             </button>
@@ -392,21 +389,9 @@
                     </div>
                 </div>
                 <div class="p-6 sm:p-14 text-center flex flex-col items-center relative overflow-hidden">
-                    <div class="brand-logo brand-logo--stack mb-3 text-float break-words w-full px-1 justify-center" aria-label="CoreSiteStudio brand logo">
-                        <span class="brand-mark" aria-hidden="true">
-                            <svg viewBox="0 0 200 200" role="img" aria-label="CoreSiteStudio symbol">
-                                <rect x="15" y="15" width="170" height="170" rx="28" fill="transparent" stroke="currentColor" stroke-width="6"/>
-                                <circle cx="100" cy="90" r="48" class="logo-ring"/>
-                                <path d="M 72 70 L 52 90 L 72 110" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M 128 70 L 148 90 L 128 110" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M 108 62 L 92 118" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
-                                <circle cx="100" cy="38" r="4.5" class="logo-slice-alt"/>
-                            </svg>
-                        </span>
-                        <span class="brand-wordmark" aria-label="CoreSiteStudio">
-                            <span class="brand-core">coresite</span>
-                            <span class="brand-studio">studio</span>
-                        </span>
+                    <div class="text-wordmark about-wordmark mb-3 text-float" role="img" aria-label="CoreSiteStudio">
+                        <span class="text-wordmark-main">coresite</span>
+                        <span class="text-wordmark-sub">studio</span>
                     </div>
                     <div class="inline-block px-3.5 py-1.5 bg-black text-white font-mono text-xs sm:text-lg rounded-full border border-black mb-3 rotate-[-1deg] shadow-[2px_2px_0px_rgba(255,255,255,0.2)] text-float-delayed max-w-full truncate">
                         | digital world & design core |
@@ -636,19 +621,9 @@
     <footer class="w-full bg-[#000000] text-white border-t-4 border-black mt-28 py-12 px-6 mb-0 reveal-on-scroll float-anim">
         <div class="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
             <div class="flex flex-col sm:flex-row items-center md:items-start gap-5">
-                <div class="flex items-center gap-3.5">
-                    <div class="w-24 h-10 sm:w-28 sm:h-12 bg-[#fdd663] border-2 border-white rounded-xl flex items-center justify-center overflow-hidden float-anim shadow-[2px_2px_0px_rgba(255,255,255,0.3)] flex-shrink-0">
-                        <span class="logo-anim" role="img" aria-label="CoreSiteStudio">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:0;--l:2.35%;--r:14.12%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:1;--l:14.12%;--r:33.24%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:2;--l:33.24%;--r:42.94%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:3;--l:42.94%;--r:57.35%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:4;--l:57.35%;--r:69.41%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:5;--l:69.41%;--r:75.88%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:6;--l:75.88%;--r:87.35%">
-                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:7;--l:87.35%;--r:97.65%">
-                </span>
-                    </div>
+                <div class="text-wordmark footer-wordmark" role="img" aria-label="CoreSiteStudio">
+                    <span class="text-wordmark-main">coresite</span>
+                    <span class="text-wordmark-sub">studio</span>
                 </div>
                 <p class="font-sketch text-base sm:text-lg text-zinc-400 max-w-sm text-float-delayed text-center sm:text-left">
                     Engineering minimalist digital products, clean typography, and high-performance agency experiences.
@@ -987,41 +962,34 @@
     <!-- JAVASCRIPT LOGIC SECTION -->
     <!-- ========================================== -->
     <script>
-    window.addEventListener('load', () => {
-        const wordCore = document.getElementById('wordCore');
-        const wordSite = document.getElementById('wordSite');
-        const wordStudio = document.getElementById('wordStudio');
+    document.addEventListener('DOMContentLoaded', () => {
         const loaderBar = document.getElementById('loaderBar');
         const loaderStatus = document.getElementById('loaderStatus');
         const preloader = document.getElementById('preloader');
 
         setTimeout(() => {
-            if (wordCore) wordCore.classList.add('show');
             if (loaderBar) loaderBar.style.width = '35%';
             if (loaderStatus) loaderStatus.textContent = '- loading studio core -';
         }, 600);
 
         setTimeout(() => {
-            if (wordSite) wordSite.classList.add('show');
             if (loaderBar) loaderBar.style.width = '75%';
             if (loaderStatus) loaderStatus.textContent = '- mounting digital products -';
         }, 1500);
 
         setTimeout(() => {
-            if (wordStudio) wordStudio.classList.add('show');
             if (loaderBar) loaderBar.style.width = '100%';
-                if (loaderStatus) loaderStatus.textContent = '- ready for deployment -';
-            }, 2400);
+            if (loaderStatus) loaderStatus.textContent = '- ready for deployment -';
+        }, 2200);
 
+        setTimeout(() => {
+            if (!preloader) return;
+            preloader.classList.add('fade-out');
             setTimeout(() => {
-                if (preloader) {
-                    preloader.classList.add('fade-out');
-                    setTimeout(() => {
-                        preloader.style.display = 'none';
-                    }, 1200);
-                }
-            }, 3300);
-        });
+                preloader.style.display = 'none';
+            }, 1200);
+        }, 2600);
+    });
 
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = {
