@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoreSiteStudio</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="logo.jpg?v=2">
+    <link rel="icon" type="image/png" href="favicon.png?v=1">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,6 +145,40 @@
             transform: translateY(0) scale(1);
         }
 
+        .logo-anim {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .logo-slice {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            opacity: 0;
+            clip-path: inset(0 calc(100% - var(--r)) 0 var(--l));
+            will-change: transform, opacity;
+        }
+        .logo-anim.is-in .logo-slice {
+            opacity: 1;
+            animation: logoLetterIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: calc(var(--i) * 0.075s);
+        }
+        .logo-anim.is-in {
+            animation: logoBreathe 4s ease-in-out infinite;
+        }
+        @keyframes logoLetterIn {
+            0% { opacity: 0; transform: translateY(12%); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes logoBreathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #FAFAF7; }
         ::-webkit-scrollbar-thumb { background: #111111; border-radius: 4px; }
@@ -158,7 +192,16 @@
     <div id="preloader">
         <div class="sketch-window p-6 sm:p-10 bg-white text-center shadow-[8px_8px_0px_#111] max-w-sm sm:max-w-md mx-4 float-anim">
             <div class="w-24 h-24 sm:w-28 sm:h-28 mx-auto mb-4 bg-[#fdd663] border-3 border-black rounded-2xl shadow-[4px_4px_0px_#111] flex items-center justify-center overflow-hidden rotate-[-2deg] pulse-glow">
-                <img src="logo.jpg?v=2" alt="CoreSiteStudio" class="w-full h-full object-contain">
+                <span class="logo-anim" role="img" aria-label="CoreSiteStudio">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:0;--l:2.35%;--r:14.12%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:1;--l:14.12%;--r:33.24%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:2;--l:33.24%;--r:42.94%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:3;--l:42.94%;--r:57.35%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:4;--l:57.35%;--r:69.41%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:5;--l:69.41%;--r:75.88%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:6;--l:75.88%;--r:87.35%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:7;--l:87.35%;--r:97.65%">
+                </span>
             </div>
             <div class="mb-5 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 font-creative font-extrabold text-lg sm:text-2xl text-black tracking-tight">
                 <span id="wordCore" class="preloader-word px-2 py-0.5 bg-yellow-100 border-2 border-black rounded-xl rotate-[-2deg]">Core</span>
@@ -178,8 +221,17 @@
     <nav class="w-full max-w-[1150px] mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-col md:flex-row items-center justify-between sticky top-0 z-50 bg-[#FAFAF7]/95 backdrop-blur-sm gap-3 float-anim">
         <div class="flex items-center justify-center md:justify-start w-full md:w-auto gap-3">
             <a href="#" class="font-creative font-extrabold text-xs sm:text-lg tracking-tight uppercase px-3 sm:px-4 py-2 sketch-window bg-white rotate-[-1deg] hover:rotate-0 transition-transform text-float text-black flex items-center gap-2 sm:gap-2.5 shadow-[2px_2px_0px_#111]">
-                <span class="w-7 h-7 sm:w-9 sm:h-9 bg-[#fdd663] border-2 border-black rounded-lg flex items-center justify-center shadow-[1px_1px_0px_#111] overflow-hidden flex-shrink-0">
-                    <img src="logo.jpg?v=2" alt="CoreSiteStudio" class="w-full h-full object-contain">
+                <span class="w-16 h-7 sm:w-20 sm:h-9 bg-[#fdd663] border-2 border-black rounded-lg flex items-center justify-center shadow-[1px_1px_0px_#111] overflow-hidden flex-shrink-0">
+                    <span class="logo-anim" role="img" aria-label="CoreSiteStudio">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:0;--l:2.35%;--r:14.12%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:1;--l:14.12%;--r:33.24%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:2;--l:33.24%;--r:42.94%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:3;--l:42.94%;--r:57.35%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:4;--l:57.35%;--r:69.41%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:5;--l:69.41%;--r:75.88%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:6;--l:75.88%;--r:87.35%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:7;--l:87.35%;--r:97.65%">
+                </span>
                 </span>
                 <span class="text-float truncate text-xs sm:text-base">CoreSiteStudio</span>
             </a>
@@ -347,7 +399,16 @@
             <div class="w-full max-w-3xl py-4 sm:py-6 flex flex-col sm:flex-row gap-8 items-center float-anim-delayed">
                 <div class="flex-shrink-0 flex flex-col items-center">
                     <div class="w-28 h-28 sm:w-32 sm:h-32 bg-[#fdd663] border-3 border-black rounded-2xl shadow-[3px_3px_0px_#111] flex items-center justify-center overflow-hidden rotate-[-2deg] pulse-glow">
-                        <img src="logo.jpg?v=2" alt="CoreSiteStudio" class="w-full h-full object-contain">
+                        <span class="logo-anim" role="img" aria-label="CoreSiteStudio">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:0;--l:2.35%;--r:14.12%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:1;--l:14.12%;--r:33.24%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:2;--l:33.24%;--r:42.94%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:3;--l:42.94%;--r:57.35%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:4;--l:57.35%;--r:69.41%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:5;--l:69.41%;--r:75.88%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:6;--l:75.88%;--r:87.35%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:7;--l:87.35%;--r:97.65%">
+                </span>
                     </div>
                     <span class="font-mono text-base sm:text-lg mt-3 font-bold text-float">STUDIO_CORE</span>
                 </div>
@@ -438,8 +499,17 @@
         <div class="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
             <div class="flex flex-col sm:flex-row items-center md:items-start gap-5">
                 <div class="flex items-center gap-3.5">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#fdd663] border-2 border-white rounded-xl flex items-center justify-center overflow-hidden float-anim shadow-[2px_2px_0px_rgba(255,255,255,0.3)] flex-shrink-0">
-                        <img src="logo.jpg?v=2" alt="CoreSiteStudio" class="w-full h-full object-contain">
+                    <div class="w-24 h-10 sm:w-28 sm:h-12 bg-[#fdd663] border-2 border-white rounded-xl flex items-center justify-center overflow-hidden float-anim shadow-[2px_2px_0px_rgba(255,255,255,0.3)] flex-shrink-0">
+                        <span class="logo-anim" role="img" aria-label="CoreSiteStudio">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:0;--l:2.35%;--r:14.12%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:1;--l:14.12%;--r:33.24%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:2;--l:33.24%;--r:42.94%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:3;--l:42.94%;--r:57.35%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:4;--l:57.35%;--r:69.41%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:5;--l:69.41%;--r:75.88%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:6;--l:75.88%;--r:87.35%">
+                    <img src="logo-mark.png?v=1" alt="" class="logo-slice" style="--i:7;--l:87.35%;--r:97.65%">
+                </span>
                     </div>
                     <span class="font-creative font-extrabold text-xs sm:text-xl uppercase tracking-wider text-white text-float">
                         CoreSiteStudio
@@ -835,6 +905,19 @@
 
             document.querySelectorAll('.reveal-on-scroll').forEach(el => {
                 observer.observe(el);
+            });
+
+            const logoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-in');
+                        logoObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.35 });
+
+            document.querySelectorAll('.logo-anim').forEach(el => {
+                logoObserver.observe(el);
             });
         });
 
