@@ -103,6 +103,24 @@
             justify-content: center;
             font-size: 1.75rem;
         }
+        @media (max-width: 639px) {
+            .tpl-video-wrap,
+            .tpl-thumb-fallback {
+                height: 88px;
+            }
+            .tpl-thumb-fallback { font-size: 1rem; }
+            .tpl-card .sketch-window-header {
+                padding: 5px 8px;
+                font-size: 0.6rem;
+                gap: 4px;
+            }
+            .tpl-video-badge {
+                font-size: 8px;
+                padding: 1px 4px;
+                left: 4px;
+                bottom: 4px;
+            }
+        }
         @keyframes tplFloat {
             0%, 100% { transform: translateY(0) rotate(-0.5deg); }
             50% { transform: translateY(-14px) rotate(0.8deg); }
@@ -243,7 +261,7 @@
                 <h2 class="font-creative font-bold text-xl sm:text-2xl uppercase">Web Prompt</h2>
                 <span class="font-mono text-xs sm:text-sm text-zinc-500"><span id="tplCount">0</span> loaded</span>
             </div>
-            <div id="templateGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+            <div id="templateGrid" class="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-5"></div>
             <div id="emptyState" class="hidden sketch-window p-8 text-center max-w-md mx-auto mt-4">
                 <p class="font-creative font-bold text-lg mb-1">Vault is empty</p>
                 <p class="font-sketch text-sm text-zinc-600">Add entries to the <code class="font-mono bg-zinc-100 px-1.5 py-0.5 rounded border border-black text-xs">WEB_TEMPLATES</code> array inside this file's script tag.</p>
@@ -256,7 +274,7 @@
                 <h2 class="font-creative font-bold text-xl sm:text-2xl uppercase">Video Prompt</h2>
                 <span class="font-mono text-xs sm:text-sm text-zinc-500"><span id="videoCount">0</span> loaded</span>
             </div>
-            <div id="videoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+            <div id="videoGrid" class="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-5"></div>
             <div id="videoEmpty" class="hidden sketch-window p-8 text-center max-w-md mx-auto mt-4">
                 <p class="font-creative font-bold text-lg mb-1">No video prompts yet</p>
                 <p class="font-sketch text-sm text-zinc-600">Add entries to the <code class="font-mono bg-zinc-100 px-1.5 py-0.5 rounded border border-black text-xs">VIDEO_TEMPLATES</code> array inside this file's script tag.</p>
@@ -443,11 +461,11 @@ All type is condensed grotesque with RGB split (red -2px, blue +2px). Hard geome
         function cardMarkup(t, i, kind) {
             const slug = t.name.toLowerCase().replace(/\s+/g, '-');
             const previewBtn = kind === 'video'
-                ? `<button onclick="event.stopPropagation(); openVideoPreview(${i})" class="w-full py-2 bg-black text-white font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">▶ Preview Video</button>`
-                : `<button onclick="event.stopPropagation(); openPreview(${i})" class="w-full py-2 bg-black text-white font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">▶ Run Preview</button>`;
+                ? `<button onclick="event.stopPropagation(); openVideoPreview(${i})" class="w-full py-1.5 sm:py-2 bg-black text-white font-bold text-[10px] sm:text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">▶ Preview Video</button>`
+                : `<button onclick="event.stopPropagation(); openPreview(${i})" class="w-full py-1.5 sm:py-2 bg-black text-white font-bold text-[10px] sm:text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">▶ Run Preview</button>`;
             const promptBtn = kind === 'video'
-                ? `<button onclick="event.stopPropagation(); openVideoPrompt(${i})" class="w-full py-2 bg-[#fdd663] text-black font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">✦ View Prompt</button>`
-                : `<button onclick="event.stopPropagation(); openPrompt(${i})" class="w-full py-2 bg-[#fdd663] text-black font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">✦ View Prompt</button>`;
+                ? `<button onclick="event.stopPropagation(); openVideoPrompt(${i})" class="w-full py-1.5 sm:py-2 bg-[#fdd663] text-black font-bold text-[10px] sm:text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">✦ View Prompt</button>`
+                : `<button onclick="event.stopPropagation(); openPrompt(${i})" class="w-full py-1.5 sm:py-2 bg-[#fdd663] text-black font-bold text-[10px] sm:text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">✦ View Prompt</button>`;
             return `
                 <div class="tpl-float-wrap" style="animation-delay: ${i * 0.18}s">
                     <article class="sketch-window card-hover tpl-card flex flex-col" onclick="zoomCard(this)">
@@ -455,15 +473,15 @@ All type is condensed grotesque with RGB split (red -2px, blue +2px). Hard geome
                             <span class="truncate">${slug}.${kind === 'video' ? 'mp4' : 'html'}</span>
                             <span>${kind === 'video' ? 'vid' : 'tpl'}_${String(i + 1).padStart(2, '0')}</span>
                         </div>
-                        <div class="p-4 sm:p-5 flex flex-col flex-1 gap-3 bg-white">
+                        <div class="p-2 sm:p-5 flex flex-col flex-1 gap-1.5 sm:gap-3 bg-white">
                             ${t.video ? `
                             <div class="tpl-video-wrap">
                                 <video class="tpl-preview-video" src="${t.video}" muted loop playsinline autoplay preload="auto"></video>
                                 <span class="tpl-video-badge">${kind === 'video' ? 'video prompt' : 'live preview'}</span>
                             </div>` : `
                             <div class="tpl-thumb-fallback">tpl</div>`}
-                            <h3 class="font-creative font-bold text-lg leading-tight">${t.name}</h3>
-                            <p class="font-sketch text-sm text-zinc-600 flex-1">${t.desc}</p>
+                            <h3 class="font-creative font-bold text-xs sm:text-lg leading-tight">${t.name}</h3>
+                            <p class="font-sketch text-[10px] sm:text-sm text-zinc-600 flex-1">${t.desc}</p>
                             ${previewBtn}
                             ${promptBtn}
                         </div>
