@@ -297,6 +297,9 @@
             transform: translateY(-20px);
             visibility: hidden;
         }
+        html.skip-preloader #preloader {
+            display: none !important;
+        }
 
         .logo-anim {
             position: relative;
@@ -336,6 +339,23 @@
         ::-webkit-scrollbar-track { background: #FAFAF7; }
         ::-webkit-scrollbar-thumb { background: #111111; border-radius: 4px; }
     </style>
+    <script>
+        (function () {
+            try {
+                var sameOrigin = false;
+                if (document.referrer) {
+                    var ref = new URL(document.referrer, location.href);
+                    sameOrigin = ref.origin === location.origin;
+                }
+                var skip = localStorage.getItem('css_booted') === '1'
+                    || sessionStorage.getItem('css_booted') === '1'
+                    || sameOrigin
+                    || location.hash === '#home'
+                    || performance.getEntriesByType('navigation')[0] && performance.getEntriesByType('navigation')[0].type === 'back_forward';
+                if (skip) document.documentElement.classList.add('skip-preloader');
+            } catch (e) {}
+        })();
+    </script>
 </head>
 <body class="bg-[#FAFAF7] text-[#111111] antialiased selection:bg-black selection:text-white doodle-bg relative min-h-screen flex flex-col justify-between m-0 p-0">
 
@@ -951,28 +971,56 @@
         const loaderStatus = document.getElementById('loaderStatus');
         const preloader = document.getElementById('preloader');
 
-        setTimeout(() => {
-            if (loaderBar) loaderBar.style.width = '35%';
-            if (loaderStatus) loaderStatus.textContent = '- loading studio core -';
-        }, 600);
-
-        setTimeout(() => {
-            if (loaderBar) loaderBar.style.width = '75%';
-            if (loaderStatus) loaderStatus.textContent = '- mounting digital products -';
-        }, 1500);
-
-        setTimeout(() => {
-            if (loaderBar) loaderBar.style.width = '100%';
-            if (loaderStatus) loaderStatus.textContent = '- ready for deployment -';
-        }, 2200);
-
-        setTimeout(() => {
+        const skipBoot = document.documentElement.classList.contains('skip-preloader');
+        const markBooted = () => {
+            try {
+                localStorage.setItem('css_booted', '1');
+                sessionStorage.setItem('css_booted', '1');
+            } catch (e) {}
+        };
+        const hidePreloaderNow = () => {
             if (!preloader) return;
             preloader.classList.add('fade-out');
+            preloader.style.display = 'none';
+            document.documentElement.classList.add('skip-preloader');
+        };
+
+        window.addEventListener('pageshow', (e) => {
+            if (e.persisted || document.documentElement.classList.contains('skip-preloader')) {
+                hidePreloaderNow();
+                markBooted();
+            }
+        });
+
+        if (skipBoot) {
+            hidePreloaderNow();
+            markBooted();
+        } else {
+            markBooted();
             setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 1200);
-        }, 2600);
+                if (loaderBar) loaderBar.style.width = '35%';
+                if (loaderStatus) loaderStatus.textContent = '- loading studio core -';
+            }, 600);
+
+            setTimeout(() => {
+                if (loaderBar) loaderBar.style.width = '75%';
+                if (loaderStatus) loaderStatus.textContent = '- mounting digital products -';
+            }, 1500);
+
+            setTimeout(() => {
+                if (loaderBar) loaderBar.style.width = '100%';
+                if (loaderStatus) loaderStatus.textContent = '- ready for deployment -';
+            }, 2200);
+
+            setTimeout(() => {
+                if (!preloader) return;
+                preloader.classList.add('fade-out');
+                markBooted();
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 1200);
+            }, 2600);
+        }
     });
 
         document.addEventListener('DOMContentLoaded', () => {
