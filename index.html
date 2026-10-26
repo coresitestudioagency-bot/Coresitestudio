@@ -268,6 +268,50 @@
         }
         .pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
 
+        .btn-3d {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: 3px solid #111111;
+            border-radius: 14px;
+            font-weight: 800;
+            text-decoration: none;
+            color: #111111;
+            transform: translateY(0);
+            transition: transform 0.14s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.14s cubic-bezier(0.16, 1, 0.3, 1), filter 0.14s ease;
+            user-select: none;
+        }
+        .btn-3d:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+        }
+        .btn-3d:active {
+            transform: translateY(5px);
+            filter: brightness(0.97);
+        }
+        .btn-3d-explore {
+            background: #fff4cc;
+            box-shadow: 0 7px 0 #e6c96a, 4px 10px 0 #111111;
+        }
+        .btn-3d-explore:hover {
+            box-shadow: 0 10px 0 #e6c96a, 6px 14px 0 #111111;
+        }
+        .btn-3d-explore:active {
+            box-shadow: 0 2px 0 #e6c96a, 1px 3px 0 #111111;
+        }
+        .btn-3d-store {
+            background: #fdd663;
+            box-shadow: 0 7px 0 #c49a14, 4px 10px 0 #111111;
+        }
+        .btn-3d-store:hover {
+            box-shadow: 0 10px 0 #c49a14, 6px 14px 0 #111111;
+        }
+        .btn-3d-store:active {
+            box-shadow: 0 2px 0 #c49a14, 1px 3px 0 #111111;
+        }
+
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(35px);
@@ -428,12 +472,12 @@
                     Welcome! 👋 Explore our creative systems below
                 </div>
 
-                <div class="flex flex-wrap items-center justify-center gap-4 mt-2 w-full">
-                    <a href="explore.html" class="px-6 py-3 bg-white text-black border-3 border-black rounded-xl font-bold text-lg sm:text-xl shadow-[3px_3px_0px_#111] hover:bg-black hover:text-white hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#111] transition-all cursor-pointer float-anim flex items-center gap-2 no-underline text-black">
-                        <span>🔍 Explore More</span>
+                <div class="flex flex-wrap items-center justify-center gap-5 mt-2 w-full">
+                    <a href="explore.html" class="btn-3d btn-3d-explore px-6 py-3 font-bold text-lg sm:text-xl cursor-pointer float-anim">
+                        <span>Explore More</span>
                     </a>
-                    <a href="https://payhip.com/Coresitestudioagency" target="_blank" class="px-6 py-3 bg-[#fdd663] text-black border-3 border-black rounded-xl font-bold text-lg sm:text-xl shadow-[3px_3px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#111] transition-all cursor-pointer float-anim-delayed flex items-center gap-2">
-                        <span>🛍️ Digital Store ↗</span>
+                    <a href="https://payhip.com/Coresitestudioagency" target="_blank" class="btn-3d btn-3d-store px-6 py-3 font-bold text-lg sm:text-xl cursor-pointer float-anim-delayed">
+                        <span>Digital Store</span>
                     </a>
                 </div>
             </div>
@@ -515,7 +559,7 @@
                 </div>
 
                 <!-- Blog Post 5 -->
-                <div class="sketch-window p-3 sm:p-6 bg-white flex flex-col justify-between sm:col-span-2 float-anim">
+                <div class="sketch-window p-3 sm:p-6 bg-white flex flex-col justify-between float-anim">
                     <div>
                         <div class="flex items-center justify-between mb-2 sm:mb-3">
                             <span class="px-1.5 sm:px-2.5 py-0.5 sm:py-1 bg-pink-100 text-black font-mono text-[9px] sm:text-sm font-bold border border-black rounded-md">Culture</span>
@@ -526,8 +570,59 @@
                             Why drop shadows, subtle floating animations, and paper-like textures make digital interfaces feel alive and human.
                         </p>
                     </div>
-                    <button onclick="openModal('blogModal5')" class="w-full sm:w-auto px-3 sm:px-6 py-1.5 sm:py-2.5 bg-black text-white font-bold text-[11px] sm:text-base border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 transition-all cursor-pointer text-center">
-                        Read Full Article ↗
+                    <button onclick="openModal('blogModal5')" class="w-full py-1.5 sm:py-2.5 bg-black text-white font-bold text-[11px] sm:text-base border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 transition-all cursor-pointer text-center">
+                        Read Article ↗
+                    </button>
+                </div>
+
+                <!-- Blog Post 6 -->
+                <div class="sketch-window p-3 sm:p-6 bg-white flex flex-col justify-between float-anim-delayed">
+                    <div>
+                        <div class="flex items-center justify-between mb-2 sm:mb-3">
+                            <span class="px-1.5 sm:px-2.5 py-0.5 sm:py-1 bg-orange-100 text-black font-mono text-[9px] sm:text-sm font-bold border border-black rounded-md">Prompt</span>
+                            <span class="font-mono text-[9px] sm:text-xs text-zinc-500">Mar 30, 2026</span>
+                        </div>
+                        <h3 class="font-creative font-bold text-sm sm:text-2xl mb-1.5 sm:mb-2 text-black text-float">Why the Prompt Is Everything for AI</h3>
+                        <p class="font-sketch text-[11px] sm:text-lg text-zinc-700 leading-relaxed mb-2 sm:mb-4 text-float">
+                            The model is not the designer. The prompt is. Every color, layout, motion, and tone lives or dies inside that brief.
+                        </p>
+                    </div>
+                    <button onclick="openModal('blogModal6')" class="w-full py-1.5 sm:py-2.5 bg-[#fdd663] text-black font-bold text-[11px] sm:text-base border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 transition-all cursor-pointer text-center">
+                        Read Article ↗
+                    </button>
+                </div>
+
+                <!-- Blog Post 7 -->
+                <div class="sketch-window p-3 sm:p-6 bg-white flex flex-col justify-between float-anim">
+                    <div>
+                        <div class="flex items-center justify-between mb-2 sm:mb-3">
+                            <span class="px-1.5 sm:px-2.5 py-0.5 sm:py-1 bg-cyan-100 text-black font-mono text-[9px] sm:text-sm font-bold border border-black rounded-md">AI Craft</span>
+                            <span class="font-mono text-[9px] sm:text-xs text-zinc-500">Mar 18, 2026</span>
+                        </div>
+                        <h3 class="font-creative font-bold text-sm sm:text-2xl mb-1.5 sm:mb-2 text-black text-float">A Prompt Is a Complete Design System</h3>
+                        <p class="font-sketch text-[11px] sm:text-lg text-zinc-700 leading-relaxed mb-2 sm:mb-4 text-float-delayed">
+                            Type, spacing, interaction, brand voice. If it is missing from the prompt, the AI has to guess — and guessing is how sites go generic.
+                        </p>
+                    </div>
+                    <button onclick="openModal('blogModal7')" class="w-full py-1.5 sm:py-2.5 bg-black text-white font-bold text-[11px] sm:text-base border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 transition-all cursor-pointer text-center">
+                        Read Article ↗
+                    </button>
+                </div>
+
+                <!-- Blog Post 8 -->
+                <div class="sketch-window p-3 sm:p-6 bg-white flex flex-col justify-between float-anim-delayed">
+                    <div>
+                        <div class="flex items-center justify-between mb-2 sm:mb-3">
+                            <span class="px-1.5 sm:px-2.5 py-0.5 sm:py-1 bg-lime-100 text-black font-mono text-[9px] sm:text-sm font-bold border border-black rounded-md">Studio</span>
+                            <span class="font-mono text-[9px] sm:text-xs text-zinc-500">Mar 06, 2026</span>
+                        </div>
+                        <h3 class="font-creative font-bold text-sm sm:text-2xl mb-1.5 sm:mb-2 text-black text-float">Prompt Like a Studio, Not Like a Search Bar</h3>
+                        <p class="font-sketch text-[11px] sm:text-lg text-zinc-700 leading-relaxed mb-2 sm:mb-4 text-float">
+                            Constraints, references, structure. That is why our vault templates work — the prompt already contains the entire build.
+                        </p>
+                    </div>
+                    <button onclick="openModal('blogModal8')" class="w-full py-1.5 sm:py-2.5 bg-[#fdd663] text-black font-bold text-[11px] sm:text-base border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 transition-all cursor-pointer text-center">
+                        Read Article ↗
                     </button>
                 </div>
             </div>
@@ -887,6 +982,72 @@
             </div>
             <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
                 <button onclick="closeModal('blogModal5')" class="px-6 py-2.5 bg-black text-white font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer">
+                    Close Article
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Blog Article 6 -->
+    <div id="blogModal6" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99999] hidden items-center justify-center p-4">
+        <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[85vh] flex flex-col">
+            <div class="sketch-window-header">
+                <span class="font-mono text-lg font-bold text-float">- BLOG_POST_06.md</span>
+                <button onclick="closeModal('blogModal6')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+            </div>
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
+                <span class="px-3 py-1 bg-orange-100 text-black font-mono text-xs font-bold border border-black rounded-md">Prompt</span>
+                <h3 class="font-creative font-bold text-2xl sm:text-3xl text-black">Why the Prompt Is Everything for AI</h3>
+                <p class="text-zinc-500 font-mono text-sm">Published on Mar 30, 2026 by Core Site Studio</p>
+                <p>AI does not invent taste. It follows instructions. The prompt is the entire brief — layout, palette, motion, copy voice, and what must never appear. Weak prompts produce generic sites because the model is filling gaps you never defined.</p>
+                <p>That is why our Template Vault treats the prompt as the product. Preview the site, then open the prompt. The output is only as sharp as the words that built it.</p>
+            </div>
+            <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
+                <button onclick="closeModal('blogModal6')" class="px-6 py-2.5 bg-black text-white font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer">
+                    Close Article
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Blog Article 7 -->
+    <div id="blogModal7" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99999] hidden items-center justify-center p-4">
+        <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[85vh] flex flex-col">
+            <div class="sketch-window-header">
+                <span class="font-mono text-lg font-bold text-float">- BLOG_POST_07.md</span>
+                <button onclick="closeModal('blogModal7')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+            </div>
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
+                <span class="px-3 py-1 bg-cyan-100 text-black font-mono text-xs font-bold border border-black rounded-md">AI Craft</span>
+                <h3 class="font-creative font-bold text-2xl sm:text-3xl text-black">A Prompt Is a Complete Design System</h3>
+                <p class="text-zinc-500 font-mono text-sm">Published on Mar 18, 2026 by Core Site Studio</p>
+                <p>A real prompt is not a one-liner. It is type, spacing, interaction states, brand voice, and section structure written in one place. If any of that is missing, the AI guesses — and guessing is how every generated site starts looking the same.</p>
+                <p>Write the system first. Then let the model assemble it. That is how you keep a sketch-studio look instead of a default template look.</p>
+            </div>
+            <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
+                <button onclick="closeModal('blogModal7')" class="px-6 py-2.5 bg-black text-white font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer">
+                    Close Article
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Blog Article 8 -->
+    <div id="blogModal8" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99999] hidden items-center justify-center p-4">
+        <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[85vh] flex flex-col">
+            <div class="sketch-window-header">
+                <span class="font-mono text-lg font-bold text-float">- BLOG_POST_08.md</span>
+                <button onclick="closeModal('blogModal8')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+            </div>
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
+                <span class="px-3 py-1 bg-lime-100 text-black font-mono text-xs font-bold border border-black rounded-md">Studio</span>
+                <h3 class="font-creative font-bold text-2xl sm:text-3xl text-black">Prompt Like a Studio, Not Like a Search Bar</h3>
+                <p class="text-zinc-500 font-mono text-sm">Published on Mar 06, 2026 by Core Site Studio</p>
+                <p>Studios ship with constraints: references, banned styles, exact motion, and a locked palette. Search-bar prompts skip all of that, so the model improvises. Improvisation is not a brand.</p>
+                <p>Our vault templates already contain the full build inside the prompt. Copy it, run it, and the site comes out looking directed — because the direction was written first.</p>
+            </div>
+            <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
+                <button onclick="closeModal('blogModal8')" class="px-6 py-2.5 bg-black text-white font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer">
                     Close Article
                 </button>
             </div>
