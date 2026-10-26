@@ -12,7 +12,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,400..800;1,400..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
     
     <!-- ========================================== -->
     <!-- STYLING CONFIGURATION SECTION -->
@@ -22,9 +22,9 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sketch': ['"Shantell Sans"', 'cursive', 'sans-serif'],
-                        'creative': ['"Syne"', 'sans-serif'],
-                        'mono': ['"Space Mono"', 'monospace'],
+                        'sketch': ['"Patrick Hand"', 'cursive', 'sans-serif'],
+                        'creative': ['"Kalam"', 'cursive', 'sans-serif'],
+                        'mono': ['"Caveat"', 'cursive', 'sans-serif'],
                     }
                 }
             }
@@ -34,9 +34,9 @@
     <style>
         html { scroll-behavior: smooth; }
         body {
-            background-color: #FAFAF7;
-            color: #111111;
-            font-family: 'Shantell Sans', cursive, sans-serif;
+            background-color: #FFF9F0;
+            color: #1C1917;
+            font-family: 'Patrick Hand', cursive, sans-serif;
             overflow-x: hidden;
             margin: 0;
             padding: 0;
@@ -49,21 +49,28 @@
         }
 
         .sketch-window {
-            background: #FFFFFF;
-            border: 3px solid #111111;
-            box-shadow: 5px 5px 0px #111111;
-            border-radius: 16px;
+            background: #FFFDF8;
+            border: 2.5px solid #1C1917;
+            box-shadow: 4px 4px 0px rgba(28, 25, 23, 0.18);
+            border-radius: 255px 18px 225px 15px / 15px 225px 15px 255px;
             overflow: hidden;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: box-shadow 0.22s ease;
+        }
+        .sketch-window:nth-of-type(even) {
+            border-radius: 18px 255px 15px 225px / 225px 15px 255px 15px;
+        }
+        .sketch-window:hover {
+            box-shadow: 6px 6px 0px rgba(28, 25, 23, 0.2);
         }
 
         .sketch-window-header {
-            background: #FFFFFF;
-            border-bottom: 3px solid #111111;
+            background: rgba(253, 224, 71, 0.28);
+            border-bottom: 2px dashed #1C1917;
             padding: 8px 14px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            font-family: 'Caveat', cursive, sans-serif;
         }
 
         .window-dots {
@@ -73,20 +80,23 @@
         .window-dot {
             width: 8px;
             height: 8px;
-            border: 2px solid #111111;
-            border-radius: 50%;
-            background: #FFFFFF;
+            border: 2px solid #1C1917;
+            border-radius: 40% 60% 55% 45%;
+            background: #FFFDF8;
         }
-        .window-dot:nth-child(3) { background: #111111; }
+        .window-dot:nth-child(3) { background: #C2410C; }
 
         .doodle-bg {
-            background-image: radial-gradient(#111111 1.2px, transparent 1.2px);
-            background-size: 38px 38px;
+            background-color: #FFF9F0;
+            background-image:
+                radial-gradient(rgba(28, 25, 23, 0.08) 0.9px, transparent 0.9px),
+                repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(194, 65, 12, 0.04) 28px);
+            background-size: 22px 22px, 100% 28px;
         }
 
         .brand-logo {
-            --brand-current: #111111;
-            --brand-accent: #fdd663;
+            --brand-current: #1C1917;
+            --brand-accent: #C2410C;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -153,8 +163,8 @@
             align-items: flex-start;
             line-height: 0.72;
             letter-spacing: -0.08em;
-            font-family: 'Syne', sans-serif;
-            font-weight: 900;
+            font-family: 'Kalam', cursive, sans-serif;
+            font-weight: 700;
             color: var(--brand-current);
         }
 
@@ -203,10 +213,10 @@
             flex-direction: column;
             align-items: center;
             color: currentColor;
-            font-family: 'Syne', sans-serif;
-            font-weight: 900;
+            font-family: 'Kalam', cursive, sans-serif;
+            font-weight: 700;
             line-height: 0.82;
-            letter-spacing: -0.07em;
+            letter-spacing: -0.04em;
             text-transform: lowercase;
         }
 
@@ -249,15 +259,15 @@
         }
 
         @keyframes floatLoop {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-5px) rotate(0.2deg); }
+            0%, 100% { transform: translateY(0px) rotate(-0.4deg); }
+            50% { transform: translateY(-5px) rotate(0.35deg); }
         }
         .float-anim { animation: floatLoop 5s ease-in-out infinite; }
         .float-anim-delayed { animation: floatLoop 6s ease-in-out infinite 2s; }
 
         @keyframes textWaveLoop {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-3px) rotate(0.15deg); }
+            0%, 100% { transform: translateY(0px) rotate(-0.2deg); }
+            50% { transform: translateY(-3px) rotate(0.2deg); }
         }
         .text-float { animation: textWaveLoop 4.5s ease-in-out infinite; display: inline-block; }
         .text-float-delayed { animation: textWaveLoop 5.5s ease-in-out infinite 1.5s; display: inline-block; }
@@ -274,42 +284,39 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            border: 3px solid #111111;
-            border-radius: 14px;
-            font-weight: 800;
+            border: 2px solid #1C1917;
+            border-radius: 255px 20px 225px 18px / 18px 225px 18px 255px;
+            font-family: 'Kalam', cursive, sans-serif;
+            font-weight: 700;
             text-decoration: none;
-            color: #111111;
-            transform: translateY(0);
-            transition: transform 0.14s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.14s cubic-bezier(0.16, 1, 0.3, 1), filter 0.14s ease;
+            color: #1C1917;
+            transition: box-shadow 0.2s ease, background 0.2s ease;
             user-select: none;
+            box-shadow: 4px 4px 0px #1C1917;
         }
         .btn-3d:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.05);
+            filter: brightness(1.04);
         }
         .btn-3d:active {
-            transform: translateY(5px);
-            filter: brightness(0.97);
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #1C1917;
         }
         .btn-3d-explore {
-            background: #fff4cc;
-            box-shadow: 0 7px 0 #e6c96a, 4px 10px 0 #111111;
+            background: rgba(253, 224, 71, 0.42);
         }
         .btn-3d-explore:hover {
-            box-shadow: 0 10px 0 #e6c96a, 6px 14px 0 #111111;
-        }
-        .btn-3d-explore:active {
-            box-shadow: 0 2px 0 #e6c96a, 1px 3px 0 #111111;
+            background: rgba(253, 224, 71, 0.62);
         }
         .btn-3d-store {
-            background: #fdd663;
-            box-shadow: 0 7px 0 #c49a14, 4px 10px 0 #111111;
+            background: rgba(194, 65, 12, 0.18);
         }
         .btn-3d-store:hover {
-            box-shadow: 0 10px 0 #c49a14, 6px 14px 0 #111111;
+            background: rgba(194, 65, 12, 0.28);
         }
-        .btn-3d-store:active {
-            box-shadow: 0 2px 0 #c49a14, 1px 3px 0 #111111;
+        @media (prefers-reduced-motion: reduce) {
+            .float-anim, .float-anim-delayed, .text-float, .text-float-delayed, .pulse-glow {
+                animation: none;
+            }
         }
 
         .reveal-on-scroll {
@@ -326,7 +333,7 @@
         #preloader {
             position: fixed;
             inset: 0;
-            background: #FAFAF7;
+            background: #FFF9F0;
             z-index: 999999;
             display: flex;
             flex-direction: column;
@@ -380,8 +387,8 @@
         }
 
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #FAFAF7; }
-        ::-webkit-scrollbar-thumb { background: #111111; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #FFF9F0; }
+        ::-webkit-scrollbar-thumb { background: #1C1917; border-radius: 40% 60% 50% 50%; }
     </style>
     <script>
         (function () {
@@ -401,19 +408,19 @@
         })();
     </script>
 </head>
-<body class="bg-[#FAFAF7] text-[#111111] antialiased selection:bg-black selection:text-white doodle-bg relative min-h-screen flex flex-col justify-between m-0 p-0">
+<body class="bg-[#FFF9F0] text-[#1C1917] antialiased selection:bg-[#FDE68A] selection:text-[#1C1917] doodle-bg relative min-h-screen flex flex-col justify-between m-0 p-0">
 
     <!-- ========================================== -->
     <!-- PRELOADER SECTION -->
     <!-- ========================================== -->
     <div id="preloader">
-        <div class="sketch-window p-6 sm:p-10 bg-white text-center shadow-[8px_8px_0px_#111] max-w-sm sm:max-w-md mx-4 float-anim">
+        <div class="sketch-window p-6 sm:p-10 bg-white text-center shadow-[4px_4px_0px_rgba(28,25,23,0.2)] max-w-sm sm:max-w-md mx-4 float-anim">
             <div class="text-wordmark mb-4" role="img" aria-label="CoreSiteStudio">
                 <span class="text-wordmark-main">coresite</span>
                 <span class="text-wordmark-sub">studio</span>
             </div>
-            <div class="w-36 sm:w-52 h-2.5 bg-zinc-100 border-2 border-black rounded-full mx-auto overflow-hidden p-0.5 shadow-[2px_2px_0px_#111] mt-6">
-                <div id="loaderBar" class="h-full bg-[#fdd663] rounded-full w-0 transition-all duration-1200 ease-out"></div>
+            <div class="w-36 sm:w-52 h-2.5 bg-zinc-100 border-2 border-[#1C1917] rounded-full mx-auto overflow-hidden p-0.5 shadow-[3px_3px_0px_rgba(28,25,23,0.18)] mt-6">
+                <div id="loaderBar" class="h-full bg-[rgba(253,224,71,0.45)] rounded-full w-0 transition-all duration-1200 ease-out"></div>
             </div>
             <p id="loaderStatus" class="font-mono text-xs sm:text-sm text-zinc-600 mt-3 tracking-wider uppercase font-bold">- booting studio environment -</p>
         </div>
@@ -422,18 +429,18 @@
     <!-- ========================================== -->
     <!-- NAVIGATION BAR SECTION -->
     <!-- ========================================== -->
-    <nav class="w-full max-w-[1150px] mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-center sticky top-0 z-50 bg-[#FAFAF7]/95 backdrop-blur-sm gap-3 float-anim">
+    <nav class="w-full max-w-[1150px] mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-center sticky top-0 z-50 bg-[#FFF9F0]/95 backdrop-blur-sm gap-3 float-anim">
         <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 w-full">
-            <a href="explore.html" class="flex-1 md:flex-initial px-3 sm:px-4 py-2 bg-[#fff4cc] text-black font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-[#fdd663] transition-all cursor-pointer text-float text-center truncate no-underline">
+            <a href="explore.html" class="flex-1 md:flex-initial px-3 sm:px-4 py-2 bg-[#fff4cc] text-black font-bold text-xs sm:text-base border-2 border-[#1C1917] rounded-[14px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] hover:bg-[rgba(253,224,71,0.45)] transition-all cursor-pointer text-float text-center truncate no-underline">
                 Prompt
             </a>
-            <button onclick="openModal('linksModal')" class="flex-1 md:flex-initial px-3 sm:px-4 py-2 bg-yellow-50 text-black font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-yellow-100 transition-all cursor-pointer text-float text-center truncate">
+            <button onclick="openModal('linksModal')" class="flex-1 md:flex-initial px-3 sm:px-4 py-2 bg-yellow-50 text-black font-bold text-xs sm:text-base border-2 border-[#1C1917] rounded-[14px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] hover:bg-yellow-100 transition-all cursor-pointer text-float text-center truncate">
                 📁 Directory Links
             </button>
-            <button onclick="openModal('contactModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-2 bg-black text-white font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-zinc-800 transition-all cursor-pointer text-float-delayed text-center truncate">
+            <button onclick="openModal('contactModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-2 bg-[#1C1917] text-[#FFF9F0] font-bold text-xs sm:text-base border-2 border-[#1C1917] rounded-[14px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] hover:bg-[#292524] transition-all cursor-pointer text-float-delayed text-center truncate">
                 Contact
             </button>
-            <button onclick="openModal('newsletterModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-2 bg-yellow-100 text-black font-bold text-xs sm:text-base border-2 border-black rounded-lg shadow-[1px_1px_0px_#111] hover:bg-yellow-200 transition-all cursor-pointer text-float text-center truncate">
+            <button onclick="openModal('newsletterModal')" class="flex-1 md:flex-initial px-2.5 sm:px-4 py-2 bg-yellow-100 text-black font-bold text-xs sm:text-base border-2 border-[#1C1917] rounded-[14px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] hover:bg-yellow-200 transition-all cursor-pointer text-float text-center truncate">
                 Newsletter 💌
             </button>
         </div>
@@ -460,18 +467,18 @@
                         <span class="text-wordmark-main">coresite</span>
                         <span class="text-wordmark-sub">studio</span>
                     </div>
-                    <div class="inline-block px-3.5 py-1.5 bg-black text-white font-mono text-xs sm:text-lg rounded-full border border-black mb-3 rotate-[-1deg] shadow-[2px_2px_0px_rgba(255,255,255,0.2)] text-float-delayed max-w-full truncate">
+                    <div class="inline-block px-3.5 py-1.5 bg-[#1C1917] text-[#FFF9F0] font-mono text-xs sm:text-lg rounded-full border border-black mb-3 rotate-[-1deg] shadow-[2px_2px_0px_rgba(255,255,255,0.2)] text-float-delayed max-w-full truncate">
                         | digital world & design core |
                     </div>
                     
-                    <div class="absolute -bottom-1.5 right-3 sm:right-6 bg-[#fdd663] text-black font-mono text-xs sm:text-base font-bold px-3 py-1 rounded-lg border-2 border-black rotate-[6deg] shadow-[2px_2px_0px_#111] pulse-glow">
+                    <div class="absolute -bottom-1.5 right-3 sm:right-6 bg-[rgba(253,224,71,0.45)] text-black font-mono text-xs sm:text-base font-bold px-3 py-1 rounded-[14px] border-2 border-[#1C1917] rotate-[6deg] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] pulse-glow">
                         v2.8 Live
                     </div>
                 </div>
             </div>
 
             <div class="mt-6 flex flex-col items-center gap-4 w-full px-2">
-                <div class="sketch-window px-6 py-3 bg-white text-lg sm:text-2xl font-bold tracking-wide rotate-[1deg] text-float shadow-[3px_3px_0px_#111] text-center max-w-full">
+                <div class="sketch-window px-6 py-3 bg-white text-lg sm:text-2xl font-bold tracking-wide rotate-[1deg] text-float shadow-[4px_4px_0px_#1C1917] text-center max-w-full">
                     Welcome! 👋 Explore our creative systems below
                 </div>
 
@@ -488,7 +495,7 @@
 
         <!-- SECTION: Journal / Blog Articles -->
         <section class="w-full flex flex-col items-center relative reveal-on-scroll">
-            <div class="mb-5 px-6 py-2.5 bg-white border-2 border-black rounded-xl shadow-[2px_2px_0px_#111] font-mono text-xl font-bold rotate-[1deg] text-float">
+            <div class="mb-5 px-6 py-2.5 bg-white border-2 border-[#1C1917] rounded-[18px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] font-mono text-xl font-bold rotate-[1deg] text-float">
                 JOURNAL // BLOG.pkg
             </div>
 
@@ -505,7 +512,7 @@
                             Discover why minimalist hand-drawn aesthetics and playful tactile components are outperforming sterile corporate designs.
                         </p>
                     </div>
-                    <button onclick="openModal('blogModal1')" class="w-full py-1.5 sm:py-2.5 bg-black text-white font-bold text-[11px] sm:text-base border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 transition-all cursor-pointer text-center">
+                    <button onclick="openModal('blogModal1')" class="w-full py-1.5 sm:py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-[11px] sm:text-base border-2 border-[#1C1917] rounded-[14px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] hover:bg-[#292524] transition-all cursor-pointer text-center">
                         Read Article ↗
                     </button>
                 </div>
@@ -522,7 +529,7 @@
                             An inside look at how our studio engineers ultra-fast single-file web architectures with buttery smooth interactions.
                         </p>
                     </div>
-                    <button onclick="openModal('blogModal2')" class="w-full py-1.5 sm:py-2.5 bg-[#fdd663] text-black font-bold text-[11px] sm:text-base border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 transition-all cursor-pointer text-center">
+                    <button onclick="openModal('blogModal2')" class="w-full py-1.5 sm:py-2.5 bg-[rgba(253,224,71,0.45)] text-black font-bold text-[11px] sm:text-base border-2 border-[#1C1917] rounded-[14px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] hover:bg-[rgba(253,224,71,0.7)] transition-all cursor-pointer text-center">
                         Read Article ↗
                     </button>
                 </div>
@@ -539,7 +546,7 @@
                             How removing visual noise and focusing on crystal-clear calls to action can drastically boost client acquisition.
                         </p>
                     </div>
-                    <button onclick="openModal('blogModal3')" class="w-full py-1.5 sm:py-2.5 bg-black text-white font-bold text-[11px] sm:text-base border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 transition-all cursor-pointer text-center">
+                    <button onclick="openModal('blogModal3')" class="w-full py-1.5 sm:py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-[11px] sm:text-base border-2 border-[#1C1917] rounded-[14px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] hover:bg-[#292524] transition-all cursor-pointer text-center">
                         Read Article ↗
                     </button>
                 </div>
@@ -556,7 +563,7 @@
                             Ensuring seamless ergonomics, precise spacing, and fluid touch interactions across all mobile phone viewports.
                         </p>
                     </div>
-                    <button onclick="openModal('blogModal4')" class="w-full py-1.5 sm:py-2.5 bg-[#fdd663] text-black font-bold text-[11px] sm:text-base border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 transition-all cursor-pointer text-center">
+                    <button onclick="openModal('blogModal4')" class="w-full py-1.5 sm:py-2.5 bg-[rgba(253,224,71,0.45)] text-black font-bold text-[11px] sm:text-base border-2 border-[#1C1917] rounded-[14px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] hover:bg-[rgba(253,224,71,0.7)] transition-all cursor-pointer text-center">
                         Read Article ↗
                     </button>
                 </div>
@@ -573,7 +580,7 @@
                             Why drop shadows, subtle floating animations, and paper-like textures make digital interfaces feel alive and human.
                         </p>
                     </div>
-                    <button onclick="openModal('blogModal5')" class="w-full py-1.5 sm:py-2.5 bg-black text-white font-bold text-[11px] sm:text-base border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 transition-all cursor-pointer text-center">
+                    <button onclick="openModal('blogModal5')" class="w-full py-1.5 sm:py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-[11px] sm:text-base border-2 border-[#1C1917] rounded-[14px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] hover:bg-[#292524] transition-all cursor-pointer text-center">
                         Read Article ↗
                     </button>
                 </div>
@@ -590,7 +597,7 @@
                             The model is not the designer. The prompt is. Every color, layout, motion, and tone lives or dies inside that brief.
                         </p>
                     </div>
-                    <button onclick="openModal('blogModal6')" class="w-full py-1.5 sm:py-2.5 bg-[#fdd663] text-black font-bold text-[11px] sm:text-base border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 transition-all cursor-pointer text-center">
+                    <button onclick="openModal('blogModal6')" class="w-full py-1.5 sm:py-2.5 bg-[rgba(253,224,71,0.45)] text-black font-bold text-[11px] sm:text-base border-2 border-[#1C1917] rounded-[14px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] hover:bg-[rgba(253,224,71,0.7)] transition-all cursor-pointer text-center">
                         Read Article ↗
                     </button>
                 </div>
@@ -607,7 +614,7 @@
                             Type, spacing, interaction, brand voice. If it is missing from the prompt, the AI has to guess — and guessing is how sites go generic.
                         </p>
                     </div>
-                    <button onclick="openModal('blogModal7')" class="w-full py-1.5 sm:py-2.5 bg-black text-white font-bold text-[11px] sm:text-base border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 transition-all cursor-pointer text-center">
+                    <button onclick="openModal('blogModal7')" class="w-full py-1.5 sm:py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-[11px] sm:text-base border-2 border-[#1C1917] rounded-[14px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] hover:bg-[#292524] transition-all cursor-pointer text-center">
                         Read Article ↗
                     </button>
                 </div>
@@ -624,7 +631,7 @@
                             Constraints, references, structure. That is why our vault templates work — the prompt already contains the entire build.
                         </p>
                     </div>
-                    <button onclick="openModal('blogModal8')" class="w-full py-1.5 sm:py-2.5 bg-[#fdd663] text-black font-bold text-[11px] sm:text-base border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 transition-all cursor-pointer text-center">
+                    <button onclick="openModal('blogModal8')" class="w-full py-1.5 sm:py-2.5 bg-[rgba(253,224,71,0.45)] text-black font-bold text-[11px] sm:text-base border-2 border-[#1C1917] rounded-[14px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] hover:bg-[rgba(253,224,71,0.7)] transition-all cursor-pointer text-center">
                         Read Article ↗
                     </button>
                 </div>
@@ -633,7 +640,7 @@
 
         <!-- SECTION: About Me & Agency Overview (No Box Outline) -->
         <section id="content-section" class="w-full flex flex-col items-center relative reveal-on-scroll">
-            <div class="mb-5 px-6 py-2.5 bg-white border-2 border-black rounded-xl shadow-[2px_2px_0px_#111] font-mono text-xl font-bold rotate-[-1deg] text-float">
+            <div class="mb-5 px-6 py-2.5 bg-white border-2 border-[#1C1917] rounded-[18px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] font-mono text-xl font-bold rotate-[-1deg] text-float">
                 ME // ABOUT.pkg
             </div>
 
@@ -644,9 +651,9 @@
                         We specialize in engineering cutting-edge digital products and custom high-performance websites designed to scale modern businesses.
                     </p>
                     <div class="flex flex-wrap gap-2.5 justify-center sm:justify-start">
-                        <span class="px-3.5 py-1.5 bg-white border-2 border-black rounded-lg text-base sm:text-lg font-bold shadow-[2px_2px_0px_#111]">Web Dev</span>
-                        <span class="px-3.5 py-1.5 bg-white border-2 border-black rounded-lg text-base sm:text-lg font-bold shadow-[2px_2px_0px_#111]">Digital Products</span>
-                        <span class="px-3.5 py-1.5 bg-white border-2 border-black rounded-lg text-base sm:text-lg font-bold shadow-[2px_2px_0px_#111]">UI/UX Design</span>
+                        <span class="px-3.5 py-1.5 bg-white border-2 border-[#1C1917] rounded-[14px] text-base sm:text-lg font-bold shadow-[3px_3px_0px_rgba(28,25,23,0.18)]">Web Dev</span>
+                        <span class="px-3.5 py-1.5 bg-white border-2 border-[#1C1917] rounded-[14px] text-base sm:text-lg font-bold shadow-[3px_3px_0px_rgba(28,25,23,0.18)]">Digital Products</span>
+                        <span class="px-3.5 py-1.5 bg-white border-2 border-[#1C1917] rounded-[14px] text-base sm:text-lg font-bold shadow-[3px_3px_0px_rgba(28,25,23,0.18)]">UI/UX Design</span>
                     </div>
                 </div>
             </div>
@@ -654,11 +661,11 @@
 
         <!-- SECTION: Content Directory & Manifest -->
         <section class="w-full flex flex-col items-center relative reveal-on-scroll">
-            <div class="mb-5 px-6 py-2.5 bg-white border-2 border-black rounded-xl shadow-[2px_2px_0px_#111] font-mono text-xl font-bold rotate-[1deg] text-float">
+            <div class="mb-5 px-6 py-2.5 bg-white border-2 border-[#1C1917] rounded-[18px] shadow-[3px_3px_0px_rgba(28,25,23,0.18)] font-mono text-xl font-bold rotate-[1deg] text-float">
                 Content
             </div>
 
-            <div class="w-full max-w-3xl bg-[#111111] border-3 border-black rounded-2xl shadow-[5px_5px_0px_#111] p-6 sm:p-12 text-white float-anim">
+            <div class="w-full max-w-3xl bg-[#292524] border-2 border-[#1C1917] rounded-[22px] shadow-[4px_4px_0px_#1C1917] p-6 sm:p-12 text-[#FFF9F0] float-anim">
                 <div class="flex items-center justify-between pb-3.5 mb-6 border-b border-zinc-800">
                     <span class="font-mono text-xs sm:text-sm text-zinc-400 text-float">- index_manifest.sh</span>
                     <div class="window-dots">
@@ -668,7 +675,7 @@
                     </div>
                 </div>
 
-                <div class="border border-dashed border-zinc-700 p-5 sm:p-8 rounded-xl">
+                <div class="border border-dashed border-zinc-700 p-5 sm:p-8 rounded-[18px]">
                     <div class="space-y-4 sm:space-y-5 font-sketch text-lg sm:text-xl font-medium text-zinc-200">
                         <div class="flex items-center justify-between hover:text-white transition-colors cursor-pointer group text-float" onclick="openModal('linksModal')">
                             <span class="group-hover:translate-x-1 transition-transform">1. Official Social Channels (Directory Links)</span>
@@ -694,7 +701,7 @@
                 </div>
 
                 <div class="mt-8 text-center">
-                    <button onclick="openModal('linksModal')" class="px-6 py-3 bg-[#3b82f6] text-white font-bold text-lg sm:text-xl border-2 border-black rounded-xl shadow-[3px_3px_0px_rgba(255,255,255,0.3)] hover:bg-blue-600 transition-all cursor-pointer text-float">
+                    <button onclick="openModal('linksModal')" class="px-6 py-3 bg-[#3b82f6] text-white font-bold text-lg sm:text-xl border-2 border-[#1C1917] rounded-[18px] shadow-[3px_3px_0px_rgba(255,255,255,0.3)] hover:bg-blue-600 transition-all cursor-pointer text-float">
                         View All Directory Links ↗
                     </button>
                 </div>
@@ -709,7 +716,7 @@
                 <p class="font-sketch text-lg sm:text-xl text-zinc-700 max-w-xl mx-auto leading-relaxed mb-8 text-float">
                     Core Site Studio was founded on an enduring passion for digital craftsmanship. Our mission is to solve complex challenges, elevate online presence for visionary entrepreneurs, and accelerate sustainable enterprise growth through premium digital assets and bespoke web engineering.
                 </p>
-                <button onclick="openModal('contactModal')" class="px-6 py-3.5 bg-[#fdd663] text-black font-bold text-lg sm:text-xl border-3 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:bg-yellow-400 transition-all cursor-pointer text-float-delayed">
+                <button onclick="openModal('contactModal')" class="px-6 py-3.5 bg-[rgba(253,224,71,0.45)] text-black font-bold text-lg sm:text-xl border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] hover:bg-[rgba(253,224,71,0.7)] transition-all cursor-pointer text-float-delayed">
                     Request Agency Pitch Deck 🚀
                 </button>
             </div>
@@ -720,7 +727,7 @@
     <!-- ========================================== -->
     <!-- FOOTER SECTION -->
     <!-- ========================================== -->
-    <footer class="w-full bg-[#000000] text-white border-t-4 border-black mt-28 py-12 px-6 mb-0 reveal-on-scroll float-anim">
+    <footer class="w-full bg-[#292524] text-[#FFF9F0] border-t-4 border-[#1C1917] mt-28 py-12 px-6 mb-0 reveal-on-scroll float-anim">
         <div class="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
             <div class="flex flex-col sm:flex-row items-center md:items-start gap-5">
                 <div class="text-wordmark footer-wordmark" role="img" aria-label="CoreSiteStudio">
@@ -757,10 +764,10 @@
         <div class="max-w-[1000px] mx-auto mt-12 pt-6 border-t-2 border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-5 text-center">
             <p class="font-mono text-sm sm:text-base text-zinc-400 text-float">&copy; 2026 Core Site Studio. All rights reserved.</p>
             <div class="flex items-center gap-3.5">
-                <button onclick="openModal('newsletterModal')" class="px-3.5 py-2 bg-[#fdd663] hover:bg-yellow-400 text-black font-mono text-sm sm:text-base font-bold rounded border-2 border-black transition-colors cursor-pointer shadow-[2px_2px_0px_#fff] text-float">
+                <button onclick="openModal('newsletterModal')" class="px-3.5 py-2 bg-[rgba(253,224,71,0.45)] hover:bg-[rgba(253,224,71,0.7)] text-black font-mono text-sm sm:text-base font-bold rounded border-2 border-[#1C1917] transition-colors cursor-pointer shadow-[2px_2px_0px_#fff] text-float">
                     Join Newsletter
                 </button>
-                <button onclick="openModal('contactModal')" class="px-3.5 py-2 bg-white hover:bg-zinc-200 text-black font-mono text-sm sm:text-base font-bold rounded border-2 border-black transition-colors cursor-pointer shadow-[2px_2px_0px_#fff] text-float-delayed">
+                <button onclick="openModal('contactModal')" class="px-3.5 py-2 bg-white hover:bg-zinc-200 text-black font-mono text-sm sm:text-base font-bold rounded border-2 border-[#1C1917] transition-colors cursor-pointer shadow-[2px_2px_0px_#fff] text-float-delayed">
                     Get in Touch
                 </button>
             </div>
@@ -776,10 +783,10 @@
         <div class="sketch-window w-full max-w-md bg-white float-anim text-center">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg sm:text-xl font-bold text-float">- STORE_STATUS.sh</span>
-                <button onclick="closeModal('storeModal')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('storeModal')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-8">
-                <span class="inline-block px-3 py-1 bg-[#fff4cc] text-black font-mono text-xs font-bold border-2 border-black rounded-md mb-4">IN DEVELOPMENT</span>
+                <span class="inline-block px-3 py-1 bg-[#fff4cc] text-black font-mono text-xs font-bold border-2 border-[#1C1917] rounded-md mb-4">IN DEVELOPMENT</span>
                 <h3 class="font-creative font-bold text-2xl sm:text-3xl uppercase mb-3 text-float">Store Currently Under Construction</h3>
                 <p class="font-sketch text-lg sm:text-xl text-zinc-600 mb-4 text-float-delayed">
                     The Digital Store is being assembled and is not available for purchase yet.
@@ -788,10 +795,10 @@
                     Until it launches, visit Prompt in the navbar or the Explore section to browse templates and find inspiration.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-                    <a href="explore.html" class="w-full sm:w-auto px-6 py-3 bg-[#fff4cc] text-black font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:bg-[#fdd663] transition-all cursor-pointer no-underline">
+                    <a href="explore.html" class="w-full sm:w-auto px-6 py-3 bg-[#fff4cc] text-black font-bold text-lg border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] hover:bg-[rgba(253,224,71,0.45)] transition-all cursor-pointer no-underline">
                         Go to Prompt
                     </a>
-                    <button onclick="closeModal('storeModal')" class="w-full sm:w-auto px-6 py-3 bg-black text-white font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer">
+                    <button onclick="closeModal('storeModal')" class="w-full sm:w-auto px-6 py-3 bg-[#1C1917] text-[#FFF9F0] font-bold text-lg border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer">
                         Close
                     </button>
                 </div>
@@ -804,7 +811,7 @@
         <div class="sketch-window w-full max-w-md bg-white float-anim text-center">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg sm:text-xl font-bold text-float">- SYSTEM_NOTICE.sh</span>
-                <button onclick="closeModal('comingSoonModal')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('comingSoonModal')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-8">
                 <div class="text-5xl mb-4 text-float">🚀</div>
@@ -812,7 +819,7 @@
                 <p class="font-sketch text-xl text-zinc-600 mb-6 text-float">
                     Our interactive creative systems explore module is currently compiling. Stay tuned for deployment!
                 </p>
-                <button onclick="closeModal('comingSoonModal')" class="px-6 py-3 bg-[#fdd663] text-black font-bold text-xl border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer text-float-delayed">
+                <button onclick="closeModal('comingSoonModal')" class="px-6 py-3 bg-[rgba(253,224,71,0.45)] text-black font-bold text-xl border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer text-float-delayed">
                     Got it! 👍
                 </button>
             </div>
@@ -824,7 +831,7 @@
         <div class="sketch-window w-full max-w-md bg-white float-anim">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg sm:text-xl font-bold text-float">- DIRECTORY_LINKS.sh</span>
-                <button onclick="closeModal('linksModal')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('linksModal')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8">
                 <div class="text-center mb-6">
@@ -832,24 +839,24 @@
                     <p class="font-sketch text-lg sm:text-xl text-zinc-600 mt-1.5 text-float-delayed">Explore our platforms</p>
                 </div>
                 <div class="space-y-3.5 font-sketch text-lg sm:text-xl font-semibold max-h-[50vh] overflow-y-auto pr-1">
-                    <button type="button" onclick="closeModal('linksModal'); openModal('storeModal')" class="w-full p-3.5 bg-yellow-100 border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float font-bold cursor-pointer">
+                    <button type="button" onclick="closeModal('linksModal'); openModal('storeModal')" class="w-full p-3.5 bg-yellow-100 border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float font-bold cursor-pointer">
                         <span>Digital Store</span><span>→</span>
                     </button>
-                    <a href="https://www.instagram.com/coresitestudio/" target="_blank" class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float">
+                    <a href="https://www.instagram.com/coresitestudio/" target="_blank" class="block p-3.5 bg-white border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float">
                         <span>📸 Instagram (@coresitestudio)</span><span>↗</span>
                     </a>
-                    <a href="https://www.facebook.com/coresitestudio" target="_blank" class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float-delayed">
+                    <a href="https://www.facebook.com/coresitestudio" target="_blank" class="block p-3.5 bg-white border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float-delayed">
                         <span>📘 Facebook</span><span>↗</span>
                     </a>
-                    <a href="https://in.pinterest.com/coresitestudio/?actingBusinessId=1111615257933550604" target="_blank" class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float">
+                    <a href="https://in.pinterest.com/coresitestudio/?actingBusinessId=1111615257933550604" target="_blank" class="block p-3.5 bg-white border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float">
                         <span>📌 Pinterest</span><span>↗</span>
                     </a>
-                    <a href="https://www.youtube.com/@coresitestudio" target="_blank" class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float-delayed">
+                    <a href="https://www.youtube.com/@coresitestudio" target="_blank" class="block p-3.5 bg-white border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex justify-between items-center text-float-delayed">
                         <span>▶️ YouTube Channel</span><span>↗</span>
                     </a>
                 </div>
                 <div class="mt-8 text-center">
-                    <button onclick="closeModal('linksModal')" class="px-6 py-3 bg-[#8ab4f8] text-black font-bold text-lg sm:text-xl border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer text-float">
+                    <button onclick="closeModal('linksModal')" class="px-6 py-3 bg-[#8ab4f8] text-black font-bold text-lg sm:text-xl border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer text-float">
                         Close Window
                     </button>
                 </div>
@@ -862,7 +869,7 @@
         <div class="sketch-window w-full max-w-md bg-white float-anim">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg sm:text-xl font-bold text-float">- CONTACT_HUB.sh</span>
-                <button onclick="closeModal('contactModal')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('contactModal')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8">
                 <div class="text-center mb-6">
@@ -870,17 +877,17 @@
                     <p class="font-sketch text-lg sm:text-xl text-zinc-600 mt-1.5 text-float-delayed">Connect with our team via email or WhatsApp</p>
                 </div>
                 <div class="space-y-3.5 font-sketch text-lg sm:text-xl font-semibold">
-                    <a href="mailto:coresitestudio.agency@gmail.com?subject=Project%20Inquiry&body=Hi%20CoreSiteStudio,%20I%20would%20like%20to%20discuss%20a%20project." class="block p-3.5 bg-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-between text-float">
+                    <a href="mailto:coresitestudio.agency@gmail.com?subject=Project%20Inquiry&body=Hi%20CoreSiteStudio,%20I%20would%20like%20to%20discuss%20a%20project." class="block p-3.5 bg-white border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-between text-float">
                         <span>📧 Email Studio</span>
                         <span class="font-mono text-xs sm:text-sm text-zinc-500">coresitestudio...</span>
                     </a>
-                    <a href="https://wa.me/917431944941?text=Hello%20CoreSiteStudio,%20I'd%20like%20to%20discuss%20a%20project." target="_blank" class="block p-3.5 bg-[#25D366] text-white border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] hover:bg-[#22bf5b] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-between text-float-delayed">
+                    <a href="https://wa.me/917431944941?text=Hello%20CoreSiteStudio,%20I'd%20like%20to%20discuss%20a%20project." target="_blank" class="block p-3.5 bg-[#25D366] text-white border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] hover:bg-[#22bf5b] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-between text-float-delayed">
                         <span>💬 WhatsApp Chat</span>
                         <span class="font-mono text-xs sm:text-sm text-white/90">7431944941 ↗</span>
                     </a>
                 </div>
                 <div class="mt-8 text-center">
-                    <button onclick="closeModal('contactModal')" class="px-6 py-3 bg-[#fdd663] text-black font-bold text-lg sm:text-xl border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer text-float">
+                    <button onclick="closeModal('contactModal')" class="px-6 py-3 bg-[rgba(253,224,71,0.45)] text-black font-bold text-lg sm:text-xl border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer text-float">
                         Close Window
                     </button>
                 </div>
@@ -893,7 +900,7 @@
         <div class="sketch-window w-full max-w-md bg-white float-anim">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg sm:text-xl font-bold text-float">- NEWSLETTER.pkg</span>
-                <button onclick="closeModal('newsletterModal')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('newsletterModal')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8 text-center">
                 <div class="text-4xl mb-3 text-float">💌</div>
@@ -901,7 +908,7 @@
                 <p class="font-sketch text-lg sm:text-xl text-zinc-600 mb-6 text-float">Receive weekly updates on advanced web development, exclusive digital products, and studio growth insights.</p>
                 
                 <div class="space-y-4">
-                    <a href="mailto:coresitestudio.agency@gmail.com?subject=Newsletter%20Subscription&body=Hi,%20I%20would%20like%20to%20receive%20new%20updates%20and%20digital%20studio%20newsletters." class="block w-full py-4 bg-[#fdd663] hover:bg-yellow-400 text-black font-bold text-lg sm:text-xl border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] transition-all cursor-pointer text-float-delayed text-center">
+                    <a href="mailto:coresitestudio.agency@gmail.com?subject=Newsletter%20Subscription&body=Hi,%20I%20would%20like%20to%20receive%20new%20updates%20and%20digital%20studio%20newsletters." class="block w-full py-4 bg-[rgba(253,224,71,0.45)] hover:bg-[rgba(253,224,71,0.7)] text-black font-bold text-lg sm:text-xl border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] transition-all cursor-pointer text-float-delayed text-center">
                         Subscribe via Email 🚀
                     </a>
                 </div>
@@ -914,7 +921,7 @@
         <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[85vh] flex flex-col">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg font-bold text-float">- BLOG_POST_01.md</span>
-                <button onclick="closeModal('blogModal1')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('blogModal1')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
                 <span class="px-3 py-1 bg-yellow-100 text-black font-mono text-xs font-bold border border-black rounded-md">Design</span>
@@ -924,7 +931,7 @@
                 <p>By blending playful typography, custom vector illustrations, and high-performance engineering, modern brands can stand out while maintaining lightning-fast load times.</p>
             </div>
             <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
-                <button onclick="closeModal('blogModal1')" class="px-6 py-2.5 bg-black text-white font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer">
+                <button onclick="closeModal('blogModal1')" class="px-6 py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-lg border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer">
                     Close Article
                 </button>
             </div>
@@ -936,7 +943,7 @@
         <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[85vh] flex flex-col">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg font-bold text-float">- BLOG_POST_02.md</span>
-                <button onclick="closeModal('blogModal2')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('blogModal2')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
                 <span class="px-3 py-1 bg-blue-100 text-black font-mono text-xs font-bold border border-black rounded-md">Engineering</span>
@@ -946,7 +953,7 @@
                 <p>We leverage lightweight CSS variables, optimized SVGs, and responsive design tokens to ensure buttery smooth performance across all mobile devices, tablets, and desktop workstations.</p>
             </div>
             <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
-                <button onclick="closeModal('blogModal2')" class="px-6 py-2.5 bg-black text-white font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer">
+                <button onclick="closeModal('blogModal2')" class="px-6 py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-lg border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer">
                     Close Article
                 </button>
             </div>
@@ -958,7 +965,7 @@
         <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[85vh] flex flex-col">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg font-bold text-float">- BLOG_POST_03.md</span>
-                <button onclick="closeModal('blogModal3')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('blogModal3')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
                 <span class="px-3 py-1 bg-green-100 text-black font-mono text-xs font-bold border border-black rounded-md">Strategy</span>
@@ -968,7 +975,7 @@
                 <p>Simplicity is the ultimate sophistication in modern digital entrepreneurship.</p>
             </div>
             <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
-                <button onclick="closeModal('blogModal3')" class="px-6 py-2.5 bg-black text-white font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer">
+                <button onclick="closeModal('blogModal3')" class="px-6 py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-lg border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer">
                     Close Article
                 </button>
             </div>
@@ -980,7 +987,7 @@
         <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[85vh] flex flex-col">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg font-bold text-float">- BLOG_POST_04.md</span>
-                <button onclick="closeModal('blogModal4')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('blogModal4')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
                 <span class="px-3 py-1 bg-purple-100 text-black font-mono text-xs font-bold border border-black rounded-md">Mobile</span>
@@ -990,7 +997,7 @@
                 <p>Our studio rigorously tests every deployment across diverse mobile viewports to guarantee pristine usability.</p>
             </div>
             <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
-                <button onclick="closeModal('blogModal4')" class="px-6 py-2.5 bg-black text-white font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer">
+                <button onclick="closeModal('blogModal4')" class="px-6 py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-lg border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer">
                     Close Article
                 </button>
             </div>
@@ -1002,7 +1009,7 @@
         <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[85vh] flex flex-col">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg font-bold text-float">- BLOG_POST_05.md</span>
-                <button onclick="closeModal('blogModal5')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('blogModal5')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
                 <span class="px-3 py-1 bg-pink-100 text-black font-mono text-xs font-bold border border-black rounded-md">Culture</span>
@@ -1012,7 +1019,7 @@
                 <p>By incorporating subtle physics like floating loops and crisp drop shadows, websites transcend static screens and become engaging interactive environments.</p>
             </div>
             <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
-                <button onclick="closeModal('blogModal5')" class="px-6 py-2.5 bg-black text-white font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer">
+                <button onclick="closeModal('blogModal5')" class="px-6 py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-lg border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer">
                     Close Article
                 </button>
             </div>
@@ -1024,7 +1031,7 @@
         <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[85vh] flex flex-col">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg font-bold text-float">- BLOG_POST_06.md</span>
-                <button onclick="closeModal('blogModal6')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('blogModal6')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
                 <span class="px-3 py-1 bg-orange-100 text-black font-mono text-xs font-bold border border-black rounded-md">Prompt</span>
@@ -1034,7 +1041,7 @@
                 <p>That is why our Template Vault treats the prompt as the product. Preview the site, then open the prompt. The output is only as sharp as the words that built it.</p>
             </div>
             <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
-                <button onclick="closeModal('blogModal6')" class="px-6 py-2.5 bg-black text-white font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer">
+                <button onclick="closeModal('blogModal6')" class="px-6 py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-lg border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer">
                     Close Article
                 </button>
             </div>
@@ -1046,7 +1053,7 @@
         <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[85vh] flex flex-col">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg font-bold text-float">- BLOG_POST_07.md</span>
-                <button onclick="closeModal('blogModal7')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('blogModal7')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
                 <span class="px-3 py-1 bg-cyan-100 text-black font-mono text-xs font-bold border border-black rounded-md">AI Craft</span>
@@ -1056,7 +1063,7 @@
                 <p>Write the system first. Then let the model assemble it. That is how you keep a sketch-studio look instead of a default template look.</p>
             </div>
             <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
-                <button onclick="closeModal('blogModal7')" class="px-6 py-2.5 bg-black text-white font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer">
+                <button onclick="closeModal('blogModal7')" class="px-6 py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-lg border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer">
                     Close Article
                 </button>
             </div>
@@ -1068,7 +1075,7 @@
         <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[85vh] flex flex-col">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg font-bold text-float">- BLOG_POST_08.md</span>
-                <button onclick="closeModal('blogModal8')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('blogModal8')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
                 <span class="px-3 py-1 bg-lime-100 text-black font-mono text-xs font-bold border border-black rounded-md">Studio</span>
@@ -1078,7 +1085,7 @@
                 <p>Our vault templates already contain the full build inside the prompt. Copy it, run it, and the site comes out looking directed — because the direction was written first.</p>
             </div>
             <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
-                <button onclick="closeModal('blogModal8')" class="px-6 py-2.5 bg-black text-white font-bold text-lg border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer">
+                <button onclick="closeModal('blogModal8')" class="px-6 py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-lg border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer">
                     Close Article
                 </button>
             </div>
@@ -1090,7 +1097,7 @@
         <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[80vh] flex flex-col">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg sm:text-xl font-bold text-float">- PRIVACY_POLICY.md</span>
-                <button onclick="closeModal('privacyModal')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('privacyModal')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
                 <h3 class="font-creative font-bold text-2xl sm:text-3xl uppercase text-black text-float">Privacy Policy</h3>
@@ -1101,7 +1108,7 @@
                 <p>Your information is used solely to respond to your project inquiries, deliver bespoke digital products, and improve our website experience.</p>
             </div>
             <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
-                <button onclick="closeModal('privacyModal')" class="px-6 py-2.5 bg-black text-white font-bold text-lg sm:text-xl border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer text-float">
+                <button onclick="closeModal('privacyModal')" class="px-6 py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-lg sm:text-xl border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer text-float">
                     Close Policy
                 </button>
             </div>
@@ -1113,7 +1120,7 @@
         <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[80vh] flex flex-col">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg sm:text-xl font-bold text-float">- TERMS_OF_SERVICE.md</span>
-                <button onclick="closeModal('termsModal')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('termsModal')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
                 <h3 class="font-creative font-bold text-2xl sm:text-3xl uppercase text-black text-float">Terms of Service</h3>
@@ -1124,7 +1131,7 @@
                 <p>Upon full payment, clients receive full ownership rights to their custom-built websites and tailored digital deliverables, while Core Site Studio retains portfolio display rights.</p>
             </div>
             <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
-                <button onclick="closeModal('termsModal')" class="px-6 py-2.5 bg-black text-white font-bold text-lg sm:text-xl border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer text-float">
+                <button onclick="closeModal('termsModal')" class="px-6 py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-lg sm:text-xl border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer text-float">
                     Close Terms
                 </button>
             </div>
@@ -1136,7 +1143,7 @@
         <div class="sketch-window w-full max-w-lg bg-white float-anim max-h-[80vh] flex flex-col">
             <div class="sketch-window-header">
                 <span class="font-mono text-lg sm:text-xl font-bold text-float">- SECURITY_PROTOCOLS.md</span>
-                <button onclick="closeModal('securityModal')" class="w-8 h-8 rounded-full border-2 border-black font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
+                <button onclick="closeModal('securityModal')" class="w-8 h-8 rounded-full border-2 border-[#1C1917] font-bold text-lg flex items-center justify-center hover:bg-black hover:text-white transition-colors cursor-pointer">×</button>
             </div>
             <div class="p-6 sm:p-8 overflow-y-auto space-y-4 font-sketch text-lg sm:text-xl text-zinc-700">
                 <h3 class="font-creative font-bold text-2xl sm:text-3xl uppercase text-black text-float">Security Overview</h3>
@@ -1147,7 +1154,7 @@
                 <p>Our custom scratch builds are tested for vulnerabilities and optimized for high-performance and secure client execution.</p>
             </div>
             <div class="p-5 border-t-2 border-black bg-zinc-50 text-center">
-                <button onclick="closeModal('securityModal')" class="px-6 py-2.5 bg-black text-white font-bold text-lg sm:text-xl border-2 border-black rounded-xl shadow-[3px_3px_0px_#111] cursor-pointer text-float">
+                <button onclick="closeModal('securityModal')" class="px-6 py-2.5 bg-[#1C1917] text-[#FFF9F0] font-bold text-lg sm:text-xl border-2 border-[#1C1917] rounded-[18px] shadow-[4px_4px_0px_#1C1917] cursor-pointer text-float">
                     Close Security
                 </button>
             </div>

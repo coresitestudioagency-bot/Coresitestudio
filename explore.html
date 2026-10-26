@@ -12,16 +12,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,400..800;1,400..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        'sketch': ['"Shantell Sans"', 'cursive', 'sans-serif'],
-                        'creative': ['"Syne"', 'sans-serif'],
-                        'mono': ['"Space Mono"', 'monospace'],
+                        'sketch': ['"Patrick Hand"', 'cursive', 'sans-serif'],
+                        'creative': ['"Kalam"', 'cursive', 'sans-serif'],
+                        'mono': ['"Caveat"', 'cursive', 'sans-serif'],
                     }
                 }
             }
@@ -31,43 +31,48 @@
     <style>
         html { scroll-behavior: smooth; }
         body {
-            background-color: #FAFAF7;
-            color: #111111;
-            font-family: 'Shantell Sans', cursive, sans-serif;
+            background-color: #FFF9F0;
+            color: #1C1917;
+            font-family: 'Patrick Hand', cursive, sans-serif;
             overflow-x: hidden;
             margin: 0;
             padding: 0;
             -webkit-tap-highlight-color: transparent;
+            background-image:
+                radial-gradient(rgba(28, 25, 23, 0.08) 0.9px, transparent 0.9px),
+                repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(194, 65, 12, 0.04) 28px);
+            background-size: 22px 22px, 100% 28px;
         }
         .sketch-window {
-            background: #FFFFFF;
-            border: 3px solid #111111;
-            box-shadow: 5px 5px 0px #111111;
-            border-radius: 16px;
+            background: #FFFDF8;
+            border: 2.5px solid #1C1917;
+            box-shadow: 4px 4px 0px rgba(28, 25, 23, 0.18);
+            border-radius: 255px 18px 225px 15px / 15px 225px 15px 255px;
             overflow: hidden;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: box-shadow 0.22s ease;
         }
         .sketch-window-header {
-            background: #111111;
-            color: #FFFFFF;
+            background: rgba(253, 224, 71, 0.28);
+            color: #1C1917;
             display: flex;
             align-items: center;
             gap: 8px;
             padding: 10px 16px;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
+            font-family: 'Caveat', cursive, sans-serif;
+            font-size: 0.95rem;
+            border-bottom: 2px dashed #1C1917;
         }
-        .dot { width: 10px; height: 10px; border-radius: 9999px; }
-        ::selection { background: #fdd663; color: #111; }
-        input:focus { outline: none; }
-        .card-hover:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0px #111111; }
+        .dot { width: 10px; height: 10px; border-radius: 40% 60% 55% 45%; border: 1.5px solid #1C1917; }
+        ::selection { background: #FDE68A; color: #1C1917; }
+        input:focus { outline: 2px dashed #C2410C; outline-offset: 2px; }
+        .card-hover:hover { box-shadow: 6px 6px 0px rgba(28, 25, 23, 0.2); }
         .tpl-video-wrap {
             position: relative;
             height: 180px;
             overflow: hidden;
-            border-radius: 8px;
-            border: 2px solid #111111;
-            background: #111111;
+            border-radius: 255px 12px 225px 10px / 10px 225px 12px 255px;
+            border: 2px dashed #1C1917;
+            background: #292524;
         }
         .tpl-video-wrap video {
             width: 100%;
@@ -82,22 +87,22 @@
             position: absolute;
             left: 8px;
             bottom: 8px;
-            font-family: 'Space Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            background: #fdd663;
-            color: #111;
-            border: 2px solid #111;
-            border-radius: 6px;
+            font-family: 'Caveat', cursive, sans-serif;
+            font-size: 12px;
+            letter-spacing: 0.04em;
+            text-transform: lowercase;
+            background: rgba(253, 224, 71, 0.7);
+            color: #1C1917;
+            border: 2px solid #1C1917;
+            border-radius: 255px 8px 225px 8px / 8px 225px 8px 255px;
             padding: 2px 7px;
             pointer-events: none;
         }
         .tpl-thumb-fallback {
             height: 180px;
-            border-radius: 8px;
-            border: 2px solid #111111;
-            background: repeating-linear-gradient(45deg, #FAFAF7, #FAFAF7 10px, #f0ede2 10px, #f0ede2 20px);
+            border-radius: 255px 12px 225px 10px / 10px 225px 12px 255px;
+            border: 2px dashed #1C1917;
+            background: repeating-linear-gradient(45deg, #FFF9F0, #FFF9F0 10px, #F5E6C8 10px, #F5E6C8 20px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -122,34 +127,46 @@
             }
         }
         @keyframes tplFloat {
-            0%, 100% { transform: translateY(0) rotate(-0.5deg); }
-            50% { transform: translateY(-14px) rotate(0.8deg); }
+            0%, 100% { transform: translateY(0) rotate(-0.4deg); }
+            50% { transform: translateY(-5px) rotate(0.35deg); }
         }
         .tpl-float-wrap {
-            animation: tplFloat 4.8s ease-in-out infinite;
+            animation: tplFloat 5s ease-in-out infinite;
             will-change: transform;
         }
-        .tpl-float-wrap:nth-child(even) { animation-duration: 5.6s; }
-        .tpl-float-wrap:nth-child(3n) { animation-duration: 5.2s; }
+        .tpl-float-wrap:nth-child(even) { animation-duration: 6s; animation-delay: 1s; }
+        .tpl-float-wrap:nth-child(3n) { animation-duration: 5.5s; animation-delay: 0.4s; }
+        @keyframes floatLoop {
+            0%, 100% { transform: translateY(0px) rotate(-0.4deg); }
+            50% { transform: translateY(-5px) rotate(0.35deg); }
+        }
+        .float-anim { animation: floatLoop 5s ease-in-out infinite; }
+        .float-anim-delayed { animation: floatLoop 6s ease-in-out infinite 2s; }
+        @keyframes textWaveLoop {
+            0%, 100% { transform: translateY(0px) rotate(-0.2deg); }
+            50% { transform: translateY(-3px) rotate(0.2deg); }
+        }
+        .text-float { animation: textWaveLoop 4.5s ease-in-out infinite; display: inline-block; }
+        .text-float-delayed { animation: textWaveLoop 5.5s ease-in-out infinite 1.5s; display: inline-block; }
         body.card-zoomed .tpl-float-wrap { animation-play-state: paused; }
         .tpl-card { cursor: zoom-in; }
         .mode-tab {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: -0.03em;
+            font-family: 'Kalam', cursive, sans-serif;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0;
             padding: 10px 22px;
-            border: 3px solid #111111;
-            border-radius: 12px;
-            box-shadow: 3px 3px 0 #111111;
+            border: 2px solid #1C1917;
+            border-radius: 255px 14px 225px 12px / 12px 225px 14px 255px;
+            box-shadow: 4px 4px 0 #1C1917;
             cursor: pointer;
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s, background 0.2s, color 0.2s;
+            transition: box-shadow 0.2s, background 0.2s, color 0.2s;
         }
-        .mode-tab:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 #111111; }
-        .mode-tab.active { background: #111111; color: #ffffff; }
-        .mode-tab:not(.active) { background: #ffffff; color: #111111; }
-        #tabWeb.active { background: #fdd663; color: #111111; }
-        #tabVideo.active { background: #7ec8e3; color: #111111; }
+        .mode-tab:hover { filter: brightness(1.04); }
+        .mode-tab.active { background: #1C1917; color: #FFF9F0; }
+        .mode-tab:not(.active) { background: #FFFDF8; color: #1C1917; }
+        #tabWeb.active { background: rgba(253, 224, 71, 0.55); color: #1C1917; }
+        #tabVideo.active { background: rgba(29, 78, 216, 0.18); color: #1C1917; }
         #zoomClone {
             position: fixed;
             z-index: 2;
@@ -167,16 +184,16 @@
             width: 40px;
             height: 40px;
             border-radius: 9999px;
-            background: #ffffff;
-            border: 2px solid #111111;
+            background: #FFFDF8;
+            border: 2px solid #1C1917;
             font-weight: 800;
             font-size: 1.25rem;
             line-height: 1;
-            box-shadow: 3px 3px 0 #111111;
+            box-shadow: 3px 3px 0 #1C1917;
             cursor: pointer;
         }
         @media (prefers-reduced-motion: reduce) {
-            .tpl-float-wrap { animation: none; }
+            .tpl-float-wrap, .float-anim, .float-anim-delayed, .text-float, .text-float-delayed { animation: none; }
             #zoomClone { transition: none; }
         }
     </style>
@@ -185,10 +202,10 @@
 
     <!-- TOP BAR -->
     <header class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 flex items-center justify-between gap-3">
-        <a href="index.html#home" class="font-creative font-extrabold text-lg sm:text-xl uppercase tracking-tight px-3 py-1.5 sketch-window bg-white rotate-[-1deg] hover:rotate-0 transition-transform flex items-center gap-2 shadow-[2px_2px_0px_#111] no-underline text-black">
+        <a href="index.html#home" class="font-creative font-extrabold text-lg sm:text-xl tracking-tight px-3 py-1.5 sketch-window bg-[#FFFDF8] rotate-[-1deg] hover:rotate-0 transition-transform flex items-center gap-2 shadow-[3px_3px_0px_#1C1917] no-underline text-[#1C1917] float-anim">
             ← Home
         </a>
-        <div class="font-mono text-xs sm:text-sm bg-black text-white px-3 py-1.5 rounded-lg border-2 border-black">
+        <div class="font-mono text-xs sm:text-sm bg-[rgba(253,224,71,0.45)] text-[#1C1917] px-3 py-1.5 rounded-[14px] border-2 border-[#1C1917] rotate-[1deg] float-anim-delayed">
             explore.exe // template vault
         </div>
     </header>
@@ -201,8 +218,8 @@
         <!-- ============================================ -->
 
         <section class="text-center mt-6 mb-10">
-            <h1 class="font-creative font-extrabold text-3xl sm:text-5xl uppercase tracking-tight mb-3">Template Vault 🔍</h1>
-            <p class="font-sketch text-base sm:text-lg text-zinc-600 max-w-xl mx-auto">
+            <h1 class="font-creative font-extrabold text-3xl sm:text-5xl mb-3 rotate-[-0.6deg] text-float">Template Vault</h1>
+            <p class="font-sketch text-base sm:text-lg text-zinc-600 max-w-xl mx-auto text-float-delayed">
                 Pick a template, hit preview, and watch it boot up like a prompt.
             </p>
         </section>
@@ -219,10 +236,10 @@
                 <span>preview.sh</span>
             </div>
             <div class="p-4 sm:p-5 flex flex-col sm:flex-row gap-3 bg-white">
-                <select id="templateSelect" class="flex-1 font-mono text-sm sm:text-base border-2 border-black rounded-lg px-3 py-2.5 bg-[#FAFAF7] cursor-pointer">
+                <select id="templateSelect" class="flex-1 font-mono text-sm sm:text-base border-2 border-[#1C1917] rounded-lg px-3 py-2.5 bg-[#FFF9F0] cursor-pointer">
                     <option value="">— select a template —</option>
                 </select>
-                <button onclick="runPreview()" class="px-5 py-2.5 bg-[#fdd663] text-black font-bold text-sm sm:text-base border-2 border-black rounded-lg shadow-[3px_3px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#111] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer whitespace-nowrap">
+                <button onclick="runPreview()" class="px-5 py-2.5 bg-[rgba(253,224,71,0.45)] text-black font-bold text-sm sm:text-base border-2 border-[#1C1917] rounded-lg shadow-[4px_4px_0px_#1C1917] hover:bg-[rgba(253,224,71,0.7)] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#1C1917] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer whitespace-nowrap">
                     ▶ Preview
                 </button>
             </div>
@@ -240,10 +257,10 @@
                 <span>preview.sh</span>
             </div>
             <div class="p-4 sm:p-5 flex flex-col sm:flex-row gap-3 bg-white">
-                <select id="videoSelect" class="flex-1 font-mono text-sm sm:text-base border-2 border-black rounded-lg px-3 py-2.5 bg-[#FAFAF7] cursor-pointer">
+                <select id="videoSelect" class="flex-1 font-mono text-sm sm:text-base border-2 border-[#1C1917] rounded-lg px-3 py-2.5 bg-[#FFF9F0] cursor-pointer">
                     <option value="">— select a template —</option>
                 </select>
-                <button onclick="runVideoPreview()" class="px-5 py-2.5 bg-[#7ec8e3] text-black font-bold text-sm sm:text-base border-2 border-black rounded-lg shadow-[3px_3px_0px_#111] hover:bg-sky-300 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#111] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer whitespace-nowrap">
+                <button onclick="runVideoPreview()" class="px-5 py-2.5 bg-[rgba(29,78,216,0.18)] text-black font-bold text-sm sm:text-base border-2 border-[#1C1917] rounded-lg shadow-[4px_4px_0px_#1C1917] hover:bg-[rgba(29,78,216,0.28)] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#1C1917] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer whitespace-nowrap">
                     ▶ Preview
                 </button>
             </div>
@@ -251,8 +268,8 @@
 
         <!-- WEB / VIDEO PROMPT TABS -->
         <div class="flex items-center justify-center gap-3 mb-10">
-            <button id="tabWeb" type="button" class="mode-tab" onclick="openPage('web')">Web Prompt</button>
-            <button id="tabVideo" type="button" class="mode-tab" onclick="openPage('video')">Video Prompt</button>
+            <button id="tabWeb" type="button" class="mode-tab float-anim" onclick="openPage('web')">Web Prompt</button>
+            <button id="tabVideo" type="button" class="mode-tab float-anim-delayed" onclick="openPage('video')">Video Prompt</button>
         </div>
 
         <!-- WEB PROMPT PAGE -->
@@ -310,7 +327,7 @@
                     <span id="previewTitle" class="ml-2 truncate">preview</span>
                 </span>
                 <span class="flex items-center gap-2 shrink-0">
-                    <a id="openNewTab" href="#" target="_blank" class="hidden font-mono text-[10px] sm:text-xs bg-[#fdd663] text-black px-2 py-1 rounded border border-black hover:bg-yellow-400 transition-colors no-underline text-black">Open ↗</a>
+                    <a id="openNewTab" href="#" target="_blank" class="hidden font-mono text-[10px] sm:text-xs bg-[rgba(253,224,71,0.45)] text-black px-2 py-1 rounded border border-black hover:bg-[rgba(253,224,71,0.7)] transition-colors no-underline text-black">Open ↗</a>
                     <button onclick="closePreview()" class="w-7 h-7 rounded-full border-2 border-white text-white font-bold flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer leading-none">×</button>
                 </span>
             </div>
@@ -322,7 +339,7 @@
             </div>
 
             <!-- Iframe stage -->
-            <div id="frameStage" class="hidden flex-1 bg-[#FAFAF7] relative">
+            <div id="frameStage" class="hidden flex-1 bg-[#FFF9F0] relative">
                 <iframe id="previewFrame" title="Template Preview" class="w-full h-full border-0 block" allow="autoplay; fullscreen; encrypted-media" referrerpolicy="no-referrer"></iframe>
             </div>
 
@@ -344,7 +361,7 @@
                     <span id="promptTitle" class="ml-2 truncate">build prompt</span>
                 </span>
                 <span class="flex items-center gap-2 shrink-0">
-                    <button id="copyPromptBtn" onclick="copyPrompt()" class="font-mono text-[10px] sm:text-xs bg-[#fdd663] text-black px-2 py-1 rounded border border-black hover:bg-yellow-400 transition-colors cursor-pointer">Copy</button>
+                    <button id="copyPromptBtn" onclick="copyPrompt()" class="font-mono text-[10px] sm:text-xs bg-[rgba(253,224,71,0.45)] text-black px-2 py-1 rounded border border-black hover:bg-[rgba(253,224,71,0.7)] transition-colors cursor-pointer">Copy</button>
                     <button onclick="closePrompt()" class="w-7 h-7 rounded-full border-2 border-white text-white font-bold flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer leading-none">×</button>
                 </span>
             </div>
@@ -461,11 +478,11 @@ All type is condensed grotesque with RGB split (red -2px, blue +2px). Hard geome
         function cardMarkup(t, i, kind) {
             const slug = t.name.toLowerCase().replace(/\s+/g, '-');
             const previewBtn = kind === 'video'
-                ? `<button onclick="event.stopPropagation(); openVideoPreview(${i})" class="w-full py-1.5 sm:py-2 bg-black text-white font-bold text-[10px] sm:text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">▶ Preview Video</button>`
-                : `<button onclick="event.stopPropagation(); openPreview(${i})" class="w-full py-1.5 sm:py-2 bg-black text-white font-bold text-[10px] sm:text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">▶ Run Preview</button>`;
+                ? `<button onclick="event.stopPropagation(); openVideoPreview(${i})" class="w-full py-1.5 sm:py-2 bg-[#1C1917] text-[#FFF9F0] font-bold text-[10px] sm:text-sm border-2 border-[#1C1917] rounded-[12px] shadow-[3px_3px_0px_#1C1917] hover:rotate-1 hover:scale-[1.02] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">▶ Preview Video</button>`
+                : `<button onclick="event.stopPropagation(); openPreview(${i})" class="w-full py-1.5 sm:py-2 bg-[#1C1917] text-[#FFF9F0] font-bold text-[10px] sm:text-sm border-2 border-[#1C1917] rounded-[12px] shadow-[3px_3px_0px_#1C1917] hover:rotate-1 hover:scale-[1.02] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">▶ Run Preview</button>`;
             const promptBtn = kind === 'video'
-                ? `<button onclick="event.stopPropagation(); openVideoPrompt(${i})" class="w-full py-1.5 sm:py-2 bg-[#fdd663] text-black font-bold text-[10px] sm:text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">✦ View Prompt</button>`
-                : `<button onclick="event.stopPropagation(); openPrompt(${i})" class="w-full py-1.5 sm:py-2 bg-[#fdd663] text-black font-bold text-[10px] sm:text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">✦ View Prompt</button>`;
+                ? `<button onclick="event.stopPropagation(); openVideoPrompt(${i})" class="w-full py-1.5 sm:py-2 bg-[rgba(253,224,71,0.45)] text-[#1C1917] font-bold text-[10px] sm:text-sm border-2 border-[#1C1917] rounded-[12px] shadow-[3px_3px_0px_#1C1917] hover:bg-[rgba(253,224,71,0.7)] hover:rotate-1 hover:scale-[1.02] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">✦ View Prompt</button>`
+                : `<button onclick="event.stopPropagation(); openPrompt(${i})" class="w-full py-1.5 sm:py-2 bg-[rgba(253,224,71,0.45)] text-[#1C1917] font-bold text-[10px] sm:text-sm border-2 border-[#1C1917] rounded-[12px] shadow-[3px_3px_0px_#1C1917] hover:bg-[rgba(253,224,71,0.7)] hover:rotate-1 hover:scale-[1.02] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">✦ View Prompt</button>`;
             return `
                 <div class="tpl-float-wrap" style="animation-delay: ${i * 0.18}s">
                     <article class="sketch-window card-hover tpl-card flex flex-col" onclick="zoomCard(this)">
