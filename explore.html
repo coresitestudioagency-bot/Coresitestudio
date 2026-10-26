@@ -189,7 +189,7 @@
             </p>
         </section>
 
-        <!-- PROMPT BAR (web page only) -->
+        <!-- PROMPT BAR (web page) -->
         <div id="promptBar" class="hidden sketch-window max-w-2xl mx-auto mb-12 rotate-[0.5deg]">
             <div class="sketch-window-header justify-between">
                 <span class="flex items-center gap-2">
@@ -205,6 +205,27 @@
                     <option value="">— select a template —</option>
                 </select>
                 <button onclick="runPreview()" class="px-5 py-2.5 bg-[#fdd663] text-black font-bold text-sm sm:text-base border-2 border-black rounded-lg shadow-[3px_3px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#111] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer whitespace-nowrap">
+                    ▶ Preview
+                </button>
+            </div>
+        </div>
+
+        <!-- PROMPT BAR (video page) -->
+        <div id="videoPromptBar" class="hidden sketch-window max-w-2xl mx-auto mb-12 rotate-[-0.5deg]">
+            <div class="sketch-window-header justify-between">
+                <span class="flex items-center gap-2">
+                    <span class="dot bg-red-400"></span>
+                    <span class="dot bg-yellow-400"></span>
+                    <span class="dot bg-green-400"></span>
+                    <span class="ml-2">video &gt;</span>
+                </span>
+                <span>preview.sh</span>
+            </div>
+            <div class="p-4 sm:p-5 flex flex-col sm:flex-row gap-3 bg-white">
+                <select id="videoSelect" class="flex-1 font-mono text-sm sm:text-base border-2 border-black rounded-lg px-3 py-2.5 bg-[#FAFAF7] cursor-pointer">
+                    <option value="">— select a template —</option>
+                </select>
+                <button onclick="runVideoPreview()" class="px-5 py-2.5 bg-[#7ec8e3] text-black font-bold text-sm sm:text-base border-2 border-black rounded-lg shadow-[3px_3px_0px_#111] hover:bg-sky-300 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#111] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer whitespace-nowrap">
                     ▶ Preview
                 </button>
             </div>
@@ -289,7 +310,7 @@
 
             <!-- Video preview stage -->
             <div id="videoStage" class="hidden flex-1 bg-[#0d0d0d] relative">
-                <video id="previewVideo" class="w-full h-full object-contain block" muted loop playsinline controls></video>
+                <video id="previewVideo" class="w-full h-full object-cover block" muted loop playsinline autoplay></video>
             </div>
         </div>
     </div>
@@ -331,6 +352,7 @@
             // { name: 'Blog Layout',   desc: 'Journal / article template.', file: 'templates/blog.html' },
         ];
         const VIDEO_TEMPLATES = [
+            { name: 'Open Commotion', desc: 'Retro-glitch motion showreel — chromatic type, tiling layouts, AI file classifier, and kinetic graphics. Tap preview to watch it boot up.', video: 'https://cdn.mp4tourl.com/video/free/4978ce21-91e0-45a6-82ca-8f95edaba2ea.mp4' },
         ];
         const TEMPLATES = WEB_TEMPLATES;
         /* ===================================================== */
@@ -375,8 +397,29 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
 🎯 BRAND VOICE
 "Bloom & Petal is an artisan flower shop founded in 2009, crafting bespoke floral arrangements with ethically sourced blooms. Every petal placed with intention and care." Premium editorial experience — cinematic, refined, emotionally resonant. Aesop meets Diptyque meets a high-end florist.`;
 
+        const OPEN_COMMOTION_PROMPT = `Create a 50-second kinetic motion-graphics showreel titled "OPEN COMMOTION — SHOWREEL 2026" in After Effects / Motion / Remotion. Retro-futurist OS aesthetic: dark plum #1a1218 canvas, cream #F4EDE0 panels, teal #2BB3A8 chrome, hot pink #F48FB1, tangerine #F28C28, gold #E8B84A, violet #7B5EA7. Chromatic aberration RGB split on all type and strokes. Fine scanlines + film grain overlay at 8% opacity. 1280x720, 24fps.
+
+SEQUENCE
+0.0–3.0s COUNTDOWN CROSSHAIR — Fullscreen dark plum. Thin white circle with vertical + horizontal crosshair, RGB-split glow. Center numeral counts 3 → 2 → 1 with a hard cut each second. Subtle analog jitter. No audio ducking, just a tick.
+
+3.0–8.0s MOTION SYSTEMS INTRO — Cream graph-paper grid (light orange lines). Left: spinning color-wheel disc (pink / teal / orange / brown wedges, white hub, black rim, chromatic fringe). Right: word "MOTION" types on letter by letter with a blinking gold caret. Tiny label "SYSTEMS" top-left. Wheel rotates 360° over 4s.
+
+8.0–14.0s COCO SUNBURST — Giant cream circle explodes from center. Behind it, radial wedges in pink, teal, gold, violet, black. Oversized outline letters "C" (orange) and "O" (pink) sit on the left wedges. Tiny diamond sparkles drift. RGB fringe on the circle edge. Hold, then circle scales up to wipe.
+
+14.0–28.0s FEATURE — TILING LAYOUTS — Title top-left: "FEATURE TILING LAYOUTS" (cream, chromatic). Badge top-right: pink pill "DRAG · SNAP". Center: retro OS window "workspace.tiles" with teal title bar, red/yellow/green dots. Cream dotted-grid canvas. A blue tile (white triangle + gold sun icon, hard drop shadow, RGB fringe) sits on the grid. Orange-ring cursor drags it; tile snaps to grid points. Bottom labels cycle in: TILING / SNAP / GRID / STACK / SPLIT (gold, pink, teal, orange, gold). Motion: drag → snap → stack offset → split duplicate.
+
+28.0–40.0s FEATURE — AUTO MODEL CLASSIFIER — Title "FEATURE AUTO MODEL CLASSIFIER". Split layout. LEFT: dark rounded list "~/inbox" scrolling files with type chips — JPG IMAGE (teal), MP4 VIDEO (pink), PDF DOC (gold), ZIP ARCHIVE (brown), PY CODE (green), WAV AUDIO (violet). A gold scan-line sweeps down classifying each row. RIGHT: framed chart "AUTO MODEL CLASSIFIER" with ACC % ticking 81→97. Stacked bars for IMG / VID / DOC / CODE / AUD / OTH in matching chip colors, growing in. Footer marquee: "AI-Powered   Zero Setup   12 File Types   Instant".
+
+40.0–46.0s BY THE NUMBERS — Giant gold condensed type "BY THE NUMBERS" slides in from left, oversized, cropped by frame. Four vertical color bars (pink, gold, violet, brown) rise behind. Footer: "COMMOTION  *  SHOWREEL 2026  *  MOTION GRAPHICS" in gold / teal / gold.
+
+46.0–50.0s END CARD — Dark plum. Centered stacked chromatic type "OPEN COMMOTION" in gold-to-orange gradient, slow scale 0.96 → 1.0. Hold 2s, hard cut to black.
+
+CRAFT
+All type is condensed grotesque with RGB split (red -2px, blue +2px). Hard geometric shapes, no blur except 2px motion blur on fast moves. Easing: overshoot 1.12 on snaps, linear on scan-lines. Loop-safe end. Brand voice: playful systems software, 80s GUI, open-source motion studio.`;
+
         const PROMPTS = {
             'Bloom & Petal': BLOOM_PETAL_PROMPT,
+            'Open Commotion': OPEN_COMMOTION_PROMPT,
         };
         function getPrompt(t) {
             return PROMPTS[t.name] || ('No prompt recorded for "' + t.name + '" yet. Tap "▶ Run Preview" to see this template live.');
@@ -390,6 +433,7 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
         const videoGrid = document.getElementById('videoGrid');
         const videoEmpty = document.getElementById('videoEmpty');
         const videoCountEl = document.getElementById('videoCount');
+        const videoSelect = document.getElementById('videoSelect');
 
         function resolveUrl(file) {
             if (/^https?:\/\//.test(file)) return file;
@@ -445,8 +489,11 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
             if (!VIDEO_TEMPLATES.length) {
                 videoEmpty.classList.remove('hidden');
                 videoGrid.innerHTML = '';
+                videoSelect.innerHTML = '<option value="">— no templates yet —</option>';
             } else {
                 videoEmpty.classList.add('hidden');
+                videoSelect.innerHTML = '<option value="">— select a template —</option>' +
+                    VIDEO_TEMPLATES.map((t, i) => `<option value="${i}">${t.name}</option>`).join('');
                 videoGrid.innerHTML = VIDEO_TEMPLATES.map((t, i) => cardMarkup(t, i, 'video')).join('');
             }
         }
@@ -456,15 +503,18 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
             const webPanel = document.getElementById('webPanel');
             const videoPanel = document.getElementById('videoPanel');
             const promptBar = document.getElementById('promptBar');
+            const videoPromptBar = document.getElementById('videoPromptBar');
             const tabWeb = document.getElementById('tabWeb');
             const tabVideo = document.getElementById('tabVideo');
             webPanel.classList.add('hidden');
             videoPanel.classList.add('hidden');
             promptBar.classList.add('hidden');
+            videoPromptBar.classList.add('hidden');
             tabWeb.classList.remove('active');
             tabVideo.classList.remove('active');
             if (mode === 'video') {
                 videoPanel.classList.remove('hidden');
+                videoPromptBar.classList.remove('hidden');
                 tabVideo.classList.add('active');
                 kickTemplateVideos();
             } else {
@@ -616,6 +666,16 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
                 return;
             }
             openPreview(parseInt(val, 10));
+        }
+
+        function runVideoPreview() {
+            const val = videoSelect.value;
+            if (val === '') {
+                videoSelect.classList.add('ring-4', 'ring-red-400');
+                setTimeout(() => videoSelect.classList.remove('ring-4', 'ring-red-400'), 600);
+                return;
+            }
+            openVideoPreview(parseInt(val, 10));
         }
 
         // ---- Prompt modal with motion typewriter reveal ----
