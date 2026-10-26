@@ -1,31 +1,24 @@
 ---
 name: Bug report
-about: Something is broken on the studio site or vault
+about: Prefer email. Do not attach private templates or client files.
 title: "bug: "
 labels: bug
 assignees: ""
 ---
 
+Prefer email: coresitestudio.agency@gmail.com
+
+Do not upload templates, prompts, or client files here.
+
 ## What happened
 
-A clear description of the bug.
-
-## Steps to reproduce
+## Steps
 
 1.
 2.
-3.
 
-## Expected
+## Page
 
-## Actual
+Home / Explore
 
-## Environment
-
-- Browser:
-- Device / OS:
-- Page: Home / Explore / Bloom & Petal
-
-## Screenshots
-
-If useful, attach a screenshot or short clip.
+## Browser / device

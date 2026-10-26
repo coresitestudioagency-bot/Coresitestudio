@@ -1,57 +1,20 @@
-# Contributing to Core Site Studio
+# This is a private studio repository
 
-Thanks for taking the time to contribute. This repo is a static studio site
-plus a template vault. Small, focused changes are easiest to review.
+Core Site Studio does not accept public contributions.
 
-## Ground rules
+## Not accepted
 
-- Be respectful. Follow `CODE_OF_CONDUCT.md`.
-- Open an issue before large redesigns.
-- Keep the sketch / cream / yellow visual language unless the issue asks otherwise.
-- Do not commit secrets, API keys, or private client files.
+- Template uploads or vault submissions
+- Forks, copies, or duplicate sites
+- Pull requests from outside the studio
+- Brand, prompt, or design reuse
 
-## Local setup
+There is no community template drop. Only the studio adds work to the vault.
 
-```bash
-git clone https://github.com/coresitestudioagency-bot/Coresitestudio.git
-cd Coresitestudio
-python3 -m http.server 8000
-```
+## If you found a bug
 
-Open http://localhost:8000 for the home page and http://localhost:8000/explore.html
-for the template vault.
+Email **coresitestudio.agency@gmail.com**. Do not open a public issue with client files, private prompts, or credentials.
 
-## What to change where
+## If you want a site or a custom template
 
-| Goal | File |
-| ---- | ---- |
-| Home page, journal, nav, modals | `index.html` |
-| Template vault / prompts | `explore.html` |
-| Add a website template | `explore.html` (`WEB_TEMPLATES`) plus the template files |
-| Add a video prompt | `explore.html` (`VIDEO_TEMPLATES`) |
-| Bloom & Petal source | `Bloom&Petal/` |
-| Bloom & Petal built preview | `bloom-petal/` |
-
-## Pull requests
-
-1. Fork the repo (or branch from `main`).
-2. Make the smallest change that solves the issue.
-3. Check desktop and mobile (home cards should stay 2-up on small screens).
-4. Open a pull request with:
-   - What changed
-   - Why
-   - Screenshots if the UI moved
-
-## Commit style
-
-Use short, present-tense messages:
-
-```text
-feat: add Prompt nav link
-fix: shrink explore cards on mobile
-docs: explain how to add a template
-```
-
-## Questions
-
-Email coresitestudio.agency@gmail.com or open a GitHub issue.
+Email the studio. We do not take unsolicited code or template files through GitHub.

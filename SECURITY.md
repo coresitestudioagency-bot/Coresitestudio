@@ -1,44 +1,29 @@
 # Security Policy
 
-## Supported Versions
-
-This repository is a static website. Security updates are applied to the
-latest `main` branch only.
-
-| Branch | Supported |
-| ------ | --------- |
-| main   | Yes       |
-| other  | No        |
-
 ## Reporting a Vulnerability
 
-If you discover a security issue, please **do not** open a public GitHub issue.
+If you discover a security issue, **do not** open a public GitHub issue.
 
-Email the studio at **coresitestudio.agency@gmail.com** with:
+Email **coresitestudio.agency@gmail.com** with:
 
 - A short description of the issue
 - Steps to reproduce, if possible
-- Impact (what an attacker could do)
+- Impact
 - Any suggested fix
 
-We aim to acknowledge reports within 72 hours and follow up with a fix or
-status update as soon as we can.
+We aim to acknowledge reports within 72 hours.
 
 ## Scope
 
 In scope:
 
-- Cross-site scripting in `index.html` or `explore.html`
-- Open redirects or unsafe iframe preview URLs
+- Cross-site scripting on the studio site
+- Open redirects or unsafe preview URLs
 - Secrets accidentally committed to the repository
-- Dependency issues in `Bloom&Petal/`
 
 Out of scope:
 
-- Denial of service against third-party CDNs (Tailwind CDN, fonts, video hosts)
-- Issues in third-party services (Payhip, Instagram, WhatsApp)
+- Third-party CDNs (Tailwind, fonts, video hosts)
+- Third-party services (Instagram, WhatsApp, store checkout)
 
-## Public Disclosures
-
-Please give us a reasonable window to patch before publishing details.
-Thank you for helping keep Core Site Studio and its visitors safe.
+Do not attach private templates, client files, or credentials to public tickets.

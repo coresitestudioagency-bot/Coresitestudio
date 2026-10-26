@@ -1,14 +1,5 @@
-## Summary
+Outside pull requests are not accepted.
 
-What does this PR change?
+This is a private Core Site Studio repository. Do not submit templates, forks, or copies of this project.
 
-## Why
-
-What problem does it solve?
-
-## Checklist
-
-- [ ] Tested on desktop
-- [ ] Tested on a narrow / mobile viewport
-- [ ] Did not commit secrets or `.env` files
-- [ ] Screenshots included if UI changed
+If you need a site or found a problem, email coresitestudio.agency@gmail.com.

@@ -1,19 +1,11 @@
 ---
 name: Feature request
-about: Suggest an improvement for the studio site or vault
-title: "feat: "
-labels: enhancement
+about: Public feature requests are not used. Email the studio instead.
+title: "do-not-use: "
+labels: invalid
 assignees: ""
 ---
 
-## Problem
+This repository does not take public feature requests, template uploads, or duplicate-project ideas.
 
-What is missing or awkward today?
-
-## Proposal
-
-What should we add or change?
-
-## Extra
-
-Mockups, references, or examples welcome.
+Email coresitestudio.agency@gmail.com.
