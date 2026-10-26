@@ -103,6 +103,64 @@
             justify-content: center;
             font-size: 1.75rem;
         }
+        @keyframes tplFloat {
+            0%, 100% { transform: translateY(0) rotate(-0.5deg); }
+            50% { transform: translateY(-14px) rotate(0.8deg); }
+        }
+        .tpl-float-wrap {
+            animation: tplFloat 4.8s ease-in-out infinite;
+            will-change: transform;
+        }
+        .tpl-float-wrap:nth-child(even) { animation-duration: 5.6s; }
+        .tpl-float-wrap:nth-child(3n) { animation-duration: 5.2s; }
+        body.card-zoomed .tpl-float-wrap { animation-play-state: paused; }
+        .tpl-card { cursor: zoom-in; }
+        .mode-tab {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            padding: 10px 22px;
+            border: 3px solid #111111;
+            border-radius: 12px;
+            box-shadow: 3px 3px 0 #111111;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s, background 0.2s, color 0.2s;
+        }
+        .mode-tab:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 #111111; }
+        .mode-tab.active { background: #111111; color: #ffffff; }
+        .mode-tab:not(.active) { background: #ffffff; color: #111111; }
+        #tabWeb.active { background: #fdd663; color: #111111; }
+        #tabVideo.active { background: #7ec8e3; color: #111111; }
+        #zoomClone {
+            position: fixed;
+            z-index: 2;
+            transform-origin: top left;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), width 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, width;
+        }
+        #zoomClone .tpl-card { cursor: default; }
+        #zoomClone.is-large .tpl-video-wrap { height: min(42vh, 320px); }
+        #zoomClose {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 3;
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            background: #ffffff;
+            border: 2px solid #111111;
+            font-weight: 800;
+            font-size: 1.25rem;
+            line-height: 1;
+            box-shadow: 3px 3px 0 #111111;
+            cursor: pointer;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .tpl-float-wrap { animation: none; }
+            #zoomClone { transition: none; }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -131,8 +189,8 @@
             </p>
         </section>
 
-        <!-- PROMPT BAR -->
-        <div class="sketch-window max-w-2xl mx-auto mb-12 rotate-[0.5deg]">
+        <!-- PROMPT BAR (web page only) -->
+        <div id="promptBar" class="hidden sketch-window max-w-2xl mx-auto mb-12 rotate-[0.5deg]">
             <div class="sketch-window-header justify-between">
                 <span class="flex items-center gap-2">
                     <span class="dot bg-red-400"></span>
@@ -152,18 +210,36 @@
             </div>
         </div>
 
-        <!-- TEMPLATE GRID -->
-        <div class="mb-4 flex items-center justify-between">
-            <h2 class="font-creative font-bold text-xl sm:text-2xl uppercase">All Templates</h2>
-            <span class="font-mono text-xs sm:text-sm text-zinc-500"><span id="tplCount">0</span> loaded</span>
+        <!-- WEB / VIDEO PROMPT TABS -->
+        <div class="flex items-center justify-center gap-3 mb-10">
+            <button id="tabWeb" type="button" class="mode-tab" onclick="openPage('web')">Web Prompt</button>
+            <button id="tabVideo" type="button" class="mode-tab" onclick="openPage('video')">Video Prompt</button>
         </div>
-        <div id="templateGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
 
-        <!-- Empty state shown when no templates are registered yet -->
-        <div id="emptyState" class="hidden sketch-window p-8 text-center max-w-md mx-auto mt-4">
-            <div class="text-4xl mb-3">📂</div>
-            <p class="font-creative font-bold text-lg mb-1">Vault is empty</p>
-            <p class="font-sketch text-sm text-zinc-600">Add entries to the <code class="font-mono bg-zinc-100 px-1.5 py-0.5 rounded border border-black text-xs">TEMPLATES</code> array inside this file's script tag.</p>
+        <!-- WEB PROMPT PAGE -->
+        <div id="webPanel" class="hidden">
+            <div class="mb-6 flex items-center justify-between gap-3">
+                <h2 class="font-creative font-bold text-xl sm:text-2xl uppercase">Web Prompt</h2>
+                <span class="font-mono text-xs sm:text-sm text-zinc-500"><span id="tplCount">0</span> loaded</span>
+            </div>
+            <div id="templateGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+            <div id="emptyState" class="hidden sketch-window p-8 text-center max-w-md mx-auto mt-4">
+                <p class="font-creative font-bold text-lg mb-1">Vault is empty</p>
+                <p class="font-sketch text-sm text-zinc-600">Add entries to the <code class="font-mono bg-zinc-100 px-1.5 py-0.5 rounded border border-black text-xs">WEB_TEMPLATES</code> array inside this file's script tag.</p>
+            </div>
+        </div>
+
+        <!-- VIDEO PROMPT PAGE -->
+        <div id="videoPanel" class="hidden">
+            <div class="mb-6 flex items-center justify-between gap-3">
+                <h2 class="font-creative font-bold text-xl sm:text-2xl uppercase">Video Prompt</h2>
+                <span class="font-mono text-xs sm:text-sm text-zinc-500"><span id="videoCount">0</span> loaded</span>
+            </div>
+            <div id="videoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+            <div id="videoEmpty" class="hidden sketch-window p-8 text-center max-w-md mx-auto mt-4">
+                <p class="font-creative font-bold text-lg mb-1">No video prompts yet</p>
+                <p class="font-sketch text-sm text-zinc-600">Add entries to the <code class="font-mono bg-zinc-100 px-1.5 py-0.5 rounded border border-black text-xs">VIDEO_TEMPLATES</code> array inside this file's script tag.</p>
+            </div>
         </div>
 
         <!-- ============================================ -->
@@ -176,6 +252,13 @@
         <span class="font-mono text-xs text-zinc-500">© CoreSiteStudio — explore module v1.0</span>
         <a href="index.html" class="font-bold text-sm underline decoration-2 underline-offset-4 hover:text-zinc-500 transition-colors no-underline-black text-black">Back to main site</a>
     </footer>
+
+    <!-- CARD ZOOM OVERLAY -->
+    <div id="zoomOverlay" class="fixed inset-0 z-[99990] hidden">
+        <div id="zoomBackdrop" class="absolute inset-0 bg-[#111]/70 backdrop-blur-[6px]" onclick="closeCardZoom()"></div>
+        <button id="zoomClose" type="button" onclick="closeCardZoom()" aria-label="Close zoom">×</button>
+        <div id="zoomClone"></div>
+    </div>
 
     <!-- PREVIEW MODAL (terminal-style boot → iframe) -->
     <div id="previewModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[99999] hidden items-center justify-center p-3 sm:p-6">
@@ -202,6 +285,11 @@
             <!-- Iframe stage -->
             <div id="frameStage" class="hidden flex-1 bg-[#FAFAF7] relative">
                 <iframe id="previewFrame" title="Template Preview" class="w-full h-full border-0 block" allow="autoplay; fullscreen; encrypted-media" referrerpolicy="no-referrer"></iframe>
+            </div>
+
+            <!-- Video preview stage -->
+            <div id="videoStage" class="hidden flex-1 bg-[#0d0d0d] relative">
+                <video id="previewVideo" class="w-full h-full object-contain block" muted loop playsinline controls></video>
             </div>
         </div>
     </div>
@@ -236,12 +324,15 @@
            - "video" (optional) is a preview clip shown on the card,
              autoplay muted loop — like Motion Sites templates.
            ===================================================== */
-        const TEMPLATES = [
+        const WEB_TEMPLATES = [
             { name: 'Bloom & Petal', desc: 'Premium artisan florals — elegant flower shop website with animations, video showcase & sticky sections. Tap to visit the site.', file: 'bloom-petal/index.html', video: 'https://cdn.mp4tourl.com/video/free/54c01f9d-dd33-46bc-ade8-6f7410ca9a02.mp4' },
             // { name: 'Portfolio One', desc: 'Minimal dark portfolio starter.', file: 'templates/portfolio-one.html' },
             // { name: 'Landing Page',  desc: 'Yellow sketch-style product landing.', file: 'templates/landing.html' },
             // { name: 'Blog Layout',   desc: 'Journal / article template.', file: 'templates/blog.html' },
         ];
+        const VIDEO_TEMPLATES = [
+        ];
+        const TEMPLATES = WEB_TEMPLATES;
         /* ===================================================== */
 
         /* ---- Build prompts (shown when user taps "✦ View Prompt") ---- */
@@ -291,51 +382,99 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
             return PROMPTS[t.name] || ('No prompt recorded for "' + t.name + '" yet. Tap "▶ Run Preview" to see this template live.');
         }
 
+        let currentMode = 'landing';
         const select = document.getElementById('templateSelect');
         const grid = document.getElementById('templateGrid');
         const emptyState = document.getElementById('emptyState');
         const countEl = document.getElementById('tplCount');
+        const videoGrid = document.getElementById('videoGrid');
+        const videoEmpty = document.getElementById('videoEmpty');
+        const videoCountEl = document.getElementById('videoCount');
 
         function resolveUrl(file) {
             if (/^https?:\/\//.test(file)) return file;
             return file.split('/').map(encodeURIComponent).join('/');
         }
 
+        function cardMarkup(t, i, kind) {
+            const slug = t.name.toLowerCase().replace(/\s+/g, '-');
+            const previewBtn = kind === 'video'
+                ? `<button onclick="event.stopPropagation(); openVideoPreview(${i})" class="w-full py-2 bg-black text-white font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">▶ Preview Video</button>`
+                : `<button onclick="event.stopPropagation(); openPreview(${i})" class="w-full py-2 bg-black text-white font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">▶ Run Preview</button>`;
+            const promptBtn = kind === 'video'
+                ? `<button onclick="event.stopPropagation(); openVideoPrompt(${i})" class="w-full py-2 bg-[#fdd663] text-black font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">✦ View Prompt</button>`
+                : `<button onclick="event.stopPropagation(); openPrompt(${i})" class="w-full py-2 bg-[#fdd663] text-black font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">✦ View Prompt</button>`;
+            return `
+                <div class="tpl-float-wrap" style="animation-delay: ${i * 0.18}s">
+                    <article class="sketch-window card-hover tpl-card flex flex-col" onclick="zoomCard(this)">
+                        <div class="sketch-window-header justify-between">
+                            <span class="truncate">${slug}.${kind === 'video' ? 'mp4' : 'html'}</span>
+                            <span>${kind === 'video' ? 'vid' : 'tpl'}_${String(i + 1).padStart(2, '0')}</span>
+                        </div>
+                        <div class="p-4 sm:p-5 flex flex-col flex-1 gap-3 bg-white">
+                            ${t.video ? `
+                            <div class="tpl-video-wrap">
+                                <video class="tpl-preview-video" src="${t.video}" muted loop playsinline autoplay preload="auto"></video>
+                                <span class="tpl-video-badge">${kind === 'video' ? 'video prompt' : 'live preview'}</span>
+                            </div>` : `
+                            <div class="tpl-thumb-fallback">tpl</div>`}
+                            <h3 class="font-creative font-bold text-lg leading-tight">${t.name}</h3>
+                            <p class="font-sketch text-sm text-zinc-600 flex-1">${t.desc}</p>
+                            ${previewBtn}
+                            ${promptBtn}
+                        </div>
+                    </article>
+                </div>
+            `;
+        }
+
         function renderTemplates() {
-            countEl.textContent = TEMPLATES.length;
-            if (!TEMPLATES.length) {
+            countEl.textContent = WEB_TEMPLATES.length;
+            if (!WEB_TEMPLATES.length) {
                 emptyState.classList.remove('hidden');
                 grid.innerHTML = '';
                 select.innerHTML = '<option value="">— no templates yet —</option>';
-                return;
+            } else {
+                emptyState.classList.add('hidden');
+                select.innerHTML = '<option value="">— select a template —</option>' +
+                    WEB_TEMPLATES.map((t, i) => `<option value="${i}">${t.name}</option>`).join('');
+                grid.innerHTML = WEB_TEMPLATES.map((t, i) => cardMarkup(t, i, 'web')).join('');
             }
-            emptyState.classList.add('hidden');
-            select.innerHTML = '<option value="">— select a template —</option>' +
-                TEMPLATES.map((t, i) => `<option value="${i}">${t.name}</option>`).join('');
-            grid.innerHTML = TEMPLATES.map((t, i) => `
-                <div class="sketch-window card-hover flex flex-col">
-                    <div class="sketch-window-header justify-between">
-                        <span class="truncate">${t.name.toLowerCase().replace(/\s+/g, '-')}.html</span>
-                        <span>tpl_${String(i + 1).padStart(2, '0')}</span>
-                    </div>
-                    <div class="p-4 sm:p-5 flex flex-col flex-1 gap-3 bg-white">
-                        ${t.video ? `
-                        <div class="tpl-video-wrap">
-                            <video class="tpl-preview-video" src="${t.video}" muted loop playsinline autoplay preload="auto"></video>
-                            <span class="tpl-video-badge">live preview</span>
-                        </div>` : `
-                        <div class="tpl-thumb-fallback">tpl</div>`}
-                        <h3 class="font-creative font-bold text-lg leading-tight">${t.name}</h3>
-                        <p class="font-sketch text-sm text-zinc-600 flex-1">${t.desc}</p>
-                        <button onclick="openPreview(${i})" class="w-full py-2 bg-black text-white font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">
-                            ▶ Run Preview
-                        </button>
-                        <button onclick="openPrompt(${i})" class="w-full py-2 bg-[#fdd663] text-black font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-yellow-400 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">
-                            ✦ View Prompt
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+
+            videoCountEl.textContent = VIDEO_TEMPLATES.length;
+            if (!VIDEO_TEMPLATES.length) {
+                videoEmpty.classList.remove('hidden');
+                videoGrid.innerHTML = '';
+            } else {
+                videoEmpty.classList.add('hidden');
+                videoGrid.innerHTML = VIDEO_TEMPLATES.map((t, i) => cardMarkup(t, i, 'video')).join('');
+            }
+        }
+
+        function openPage(mode) {
+            currentMode = mode;
+            const webPanel = document.getElementById('webPanel');
+            const videoPanel = document.getElementById('videoPanel');
+            const promptBar = document.getElementById('promptBar');
+            const tabWeb = document.getElementById('tabWeb');
+            const tabVideo = document.getElementById('tabVideo');
+            webPanel.classList.add('hidden');
+            videoPanel.classList.add('hidden');
+            promptBar.classList.add('hidden');
+            tabWeb.classList.remove('active');
+            tabVideo.classList.remove('active');
+            if (mode === 'video') {
+                videoPanel.classList.remove('hidden');
+                tabVideo.classList.add('active');
+                kickTemplateVideos();
+            } else {
+                webPanel.classList.remove('hidden');
+                promptBar.classList.remove('hidden');
+                tabWeb.classList.add('active');
+                kickTemplateVideos();
+            }
+            const hash = mode === 'video' ? '#video' : '#web';
+            if (location.hash !== hash) history.replaceState(null, '', location.pathname + location.search + hash);
         }
 
         // ---- Prompt-style boot sequence (like a terminal prompt motion) ----
@@ -343,12 +482,13 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
         function clearBootTimers() { bootTimers.forEach(clearTimeout); bootTimers = []; }
 
         function openPreview(index) {
-            const t = TEMPLATES[index];
+            const t = WEB_TEMPLATES[index];
             if (!t) return;
             const modal = document.getElementById('previewModal');
             const bootScreen = document.getElementById('bootScreen');
             const bootLines = document.getElementById('bootLines');
             const frameStage = document.getElementById('frameStage');
+            const videoStage = document.getElementById('videoStage');
             const frame = document.getElementById('previewFrame');
             const url = resolveUrl(t.file);
 
@@ -363,6 +503,7 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
 
             bootScreen.classList.remove('hidden');
             frameStage.classList.add('hidden');
+            videoStage.classList.add('hidden');
             frame.src = 'about:blank';
             bootLines.innerHTML = '';
             clearBootTimers();
@@ -395,13 +536,75 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
             }, 250 + lines.length * 420 + 500));
         }
 
+        function openVideoPreview(index) {
+            const t = VIDEO_TEMPLATES[index];
+            if (!t || !t.video) return;
+            const modal = document.getElementById('previewModal');
+            const bootScreen = document.getElementById('bootScreen');
+            const bootLines = document.getElementById('bootLines');
+            const frameStage = document.getElementById('frameStage');
+            const videoStage = document.getElementById('videoStage');
+            const frame = document.getElementById('previewFrame');
+            const vid = document.getElementById('previewVideo');
+
+            document.getElementById('previewTitle').textContent = 'video > ' + t.name;
+            const newTabLink = document.getElementById('openNewTab');
+            newTabLink.href = t.video;
+            newTabLink.classList.remove('hidden');
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+
+            bootScreen.classList.remove('hidden');
+            frameStage.classList.add('hidden');
+            videoStage.classList.add('hidden');
+            frame.src = 'about:blank';
+            bootLines.innerHTML = '';
+            clearBootTimers();
+
+            const lines = [
+                '$ core-studio init video --tpl "' + t.name + '"',
+                '> buffering motion clip ........... ok',
+                '> attaching preview decoder ....... ok',
+                '> looping playback ................ ok',
+                '> deploy complete ✓ launching now_'
+            ];
+
+            lines.forEach((line, i) => {
+                bootTimers.push(setTimeout(() => {
+                    const div = document.createElement('div');
+                    div.textContent = line;
+                    div.className = 'opacity-0 translate-y-1 transition-all duration-200';
+                    bootLines.appendChild(div);
+                    requestAnimationFrame(() => {
+                        div.classList.remove('opacity-0', 'translate-y-1');
+                    });
+                }, 250 + i * 420));
+            });
+
+            bootTimers.push(setTimeout(() => {
+                vid.src = t.video;
+                vid.muted = true;
+                vid.playsInline = true;
+                const p = vid.play();
+                if (p && p.catch) p.catch(() => {});
+                bootScreen.classList.add('hidden');
+                videoStage.classList.remove('hidden');
+            }, 250 + lines.length * 420 + 500));
+        }
+
         function closePreview() {
             clearBootTimers();
             const modal = document.getElementById('previewModal');
             const frame = document.getElementById('previewFrame');
+            const vid = document.getElementById('previewVideo');
             modal.classList.add('hidden');
             modal.classList.remove('flex');
             frame.src = 'about:blank';
+            vid.pause();
+            vid.removeAttribute('src');
+            vid.load();
             document.body.style.overflow = '';
         }
 
@@ -420,7 +623,7 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
         let typeTimer = null;
 
         function openPrompt(index) {
-            const t = TEMPLATES[index];
+            const t = WEB_TEMPLATES[index];
             if (!t) return;
             promptText = getPrompt(t);
             const modal = document.getElementById('promptModal');
@@ -438,6 +641,36 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
             if (typeTimer) clearInterval(typeTimer);
             let i = 0;
             const chunk = Math.max(4, Math.ceil(promptText.length / 320)); // ~3-4 seconds total
+            const panel = pre.parentElement;
+            typeTimer = setInterval(() => {
+                i += chunk;
+                pre.textContent = promptText.slice(0, i);
+                panel.scrollTop = panel.scrollHeight;
+                if (i >= promptText.length) {
+                    clearInterval(typeTimer);
+                    typeTimer = null;
+                }
+            }, 12);
+        }
+
+        function openVideoPrompt(index) {
+            const t = VIDEO_TEMPLATES[index];
+            if (!t) return;
+            promptText = getPrompt(t);
+            const modal = document.getElementById('promptModal');
+            const pre = document.getElementById('promptText');
+            const cursor = document.getElementById('promptCursor');
+
+            document.getElementById('promptTitle').textContent = 'video prompt > ' + t.name.toLowerCase().replace(/\s+/g, '-') + '.md';
+            pre.textContent = '';
+            cursor.classList.remove('hidden');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+
+            if (typeTimer) clearInterval(typeTimer);
+            let i = 0;
+            const chunk = Math.max(4, Math.ceil(promptText.length / 320));
             const panel = pre.parentElement;
             typeTimer = setInterval(() => {
                 i += chunk;
@@ -481,8 +714,72 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
             if (e.target === document.getElementById('promptModal')) closePrompt();
         });
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') { closePrompt(); closePreview(); }
+            if (e.key === 'Escape') { closeCardZoom(); closePrompt(); closePreview(); }
         });
+
+        let zoomSource = null;
+        function zoomCard(card) {
+            if (document.body.classList.contains('card-zoomed')) return;
+            zoomSource = card;
+            const rect = card.getBoundingClientRect();
+            const overlay = document.getElementById('zoomOverlay');
+            const clone = document.getElementById('zoomClone');
+            clone.innerHTML = card.outerHTML;
+            clone.classList.remove('is-large');
+            clone.style.width = rect.width + 'px';
+            clone.style.left = '0px';
+            clone.style.top = '0px';
+            clone.style.transform = 'translate(' + rect.left + 'px, ' + rect.top + 'px) scale(1)';
+            overlay.classList.remove('hidden');
+            document.body.classList.add('card-zoomed');
+            document.body.style.overflow = 'hidden';
+            card.style.visibility = 'hidden';
+            const cloneCard = clone.querySelector('.tpl-card');
+            if (cloneCard) cloneCard.removeAttribute('onclick');
+            clone.querySelectorAll('button').forEach((btn) => { btn.style.pointerEvents = 'auto'; });
+            clone.querySelectorAll('.tpl-preview-video').forEach((v) => {
+                v.muted = true;
+                v.playsInline = true;
+                const p = v.play();
+                if (p && p.catch) p.catch(() => {});
+            });
+            requestAnimationFrame(() => {
+                const maxW = Math.min(640, window.innerWidth - 32);
+                const scale = maxW / rect.width;
+                const targetH = rect.height * scale;
+                const x = (window.innerWidth - maxW) / 2;
+                const y = Math.max(24, (window.innerHeight - targetH) / 2);
+                clone.classList.add('is-large');
+                clone.style.width = maxW + 'px';
+                clone.style.transform = 'translate(' + x + 'px, ' + y + 'px) scale(1)';
+            });
+        }
+        function closeCardZoom() {
+            const overlay = document.getElementById('zoomOverlay');
+            const clone = document.getElementById('zoomClone');
+            if (overlay.classList.contains('hidden')) return;
+            if (zoomSource) {
+                const rect = zoomSource.getBoundingClientRect();
+                clone.classList.remove('is-large');
+                clone.style.width = rect.width + 'px';
+                clone.style.transform = 'translate(' + rect.left + 'px, ' + rect.top + 'px) scale(1)';
+            }
+            const finish = () => {
+                overlay.classList.add('hidden');
+                clone.innerHTML = '';
+                clone.style.transform = '';
+                clone.style.width = '';
+                document.body.classList.remove('card-zoomed');
+                if (zoomSource) zoomSource.style.visibility = '';
+                if (document.getElementById('previewModal').classList.contains('hidden') && document.getElementById('promptModal').classList.contains('hidden')) {
+                    document.body.style.overflow = '';
+                }
+                zoomSource = null;
+            };
+            const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduced) { finish(); return; }
+            setTimeout(finish, 700);
+        }
 
         function kickTemplateVideos() {
             document.querySelectorAll('.tpl-preview-video').forEach((v) => {
@@ -495,7 +792,8 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
         }
 
         renderTemplates();
-        kickTemplateVideos();
+        const startHash = (location.hash || '').replace('#', '');
+        openPage(startHash === 'video' ? 'video' : 'web');
         document.addEventListener('visibilitychange', () => {
             if (!document.hidden) kickTemplateVideos();
         });
