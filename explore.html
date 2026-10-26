@@ -61,6 +61,48 @@
         ::selection { background: #fdd663; color: #111; }
         input:focus { outline: none; }
         .card-hover:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0px #111111; }
+        .tpl-video-wrap {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 2px solid #111111;
+            background: #111111;
+        }
+        .tpl-video-wrap video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.02);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-hover:hover .tpl-video-wrap video { transform: scale(1.08); }
+        .tpl-video-badge {
+            position: absolute;
+            left: 8px;
+            bottom: 8px;
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            background: #fdd663;
+            color: #111;
+            border: 2px solid #111;
+            border-radius: 6px;
+            padding: 2px 7px;
+            pointer-events: none;
+        }
+        .tpl-thumb-fallback {
+            height: 180px;
+            border-radius: 8px;
+            border: 2px solid #111111;
+            background: repeating-linear-gradient(45deg, #FAFAF7, #FAFAF7 10px, #f0ede2 10px, #f0ede2 20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -188,13 +230,14 @@
     <script>
         /* =====================================================
            ADD YOUR TEMPLATES HERE
-           Each entry: { name, desc, file }
+           Each entry: { name, desc, file, video }
            - "file" can be a local file ("templates/portfolio.html")
              or a full URL ("https://example.com").
+           - "video" (optional) is a preview clip shown on the card,
+             autoplay muted loop — like Motion Sites templates.
            ===================================================== */
         const TEMPLATES = [
-            { name: 'Bloom & Petal', desc: 'Premium artisan florals — elegant flower shop website with animations, video showcase & sticky sections. Tap to visit the site.', file: 'bloom-petal/index.html' },
-            { name: 'Demo Starter', desc: 'Placeholder starter — replace with your own template file.', file: 'demo-starter.html' },
+            { name: 'Bloom & Petal', desc: 'Premium artisan florals — elegant flower shop website with animations, video showcase & sticky sections. Tap to visit the site.', file: 'bloom-petal/index.html', video: 'https://cdn.mp4tourl.com/video/free/54c01f9d-dd33-46bc-ade8-6f7410ca9a02.mp4' },
             // { name: 'Portfolio One', desc: 'Minimal dark portfolio starter.', file: 'templates/portfolio-one.html' },
             // { name: 'Landing Page',  desc: 'Yellow sketch-style product landing.', file: 'templates/landing.html' },
             // { name: 'Blog Layout',   desc: 'Journal / article template.', file: 'templates/blog.html' },
@@ -276,7 +319,12 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
                         <span>tpl_${String(i + 1).padStart(2, '0')}</span>
                     </div>
                     <div class="p-4 sm:p-5 flex flex-col flex-1 gap-3 bg-white">
-                        <div class="h-24 rounded-lg border-2 border-black bg-[repeating-linear-gradient(45deg,#FAFAF7,#FAFAF7_10px,#f0ede2_10px,#f0ede2_20px)] flex items-center justify-center text-2xl">🖥️</div>
+                        ${t.video ? `
+                        <div class="tpl-video-wrap">
+                            <video class="tpl-preview-video" src="${t.video}" muted loop playsinline autoplay preload="auto"></video>
+                            <span class="tpl-video-badge">live preview</span>
+                        </div>` : `
+                        <div class="tpl-thumb-fallback">tpl</div>`}
                         <h3 class="font-creative font-bold text-lg leading-tight">${t.name}</h3>
                         <p class="font-sketch text-sm text-zinc-600 flex-1">${t.desc}</p>
                         <button onclick="openPreview(${i})" class="w-full py-2 bg-black text-white font-bold text-sm border-2 border-black rounded-lg shadow-[2px_2px_0px_#111] hover:bg-zinc-800 hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer">
@@ -436,7 +484,21 @@ Card hover scale + shadow lift, image hover scale 1.05 mask reveal, button text-
             if (e.key === 'Escape') { closePrompt(); closePreview(); }
         });
 
+        function kickTemplateVideos() {
+            document.querySelectorAll('.tpl-preview-video').forEach((v) => {
+                v.muted = true;
+                v.defaultMuted = true;
+                v.playsInline = true;
+                const p = v.play();
+                if (p && p.catch) p.catch(() => {});
+            });
+        }
+
         renderTemplates();
+        kickTemplateVideos();
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) kickTemplateVideos();
+        });
     </script>
 </body>
 </html>
